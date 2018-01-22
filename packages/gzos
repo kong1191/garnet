@@ -1,0 +1,8 @@
+{
+    "imports": [
+        "garnet/packages/runtime",
+        "garnet/packages/runtime_config",
+        "garnet/packages/test_runner",
+        "garnet/packages/zircon_benchmarks"
+    ]
+}
