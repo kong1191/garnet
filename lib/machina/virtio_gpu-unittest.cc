@@ -8,6 +8,7 @@
 
 #include "garnet/lib/machina/gpu_scanout.h"
 #include "garnet/lib/machina/phys_mem_fake.h"
+#include "garnet/lib/machina/virtio_transport_fake.h"
 #include "garnet/lib/machina/virtio_queue_fake.h"
 #include "gtest/gtest.h"
 
@@ -32,7 +33,7 @@ struct BackingPages
 
 class VirtioGpuTest {
  public:
-  VirtioGpuTest() : gpu_(phys_mem_), control_queue_(&gpu_.control_queue()) {}
+  VirtioGpuTest() : gpu_(phys_mem_, &transport_), control_queue_(&gpu_.control_queue()) {}
 
   zx_status_t Init() {
     zx_status_t status = control_queue_.Init(kQueueSize);
@@ -186,6 +187,7 @@ class VirtioGpuTest {
   VirtioGpu gpu_;
   GpuScanout scanout_;
   VirtioQueueFake control_queue_;
+  VirtioTransportFake transport_;
   // Backing pages for the root resource.
   fbl::SinglyLinkedList<fbl::unique_ptr<BackingPages>> backing_pages_;
 

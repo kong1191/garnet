@@ -9,6 +9,7 @@
 #include <zircon/types.h>
 
 #include "garnet/lib/machina/pci.h"
+#include "garnet/lib/machina/virtio_transport.h"
 
 namespace machina {
 
@@ -18,7 +19,7 @@ class VirtioQueue;
 static constexpr size_t kVirtioPciNumCapabilities = 4;
 
 /* Virtio PCI transport implementation. */
-class VirtioPci : public PciDevice {
+class VirtioPci : public PciDevice, public VirtioTransport {
  public:
   VirtioPci(VirtioDevice* device);
 
@@ -30,6 +31,10 @@ class VirtioPci : public PciDevice {
   zx_status_t WriteBar(uint8_t bar,
                        uint64_t offset,
                        const IoValue& value) override;
+
+  zx_status_t Notify() override {
+    return Interrupt();
+  }
 
  private:
   // Handle accesses to the general configuration BAR.

@@ -16,7 +16,7 @@ namespace machina {
 // Implements a Virtio Ethernet device.
 class VirtioNet : public VirtioDevice {
  public:
-  VirtioNet(const PhysMem& phys_mem, async_t* async);
+  VirtioNet(const PhysMem& phys_mem, VirtioTransport* transport, async_t* async);
   ~VirtioNet() override;
 
   // Starts the Virtio Ethernet device based on the path provided.

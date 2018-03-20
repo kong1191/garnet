@@ -1,0 +1,9 @@
+{
+    "languages": [
+        "cpp"
+    ],
+    "packages": {
+        "machina_tests": "//garnet/lib/machina:machina_tests",
+        "tipc_tests": "//garnet/lib/tipc:tipc_tests"
+    }
+}

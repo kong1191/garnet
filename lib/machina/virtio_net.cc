@@ -14,11 +14,12 @@
 
 namespace machina {
 
-VirtioNet::VirtioNet(const PhysMem& phys_mem, async_t* async)
+VirtioNet::VirtioNet(const PhysMem& phys_mem, VirtioTransport* transport, async_t* async)
     : VirtioDevice(VIRTIO_ID_NET,
                    &config_,
                    sizeof(config_),
                    queues_,
+                   transport,
                    kNumQueues,
                    phys_mem),
       async_(async) {

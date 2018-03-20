@@ -27,7 +27,7 @@ class VirtioBalloon : public VirtioDevice {
   // of the guest page size.
   static constexpr uint32_t kPageSize = 4096;
 
-  VirtioBalloon(const PhysMem& phys_mem);
+  VirtioBalloon(const PhysMem& phys_mem, VirtioTransport* transport);
   ~VirtioBalloon() override = default;
 
   zx_status_t HandleQueueNotify(uint16_t queue_sel) override;

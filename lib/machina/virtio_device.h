@@ -11,7 +11,7 @@
 #include <zircon/compiler.h>
 #include <zircon/types.h>
 
-#include "garnet/lib/machina/virtio_pci.h"
+#include "garnet/lib/machina/virtio_transport.h"
 #include "garnet/lib/machina/virtio_queue.h"
 
 namespace machina {
@@ -70,13 +70,14 @@ class VirtioDevice {
     return (features_ & features) == features;
   }
 
-  PciDevice* pci_device() { return &pci_; }
+  VirtioTransport* get_transport() { return transport_; }
 
  protected:
   VirtioDevice(uint8_t device_id,
                void* config,
                size_t config_size,
                VirtioQueue* queues,
+               VirtioTransport* transport,
                uint16_t num_queues,
                const PhysMem& phys_mem);
 
@@ -129,14 +130,14 @@ class VirtioDevice {
   // Virtqueues for this device.
   VirtioQueue* const queues_ = nullptr;
 
+  // VirtioTransport for this device
+  VirtioTransport* const transport_ = nullptr;
+
   // Size of queues array.
   const uint16_t num_queues_ = 0;
 
   // Guest physical memory.
   const PhysMem& phys_mem_;
-
-  // Virtio PCI transport.
-  VirtioPci pci_;
 };
 
 }  // namespace machina

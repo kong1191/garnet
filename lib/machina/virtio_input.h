@@ -26,6 +26,7 @@ namespace machina {
 class VirtioInput : public VirtioDevice {
  public:
   VirtioInput(InputDispatcher* input_dispatcher,
+              VirtioTransport* transport,
               const PhysMem& phys_mem,
               const char* device_name,
               const char* device_serial);
