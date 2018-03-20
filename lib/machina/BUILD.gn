@@ -53,6 +53,7 @@ shared_library("machina") {
     "virtio_pci.h",
     "virtio_queue.cc",
     "virtio_queue.h",
+    "virtio_transport.h",
     "volatile_write_block_dispatcher.cc",
     "volatile_write_block_dispatcher.h",
   ]
@@ -131,6 +132,7 @@ executable("machina_unittests") {
     "virtio_queue-unittest.cc",
     "virtio_queue_fake.cc",
     "virtio_queue_fake.h",
+    "virtio_transport_fake.h",
     "volatile_write_block_dispatcher-unittest.cc",
   ]
 

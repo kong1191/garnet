@@ -19,19 +19,21 @@ VirtioDevice::VirtioDevice(uint8_t device_id,
                            void* config,
                            size_t config_size,
                            VirtioQueue* queues,
+                           VirtioTransport* transport,
                            uint16_t num_queues,
                            const PhysMem& phys_mem)
     : device_id_(device_id),
       device_config_(config),
       device_config_size_(config_size),
       queues_(queues),
+      transport_(transport),
       num_queues_(num_queues),
-      phys_mem_(phys_mem),
-      pci_(this) {
+      phys_mem_(phys_mem) {
   for (int i = 0; i < num_queues_; ++i) {
     queues_[i].set_device(this);
     queues_[i].set_size_unsafe(QUEUE_SIZE);
   }
+  transport_->set_device(this);
 }
 
 zx_status_t VirtioDevice::NotifyGuest() {
@@ -44,7 +46,7 @@ zx_status_t VirtioDevice::NotifyGuest() {
   if (!interrupt) {
     return ZX_OK;
   }
-  return pci_.Interrupt();
+  return transport_->Notify();
 }
 
 zx_status_t VirtioDevice::Kick(uint16_t kicked_queue) {

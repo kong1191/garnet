@@ -177,6 +177,7 @@ constexpr int kMediaKeyboardFirstCode = 0x160;
 constexpr int kMediaKeyboardLastCode = 0x2bf;
 
 VirtioInput::VirtioInput(InputDispatcher* input_dispatcher,
+                         VirtioTransport* transport,
                          const PhysMem& phys_mem,
                          const char* device_name,
                          const char* device_serial)
@@ -184,6 +185,7 @@ VirtioInput::VirtioInput(InputDispatcher* input_dispatcher,
                    &config_,
                    sizeof(config_),
                    queues_,
+                   transport,
                    VIRTIO_INPUT_Q_COUNT,
                    phys_mem),
       input_dispatcher_(input_dispatcher),

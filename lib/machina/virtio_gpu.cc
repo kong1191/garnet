@@ -17,11 +17,12 @@
 
 namespace machina {
 
-VirtioGpu::VirtioGpu(const PhysMem& phys_mem)
+VirtioGpu::VirtioGpu(const PhysMem& phys_mem, VirtioTransport* transport)
     : VirtioDevice(VIRTIO_ID_GPU,
                    &config_,
                    sizeof(config_),
                    queues_,
+                   transport,
                    VIRTIO_GPU_Q_COUNT,
                    phys_mem) {}
 

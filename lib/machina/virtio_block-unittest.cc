@@ -14,6 +14,7 @@
 #include "garnet/lib/machina/phys_mem_fake.h"
 #include "garnet/lib/machina/vcpu.h"
 #include "garnet/lib/machina/virtio_block.h"
+#include "garnet/lib/machina/virtio_transport_fake.h"
 #include "garnet/lib/machina/virtio_queue.h"
 #include "garnet/lib/machina/virtio_queue_fake.h"
 #include "gtest/gtest.h"
@@ -26,7 +27,7 @@ namespace {
 
 class VirtioBlockTest {
  public:
-  VirtioBlockTest() : block_(phys_mem_), queue_(&block_.queue()) {}
+  VirtioBlockTest() : block_(phys_mem_, &transport_), queue_(&block_.queue()) {}
 
   ~VirtioBlockTest() {
     if (fd_ > 0)
@@ -89,6 +90,7 @@ class VirtioBlockTest {
   PhysMemFake phys_mem_;
   VirtioBlock block_;
   VirtioQueueFake queue_;
+  VirtioTransportFake transport_;
 };
 
 TEST(VirtioBlockTest, BadHeader) {

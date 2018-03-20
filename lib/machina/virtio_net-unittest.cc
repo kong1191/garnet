@@ -2,9 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+#include <lib/async/cpp/loop.h>
 #include <zircon/device/ethernet.h>
 
 #include "garnet/lib/machina/phys_mem_fake.h"
+#include "garnet/lib/machina/virtio_transport_fake.h"
 #include "garnet/lib/machina/virtio_net.h"
 #include "garnet/lib/machina/virtio_queue_fake.h"
 #include "gtest/gtest.h"
@@ -16,7 +18,7 @@ namespace {
 
 class VirtioNetTest : public testing::Test {
  public:
-  VirtioNetTest() : net_(phys_mem_, loop_.async()), queue_(net_.rx_queue()) {}
+  VirtioNetTest() : net_(phys_mem_, &transport_, loop_.async()), queue_(net_.rx_queue()) {}
 
   void SetUp() override {
     ASSERT_EQ(queue_.Init(QUEUE_SIZE), ZX_OK);
@@ -36,6 +38,7 @@ class VirtioNetTest : public testing::Test {
   PhysMemFake phys_mem_;
   VirtioNet net_;
   VirtioQueueFake queue_;
+  VirtioTransportFake transport_;
   // Fifo entpoints to provide to the net device.
   eth_fifos_t fifos_;
   // Fifo endpoints to simulate ethernet device activity.
