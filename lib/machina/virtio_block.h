@@ -21,7 +21,7 @@ class VirtioBlock : public VirtioDevice {
  public:
   static constexpr size_t kSectorSize = 512;
 
-  VirtioBlock(const PhysMem& phys_mem);
+  VirtioBlock(const PhysMem& phys_mem, VirtioTransport* transport);
   ~VirtioBlock() override = default;
 
   // Set the dispatcher to use to interface with the back-end.

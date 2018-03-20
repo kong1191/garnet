@@ -29,7 +29,7 @@ using ScanoutId = uint32_t;
 // Virtio 2D GPU device.
 class VirtioGpu : public VirtioDevice {
  public:
-  VirtioGpu(const PhysMem& phys_mem);
+  VirtioGpu(const PhysMem& phys_mem, VirtioTransport *transport);
   ~VirtioGpu() override;
 
   VirtioQueue& control_queue() { return queues_[VIRTIO_GPU_Q_CONTROLQ]; }

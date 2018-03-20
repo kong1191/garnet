@@ -21,11 +21,12 @@
 
 namespace machina {
 
-VirtioBlock::VirtioBlock(const PhysMem& phys_mem)
+VirtioBlock::VirtioBlock(const PhysMem& phys_mem, VirtioTransport* transport)
     : VirtioDevice(VIRTIO_ID_BLOCK,
                    &config_,
                    sizeof(config_),
                    &queue_,
+				   transport,
                    1,
                    phys_mem) {
   config_.blk_size = kSectorSize;

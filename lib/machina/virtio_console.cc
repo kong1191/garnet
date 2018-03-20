@@ -14,11 +14,12 @@
 
 namespace machina {
 
-VirtioConsole::VirtioConsole(const PhysMem& phys_mem, zx::socket socket)
+VirtioConsole::VirtioConsole(const PhysMem& phys_mem, VirtioTransport* transport, zx::socket socket)
     : VirtioDevice(VIRTIO_ID_CONSOLE,
                    &config_,
                    sizeof(config_),
                    queues_,
+                   transport,
                    kNumQueues,
                    phys_mem),
       socket_(fbl::move(socket)) {}

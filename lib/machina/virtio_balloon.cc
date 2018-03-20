@@ -112,11 +112,12 @@ zx_status_t VirtioBalloon::HandleQueueNotify(uint16_t queue_sel) {
   return status;
 }
 
-VirtioBalloon::VirtioBalloon(const PhysMem& phys_mem)
+VirtioBalloon::VirtioBalloon(const PhysMem& phys_mem, VirtioTransport* transport)
     : VirtioDevice(VIRTIO_ID_BALLOON,
                    &config_,
                    sizeof(config_),
                    queues_,
+                   transport,
                    VIRTIO_BALLOON_Q_COUNT,
                    phys_mem) {
   add_device_features(VIRTIO_BALLOON_F_STATS_VQ |

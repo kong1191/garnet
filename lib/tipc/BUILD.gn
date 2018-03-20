@@ -1,0 +1,71 @@
+# Copyright 2017 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("//build/package.gni")
+
+shared_library("tipc") {
+  sources = [
+    "//garnet/lib/machina/io.cc",
+    "//garnet/lib/machina/io.h",
+    "//garnet/lib/machina/phys_mem.cc",
+    "//garnet/lib/machina/phys_mem.h",
+    "//garnet/lib/machina/virtio_device.cc",
+    "//garnet/lib/machina/virtio_device.h",
+    "//garnet/lib/machina/virtio_queue.cc",
+    "//garnet/lib/machina/virtio_queue.h",
+    "//garnet/lib/machina/virtio_transport.h",
+  ]
+
+  public_deps = [
+    "//garnet/public/lib/app/cpp",
+    "//zircon/public/lib/ddk",
+    "//zircon/public/lib/virtio",
+    "//zircon/public/lib/zx",
+  ]
+
+  defines = [ "_ALL_SOURCE=1" ]
+
+  deps = [
+    "//garnet/public/lib/fsl",
+    "//garnet/public/lib/fxl",
+    "//zircon/public/lib/zxcpp",
+  ]
+
+  # TODO(ZX-1411): Add visibility annotations to code and remove this.
+  configs -= [ "//build/config:symbol_visibility_hidden" ]
+}
+
+executable("tipc_unittests") {
+  testonly = true
+
+  sources = [
+    "//garnet/lib/machina/run_all_unittests.cc",
+    "//garnet/lib/machina/phys_mem_fake.h",
+    "//garnet/lib/machina/virtio_queue-unittest.cc",
+    "//garnet/lib/machina/virtio_queue_fake.cc",
+    "//garnet/lib/machina/virtio_transport_fake.h",
+  ]
+
+  deps = [
+    ":tipc",
+    "//third_party/googletest:gtest",
+    "//zircon/public/lib/ddk",
+    "//zircon/public/lib/fbl",
+  ]
+}
+
+package("tipc_tests") {
+  testonly = true
+  system_image = true
+
+  deps = [
+    ":tipc_unittests",
+  ]
+
+  tests = [
+    {
+      name = "tipc_unittests"
+    },
+  ]
+}

@@ -14,7 +14,7 @@ namespace machina {
 
 class VirtioConsole : public VirtioDevice {
  public:
-  VirtioConsole(const PhysMem&, zx::socket socket);
+  VirtioConsole(const PhysMem&, VirtioTransport* transport, zx::socket socket);
   ~VirtioConsole() override;
 
   zx_status_t Start();
