@@ -1,0 +1,8 @@
+{
+    "languages": [
+        "cpp"
+    ],
+    "packages": {
+        "tipc_tests": "//garnet/lib/tipc:tipc_tests"
+    }
+}
