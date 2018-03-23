@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9631976c_667ed55b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-03-23T08:05:19Z",
+      "side": 1,
+      "message": "creates a",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "fd6beb201fc5c1234c7c2bff1539f354d807b7d3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d75b09a3_89d67e28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-03-23T08:05:19Z",
+      "side": 1,
+      "message": "can be removed",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "fd6beb201fc5c1234c7c2bff1539f354d807b7d3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99f27589_5caa0e6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-03-23T08:05:19Z",
+      "side": 1,
+      "message": "is for supporting other transport devices (e.g. SMC)",
+      "range": {
+        "startLine": 11,
+        "startChar": 52,
+        "endLine": 13,
+        "endChar": 7
+      },
+      "revId": "fd6beb201fc5c1234c7c2bff1539f354d807b7d3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5832827e_f1a7618e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-03-23T08:05:19Z",
+      "side": 1,
+      "message": "libmachina (and unittests) will also be built only for making sure the changes for libtipc are not break the machina\u0027s functionality.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 66
+      },
+      "revId": "fd6beb201fc5c1234c7c2bff1539f354d807b7d3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "967ead58_212b3286",
+        "filename": "lib/machina/virtio_block.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-03-23T08:05:19Z",
+      "side": 1,
+      "message": "use space",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 5
+      },
+      "revId": "fd6beb201fc5c1234c7c2bff1539f354d807b7d3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0176754_12568d7f",
+        "filename": "lib/machina/virtio_gpu.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-03-23T08:05:19Z",
+      "side": 1,
+      "message": "coding style error: VirtioTransport* transport",
+      "range": {
+        "startLine": 32,
+        "startChar": 37,
+        "endLine": 32,
+        "endChar": 54
+      },
+      "revId": "fd6beb201fc5c1234c7c2bff1539f354d807b7d3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
