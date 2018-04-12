@@ -1,0 +1,389 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a157941_e139e3c1",
+        "filename": "lib/trusty/linux_fake.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-12T17:31:29Z",
+      "side": 1,
+      "message": "Does the buffer need to round up to PAGE_SIZE?",
+      "range": {
+        "startLine": 34,
+        "startChar": 28,
+        "endLine": 34,
+        "endChar": 29
+      },
+      "revId": "ad13bd4056a70954117a0823d82fb7814f7faad3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e05aa69f_6b054227",
+        "filename": "lib/trusty/linux_fake.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-12T17:31:29Z",
+      "side": 1,
+      "message": "unused function?",
+      "range": {
+        "startLine": 44,
+        "startChar": 14,
+        "endLine": 44,
+        "endChar": 24
+      },
+      "revId": "ad13bd4056a70954117a0823d82fb7814f7faad3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dab9253_f131540f",
+        "filename": "lib/trusty/linux_fake.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-12T17:31:29Z",
+      "side": 1,
+      "message": "linux_-\u003eshared_mem() ?",
+      "range": {
+        "startLine": 111,
+        "startChar": 16,
+        "endLine": 111,
+        "endChar": 37
+      },
+      "revId": "ad13bd4056a70954117a0823d82fb7814f7faad3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7dfc680_c55dd88e",
+        "filename": "lib/trusty/linux_fake.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-12T17:31:29Z",
+      "side": 1,
+      "message": "AllocVring() is invoked twice, but there is only one buf_ member to keep the vring buffer address. This will cause memory leak when TipcDriver object is released.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 20
+      },
+      "revId": "ad13bd4056a70954117a0823d82fb7814f7faad3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ee2b305_8d0e7518",
+        "filename": "lib/trusty/linux_fake.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-12T17:31:29Z",
+      "side": 1,
+      "message": "this member is not needed",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 32
+      },
+      "revId": "ad13bd4056a70954117a0823d82fb7814f7faad3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e386ac1b_b731c8c4",
+        "filename": "lib/trusty/shared_mem.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-12T17:31:29Z",
+      "side": 1,
+      "message": "Is it better to use \"zx_handle_t vmo_handle\" as parameter?",
+      "range": {
+        "startLine": 64,
+        "startChar": 30,
+        "endLine": 64,
+        "endChar": 41
+      },
+      "revId": "ad13bd4056a70954117a0823d82fb7814f7faad3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc6a597d_0cffd36a",
+        "filename": "lib/trusty/shared_mem.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-12T17:31:29Z",
+      "side": 1,
+      "message": "this may not needed due to zx_vmo_create_contiguous() already do page commit.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "ad13bd4056a70954117a0823d82fb7814f7faad3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94c568e3_c575515a",
+        "filename": "lib/trusty/shared_mem.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-12T17:31:29Z",
+      "side": 1,
+      "message": "The vmo object is not used in the SharedMem class. Can it be removed?",
+      "range": {
+        "startLine": 95,
+        "startChar": 37,
+        "endLine": 95,
+        "endChar": 51
+      },
+      "revId": "ad13bd4056a70954117a0823d82fb7814f7faad3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70207b53_4c29e43f",
+        "filename": "lib/trusty/shared_mem.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-12T17:31:29Z",
+      "side": 1,
+      "message": "The vmo object looks like not used in this class.",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 15
+      },
+      "revId": "ad13bd4056a70954117a0823d82fb7814f7faad3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f4d727e_9d2dfa6f",
+        "filename": "lib/trusty/tipc_device-unittest.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-12T17:31:29Z",
+      "side": 1,
+      "message": "It will be more clear if the driver objects become the member of linux_. (linux_-\u003etipc_drivers[])",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 73
+      },
+      "revId": "ad13bd4056a70954117a0823d82fb7814f7faad3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13d799d8_e6dc20e2",
+        "filename": "lib/trusty/tipc_device-unittest.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-12T17:31:29Z",
+      "side": 1,
+      "message": "rename vdev to expected_desc ?",
+      "range": {
+        "startLine": 82,
+        "startChar": 9,
+        "endLine": 82,
+        "endChar": 13
+      },
+      "revId": "ad13bd4056a70954117a0823d82fb7814f7faad3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3e2234a_cb4ab353",
+        "filename": "lib/trusty/virtio_device.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-12T17:31:29Z",
+      "side": 1,
+      "message": "table",
+      "range": {
+        "startLine": 82,
+        "startChar": 19,
+        "endLine": 82,
+        "endChar": 24
+      },
+      "revId": "ad13bd4056a70954117a0823d82fb7814f7faad3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa059933_ff88a3d0",
+        "filename": "lib/trusty/virtio_device.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-12T17:31:29Z",
+      "side": 1,
+      "message": "__TA_REQUIRES(mutex_)?",
+      "revId": "ad13bd4056a70954117a0823d82fb7814f7faad3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9f923ad_82cab457",
+        "filename": "lib/trusty/virtio_queue.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-12T17:31:29Z",
+      "side": 1,
+      "message": "why do not use trusty namespace?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "ad13bd4056a70954117a0823d82fb7814f7faad3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c039aa0c_56efc80f",
+        "filename": "lib/trusty/virtio_queue.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-12T17:31:29Z",
+      "side": 1,
+      "message": "why do not use trusty namespace?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "ad13bd4056a70954117a0823d82fb7814f7faad3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "284f1177_ef1523b3",
+        "filename": "lib/trusty/virtio_queue_fake.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-12T17:31:29Z",
+      "side": 1,
+      "message": "why do not use trusty namespace?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 17
+      },
+      "revId": "ad13bd4056a70954117a0823d82fb7814f7faad3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c68f46f2_c9cd6caf",
+        "filename": "lib/trusty/virtio_queue_fake.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-12T17:31:29Z",
+      "side": 1,
+      "message": "why do not use trusty namespace?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "ad13bd4056a70954117a0823d82fb7814f7faad3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
