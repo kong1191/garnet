@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "876e5df6_fdc9f8ae",
+        "filename": "lib/trusty/linux_fake.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-13T07:47:53Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "66144499_967e1351",
+      "range": {
+        "startLine": 34,
+        "startChar": 28,
+        "endLine": 34,
+        "endChar": 29
+      },
+      "revId": "ad13bd4056a70954117a0823d82fb7814f7faad3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e05aa69f_6b054227",
         "filename": "lib/trusty/linux_fake.h",
         "patchSetId": 12
