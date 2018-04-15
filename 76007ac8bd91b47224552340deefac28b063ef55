@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fe12d12_4b660ebf",
+        "filename": "lib/trusty/tipc_device-unittest.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-15T15:44:01Z",
+      "side": 1,
+      "message": "unused, can be removed",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 73
+      },
+      "revId": "76007ac8bd91b47224552340deefac28b063ef55",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b7be329_45e18a52",
+        "filename": "lib/trusty/virtio_queue.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-15T15:44:01Z",
+      "side": 1,
+      "message": "trusty::  \u003c-- can be removed",
+      "range": {
+        "startLine": 242,
+        "startChar": 2,
+        "endLine": 242,
+        "endChar": 10
+      },
+      "revId": "76007ac8bd91b47224552340deefac28b063ef55",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
