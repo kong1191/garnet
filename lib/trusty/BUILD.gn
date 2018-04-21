@@ -54,7 +54,6 @@ executable("trusty_unittests") {
     ":trusty",
     "//third_party/googletest:gtest",
     "//garnet/lib/magma/src/magma_util",
-    "//zircon/public/lib/ddk",
     "//zircon/public/lib/fbl",
   ]
 }
