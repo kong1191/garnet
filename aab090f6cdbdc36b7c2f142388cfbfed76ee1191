@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "053fc90f_41a3e7d0",
+        "filename": "lib/trusty/shared_mem.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-23T04:05:16Z",
+      "side": 1,
+      "message": "Here can add ZX_VM_FLAG_MAP_RANGE flag to force mapping all pages into page table.",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 48
+      },
+      "revId": "aab090f6cdbdc36b7c2f142388cfbfed76ee1191",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4f35301_aae54ec9",
+        "filename": "lib/trusty/shared_mem.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-23T04:05:16Z",
+      "side": 1,
+      "message": "Share_memory was created by zx_smc_create() syscall",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 1
+      },
+      "revId": "aab090f6cdbdc36b7c2f142388cfbfed76ee1191",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
