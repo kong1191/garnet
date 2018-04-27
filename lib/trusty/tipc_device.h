@@ -122,6 +122,7 @@ class TipcDevice : public VirtioDevice {
                                        const zx_packet_signal_t* signal);
 
     void OnStreamClosed(zx_status_t status, const char* action);
+    void DropBuffer();
 
     async_t* async_;
     zx_handle_t channel_;
