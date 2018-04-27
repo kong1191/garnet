@@ -220,6 +220,11 @@ void TipcDevice::Stream::OnQueueReady(zx_status_t status, uint16_t index) {
     status = queue_->ReadDesc(head_, &desc_);
   }
 
+  if (status == ZX_ERR_OUT_OF_RANGE) {
+    DropBuffer();
+    return;
+  }
+
   if (status != ZX_OK) {
     OnStreamClosed(status, "reading descriptor");
     return;
@@ -228,6 +233,20 @@ void TipcDevice::Stream::OnQueueReady(zx_status_t status, uint16_t index) {
   status = WaitOnChannel();
   if (status != ZX_OK) {
     OnStreamClosed(status, "waiting on channel");
+  }
+}
+
+void TipcDevice::Stream::DropBuffer() {
+  FXL_LOG(WARNING) << "buffer not in shared memory, drop it";
+
+  zx_status_t status = queue_->Return(head_, 0);
+  if (status != ZX_OK) {
+    FXL_LOG(WARNING) << "Failed to return descriptor " << status;
+  }
+
+  status = WaitOnQueue();
+  if (status != ZX_OK) {
+    OnStreamClosed(status, "dropping buffer");
   }
 }
 
