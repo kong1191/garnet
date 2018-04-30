@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cedd0c72_b8d2f021",
+        "filename": "lib/trusty/tipc_device-unittest.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-30T10:10:51Z",
+      "side": 1,
+      "message": "* async and connector channel handle can be assigned in tipc_dev constructor\n\n* TipcDevice::Connect() method can rename to TipcDevice::Start()\n\n* TipcDevice::Start() can be invoked by TipcDevice::Probe() and before invoke TipcDevice::Online()",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 78
+      },
+      "revId": "4eeb8693b0c077f87dfeed55bd9ab97d3302e5cb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22887194_0d5bc284",
+        "filename": "lib/trusty/tipc_device-unittest.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-04-30T10:10:51Z",
+      "side": 1,
+      "message": "Add a test to get used buffer from tx_vqueue and check if the buffer size is 0",
+      "revId": "4eeb8693b0c077f87dfeed55bd9ab97d3302e5cb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
