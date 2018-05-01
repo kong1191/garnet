@@ -1,0 +1,29 @@
+// Copyright 2018 Open Trust Group
+// Copyright 2016 The Chromium Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+library ree_agent;
+
+// An interface for controlling applications.
+//
+// Closing this interface implicitly kills the controlled application unless
+// the |Detach| method has been called.
+//
+// If the application exits, this interface will be closed.
+//
+// Typically obtained via |ApplicationLauncher.CreateApplication|.
+interface ApplicationController {
+  // Terminates the application.
+  //
+  // This ApplicationController connection is closed when the application has
+  // terminated.
+  1: Kill();
+
+  // Waits for a return code from the application.
+  //
+  // This call will return just before the application terminates and the
+  // interface is closed. If the interface closes without this call returning
+  // the caller may assume that the application terminated unexpectedly.
+  2: Wait() -> (int32 return_code);
+};

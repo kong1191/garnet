@@ -1,0 +1,18 @@
+// Copyright 2018 Open Trust Group 
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+library ree_agent;
+
+// import "lib/ree_agent/fidl/channel.fidl";
+
+interface TipcPortListener {
+  // Called by the port manager when there has an incoming connection request
+  1: OnConnectionRequest(request<TipcChannel>? channel);
+};
+
+[ServiceName="ree_agent::TipcPortManager"]
+interface TipcPortManager {
+  // Publish a Port to PortManager
+  1: Publish(string port_path, TipcPortListener? listener);
+};
