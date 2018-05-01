@@ -1,0 +1,17 @@
+// Copyright 2018 Open Trust Group 
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+library ree_agent;
+
+// import "lib/ree_agent/fidl/controller.fidl";
+
+[ServiceName="ree_agent::ApplicationLauncher"]
+interface ApplicationLauncher {
+  // Launch an application based on given |startup_port|. 
+  //
+  // The |controller| can be used to control the lifecycle of the created
+  // application instance. If an |ApplicationController|'s interface is
+  // requested, the application instance is killed when the interface is closed.
+  1: Launch(string startup_port, request<ApplicationController>? controller);
+};
