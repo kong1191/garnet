@@ -1,0 +1,54 @@
+# Copyright 2018 Open Trust Group
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("//build/package.gni")
+source_set("lib") {
+  sources = [
+    "trusty_ipc.cc",
+    "trusty_ipc.h",
+  ]
+
+  public_deps = [
+    "//garnet/public/lib/ree_agent/fidl",
+  ]
+
+  deps = [
+    "//zircon/public/lib/fbl",
+  ]
+
+  defines = [ "_ALL_SOURCE=1" ]
+}
+
+executable("ree_agent_unittests") {
+  visibility = [ ":*" ]
+  testonly = true
+
+  sources = [
+    "run_all_unittests.cc",
+    "trusted_app_fake.h",
+    "trusted_app_loader_fake.h",
+    "trusty_ipc-unittest.cc"
+  ]
+
+  deps = [
+    ":lib",
+    "//third_party/googletest:gtest",
+    "//zircon/public/lib/fbl",
+  ]
+}
+
+package("ree_agent_tests") {
+  testonly = true
+  system_image = true
+
+  deps = [
+    ":ree_agent_unittests",
+  ]
+
+  tests = [
+    {
+      name = "ree_agent_unittests"
+    },
+  ]
+}
