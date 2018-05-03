@@ -34,13 +34,8 @@ zx_status_t SharedMem::Create(zx::vmo vmo, fbl::RefPtr<SharedMem>* out) {
     return status;
   }
 
-  uintptr_t paddr;
-  status = vmo.op_range(ZX_VMO_OP_LOOKUP, 0, PAGE_SIZE, &paddr, sizeof(paddr));
-  if (status != ZX_OK) {
-    FXL_LOG(ERROR) << "Failed to do vmo lookup: " << status;
-    return status;
-  }
-
+  // TODO(sy): get physical address of shared memory via syscall
+  uintptr_t paddr = 0;
   fbl::AllocChecker ac;
   *out = fbl::AdoptRef(new (&ac)
                            SharedMem(fbl::move(vmo), vmo_size, vaddr, paddr));

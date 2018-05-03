@@ -5,7 +5,7 @@
 #include <fbl/alloc_checker.h>
 #include <fbl/auto_call.h>
 #include <fbl/unique_ptr.h>
-#include <lib/async/cpp/loop.h>
+#include <lib/async-loop/cpp/loop.h>
 #include <virtio/virtio.h>
 #include <virtio/virtio_ring.h>
 #include <zircon/syscalls/smc.h>
