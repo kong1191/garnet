@@ -178,23 +178,23 @@ zx_status_t TipcDevice::SendCtrlMessage(void* data, uint16_t data_len) {
 TipcDevice::Stream::Stream(async_t* async,
                            VirtioQueue* queue,
                            zx_handle_t channel)
-    : async_(async), channel_(channel), queue_(queue), queue_wait_(async) {
-  channel_wait_.set_handler(
-      fbl::BindMember(this, &TipcDevice::Stream::OnChannelReady));
-}
+    : async_(async),
+      channel_(channel),
+      queue_(queue),
+      queue_wait_(async, queue, fbl::BindMember(this, &Stream::OnQueueReady)),
+      channel_wait_(this, channel, ZX_CHANNEL_PEER_CLOSED) {}
 
 zx_status_t TipcDevice::Stream::Start() {
   return WaitOnQueue();
 }
 
 void TipcDevice::Stream::Stop() {
-  channel_wait_.Cancel(async_);
+  channel_wait_.Cancel();
   queue_wait_.Cancel();
 }
 
 zx_status_t TipcDevice::Stream::WaitOnQueue() {
-  return queue_wait_.Wait(
-      queue_, fbl::BindMember(this, &TipcDevice::Stream::OnQueueReady));
+  return queue_wait_.Begin();
 }
 
 void TipcDevice::Stream::OnQueueReady(zx_status_t status, uint16_t index) {
@@ -236,18 +236,17 @@ void TipcDevice::Stream::DropBuffer() {
 zx_status_t TipcDevice::Stream::WaitOnChannel() {
   zx_signals_t signals = ZX_CHANNEL_PEER_CLOSED;
   signals |= desc_.writable ? ZX_CHANNEL_READABLE : ZX_CHANNEL_WRITABLE;
-  channel_wait_.set_object(channel_);
   channel_wait_.set_trigger(signals);
   return channel_wait_.Begin(async_);
 }
 
-async_wait_result_t TipcDevice::Stream::OnChannelReady(
-    async_t* async,
-    zx_status_t status,
-    const zx_packet_signal_t* signal) {
+void TipcDevice::Stream::OnChannelReady(async_t* async,
+                                        async::WaitBase* wait,
+                                        zx_status_t status,
+                                        const zx_packet_signal_t* signal) {
   if (status != ZX_OK) {
     OnStreamClosed(status, "async wait on channel");
-    return ASYNC_WAIT_FINISHED;
+    return;
   }
 
   const bool do_read = desc_.writable;
@@ -258,7 +257,11 @@ async_wait_result_t TipcDevice::Stream::OnChannelReady(
 
     // no message in channel
     if (status == ZX_ERR_SHOULD_WAIT) {
-      return ASYNC_WAIT_AGAIN;
+      status = wait->Begin(async);
+      if (status != ZX_OK) {
+        OnStreamClosed(status, "async wait on channel");
+      }
+      return;
     }
   } else {
     status = zx_channel_write(channel_, 0, static_cast<const void*>(desc_.addr),
@@ -267,7 +270,7 @@ async_wait_result_t TipcDevice::Stream::OnChannelReady(
 
   if (status != ZX_OK) {
     OnStreamClosed(status, do_read ? "read from channel" : "write to channel");
-    return ASYNC_WAIT_FINISHED;
+    return;
   }
 
   status = queue_->Return(head_, do_read ? actual : 0);
@@ -279,7 +282,6 @@ async_wait_result_t TipcDevice::Stream::OnChannelReady(
   if (status != ZX_OK) {
     OnStreamClosed(status, "wait on queue");
   }
-  return ASYNC_WAIT_FINISHED;
 }
 
 void TipcDevice::Stream::OnStreamClosed(zx_status_t status,
