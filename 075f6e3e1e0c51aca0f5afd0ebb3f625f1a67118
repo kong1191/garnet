@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0a54870_a14e7dc2",
+        "filename": "bin/gzos/ree_agent/trusty_ipc.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-21T09:49:23Z",
+      "side": 1,
+      "message": "We should guarantee that \"port_path\" is unique in port_table.\nIn here we can use port_table_.insert_or_find() to do the insertion and to know if the port_path is already existed or not.",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 41
+      },
+      "revId": "075f6e3e1e0c51aca0f5afd0ebb3f625f1a67118",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f546677b_5b588d69",
+        "filename": "bin/gzos/ree_agent/trusty_ipc.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-21T09:49:23Z",
+      "side": 1,
+      "message": "why do not use iter-\u003eget() to get the pointer to TipcPortTableEntry?",
+      "range": {
+        "startLine": 32,
+        "startChar": 10,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "075f6e3e1e0c51aca0f5afd0ebb3f625f1a67118",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a23e552_d4936445",
+        "filename": "bin/gzos/ree_agent/trusty_ipc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-21T09:49:23Z",
+      "side": 1,
+      "message": "Why need to inherit signle link list class? The port table entries are all stored in a hash table container in port manager.",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 75
+      },
+      "revId": "075f6e3e1e0c51aca0f5afd0ebb3f625f1a67118",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
