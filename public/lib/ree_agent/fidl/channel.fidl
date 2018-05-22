@@ -6,6 +6,15 @@ library ree_agent;
 
 [ServiceName="ree_agent::TipcChannel"]
 interface TipcChannel {
-  // TODO(sy): complete the channel interface
+  // Close the channel
   1: Close();
+
+  // Request shared buffers from the channel
+  2: RequestSharedBuffers() -> (vector<handle<vmo>> buffers);
+
+  // Get a free message from the channel
+  3: GetFreeMessage() -> (Status @status, uint32 msg_id);
+
+  // Add a filled message to the channel
+  4: SendFilledMessage(uint32 msg_id, uint64 filled_size) -> (Status @status);
 };
