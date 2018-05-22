@@ -23,6 +23,7 @@ class TipcPort : public TipcPortListener {
       : binding_(this), path_(path.c_str()), callback_(callback) {
     services->ConnectToService<TipcPortManager>(port_mgr_.NewRequest());
   }
+  TipcPort() = delete;
 
   void Publish(TipcPortManager::PublishCallback callback) {
     fidl::InterfaceHandle<TipcPortListener> handle;
@@ -35,7 +36,6 @@ class TipcPort : public TipcPortListener {
   }
 
  private:
-  TipcPort();
   void OnConnectionRequest(
       fidl::InterfaceRequest<TipcChannel> channel) override;
 
