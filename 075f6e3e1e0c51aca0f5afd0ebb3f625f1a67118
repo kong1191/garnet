@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2288f589_5171ec31",
+        "filename": "bin/gzos/ree_agent/trusty_ipc.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-05-23T03:15:37Z",
+      "side": 1,
+      "message": "OK, will fix it",
+      "parentUuid": "a0a54870_a14e7dc2",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 41
+      },
+      "revId": "075f6e3e1e0c51aca0f5afd0ebb3f625f1a67118",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f546677b_5b588d69",
         "filename": "bin/gzos/ree_agent/trusty_ipc.cc",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9445690e_9ea2cd11",
+        "filename": "bin/gzos/ree_agent/trusty_ipc.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-05-23T03:15:37Z",
+      "side": 1,
+      "message": "Iter::operator-\u003e() returns pointer to TipcPortTableEntry, not fbl::unique_ptr\u003cTipcPortTableEntry\u003e. Thus, we can\u0027t use iter-\u003eget().\n\nIter::operator*() returns instance of TipcPortTableEntry, thus we can use \u0026 to get pointer to TipcPortTableEntry",
+      "parentUuid": "f546677b_5b588d69",
+      "range": {
+        "startLine": 32,
+        "startChar": 10,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "075f6e3e1e0c51aca0f5afd0ebb3f625f1a67118",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a23e552_d4936445",
         "filename": "bin/gzos/ree_agent/trusty_ipc.h",
         "patchSetId": 7
@@ -59,6 +107,30 @@
       "writtenOn": "2018-05-21T09:49:23Z",
       "side": 1,
       "message": "Why need to inherit signle link list class? The port table entries are all stored in a hash table container in port manager.",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 75
+      },
+      "revId": "075f6e3e1e0c51aca0f5afd0ebb3f625f1a67118",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "242cb5c3_29775ade",
+        "filename": "bin/gzos/ree_agent/trusty_ipc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-05-23T03:15:37Z",
+      "side": 1,
+      "message": "This is required by intrusive_hash_table. Entries that hashed to the same bucket should be linked on a list.\n\nPlease refer to\nhttps://github.com/OpenTrustGroup/zircon/blob/master/system/ulib/fbl/include/fbl/intrusive_single_list.h#L20\n\nThe entry should be pointer type to be stored on a list.",
+      "parentUuid": "6a23e552_d4936445",
       "range": {
         "startLine": 24,
         "startChar": 6,
