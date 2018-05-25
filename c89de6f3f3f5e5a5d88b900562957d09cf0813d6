@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "283aa710_4afbdb0e",
+        "filename": "bin/gzos/smc_service/smc_service.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-05-25T08:43:12Z",
+      "side": 1,
+      "message": "Behavior here is more like Singleton. It is better to name it Instance(), and make smc_handle, vmo_handle and smc_info global static variable.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 56
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01536381_f4bb61b5",
+        "filename": "bin/gzos/smc_service/smc_service.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-05-25T08:43:12Z",
+      "side": 1,
+      "message": "This syscall may be re-named to zx_smc_read() or something similar. We don\u0027t need block wait mechanism now. Just return ZX_ERR_SHOULD_WAIT if nothing can be read.",
+      "range": {
+        "startLine": 73,
+        "startChar": 11,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d658b8c_e5e7f1f8",
+        "filename": "bin/gzos/smc_service/smc_service_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-05-25T08:43:12Z",
+      "side": 1,
+      "message": "write",
+      "range": {
+        "startLine": 20,
+        "startChar": 67,
+        "endLine": 20,
+        "endChar": 72
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f396e39d_85ae822c",
+        "filename": "bin/gzos/smc_service/smc_service_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-05-25T08:43:12Z",
+      "side": 1,
+      "message": "Singleton pattern can be used here. Smc and vmo object can be created at SmcService::Instance() function",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 72
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ca9dbf0_52522932",
+        "filename": "bin/gzos/smc_service/smc_service_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-05-25T08:43:12Z",
+      "side": 1,
+      "message": "uint8_t is enough",
+      "range": {
+        "startLine": 118,
+        "startChar": 19,
+        "endLine": 118,
+        "endChar": 27
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8707fa1a_5a137e5f",
+        "filename": "bin/gzos/smc_service/smc_service_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-05-25T08:43:12Z",
+      "side": 1,
+      "message": "uint8_t is enough",
+      "range": {
+        "startLine": 119,
+        "startChar": 19,
+        "endLine": 119,
+        "endChar": 27
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "596a7274_decf63a5",
+        "filename": "bin/gzos/smc_service/smc_service_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-05-25T08:43:12Z",
+      "side": 1,
+      "message": "should add a comment here",
+      "range": {
+        "startLine": 202,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 27
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
