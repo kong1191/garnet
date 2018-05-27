@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7623fa7a_0c467bbc",
+        "filename": "bin/gzos/smc_service/smc_service.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-27T16:17:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97f109ef_1429d37d",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 56
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01536381_f4bb61b5",
         "filename": "bin/gzos/smc_service/smc_service.cc",
         "patchSetId": 6
@@ -93,6 +117,30 @@
       "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "549bb2f7_22a679f3",
+        "filename": "bin/gzos/smc_service/smc_service.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-27T16:17:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "606e2419_8d503b3e",
+      "range": {
+        "startLine": 73,
+        "startChar": 11,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "8903da75_8bb8f1c5",
+        "filename": "bin/gzos/smc_service/smc_service_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-27T16:17:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a4fe2c8_046820f0",
+      "range": {
+        "startLine": 20,
+        "startChar": 67,
+        "endLine": 20,
+        "endChar": 72
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f396e39d_85ae822c",
         "filename": "bin/gzos/smc_service/smc_service_test.cc",
         "patchSetId": 6
@@ -187,6 +259,30 @@
       "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32569e7e_a7209d87",
+        "filename": "bin/gzos/smc_service/smc_service_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-27T16:17:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56e8183a_0e817da2",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 72
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {
@@ -351,6 +447,30 @@
       "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d904021a_d6cd7de6",
+        "filename": "bin/gzos/smc_service/smc_service_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-27T16:17:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cfaabd8_54e6a74b",
+      "range": {
+        "startLine": 202,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 27
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
