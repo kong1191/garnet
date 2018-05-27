@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dd01d93_d7afb3ed",
+        "filename": "bin/gzos/ree_agent/port_manager-unittest.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-27T09:47:57Z",
+      "side": 1,
+      "message": "table",
+      "range": {
+        "startLine": 56,
+        "startChar": 39,
+        "endLine": 56,
+        "endChar": 44
+      },
+      "revId": "a930199ea57037f451d0d245b89476cf82c64d18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e34392c6_0e1a9b70",
+        "filename": "bin/gzos/ree_agent/port_manager.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-27T09:47:57Z",
+      "side": 1,
+      "message": "It\u0027s better to use \"entry_out\" as the variable name.",
+      "range": {
+        "startLine": 25,
+        "startChar": 38,
+        "endLine": 25,
+        "endChar": 64
+      },
+      "revId": "a930199ea57037f451d0d245b89476cf82c64d18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39104be2_a21c3b83",
+        "filename": "bin/gzos/ree_agent/port_manager.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-27T09:47:57Z",
+      "side": 1,
+      "message": "It\u0027s better to use \"entry_out\" as the variable name.",
+      "range": {
+        "startLine": 51,
+        "startChar": 37,
+        "endLine": 51,
+        "endChar": 63
+      },
+      "revId": "a930199ea57037f451d0d245b89476cf82c64d18",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
