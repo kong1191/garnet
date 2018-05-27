@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "97f109ef_1429d37d",
+        "filename": "bin/gzos/smc_service/smc_service.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-27T09:20:09Z",
+      "side": 1,
+      "message": "Will try to re-implement the function using Singleton pattern in next patch.\nBut the test cases of smc service need smc_handle to send test smc call.\nThis will be a problem to keep smc_handle inside smc_service object.",
+      "parentUuid": "283aa710_4afbdb0e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 56
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01536381_f4bb61b5",
         "filename": "bin/gzos/smc_service/smc_service.cc",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-25T08:43:12Z",
       "side": 1,
       "message": "This syscall may be re-named to zx_smc_read() or something similar. We don\u0027t need block wait mechanism now. Just return ZX_ERR_SHOULD_WAIT if nothing can be read.",
+      "range": {
+        "startLine": 73,
+        "startChar": 11,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "606e2419_8d503b3e",
+        "filename": "bin/gzos/smc_service/smc_service.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-27T09:20:09Z",
+      "side": 1,
+      "message": "will try to re-implement the syscall in zircon",
+      "parentUuid": "01536381_f4bb61b5",
       "range": {
         "startLine": 73,
         "startChar": 11,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9a4fe2c8_046820f0",
+        "filename": "bin/gzos/smc_service/smc_service_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-27T09:20:09Z",
+      "side": 1,
+      "message": "will fix it",
+      "parentUuid": "2d658b8c_e5e7f1f8",
+      "range": {
+        "startLine": 20,
+        "startChar": 67,
+        "endLine": 20,
+        "endChar": 72
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f396e39d_85ae822c",
         "filename": "bin/gzos/smc_service/smc_service_test.cc",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2018-05-25T08:43:12Z",
       "side": 1,
       "message": "Singleton pattern can be used here. Smc and vmo object can be created at SmcService::Instance() function",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 72
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56e8183a_0e817da2",
+        "filename": "bin/gzos/smc_service/smc_service_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-27T09:20:09Z",
+      "side": 1,
+      "message": "We need the smc_handle to send test smc call, so we cannot keep smc_handle in smc_service object.\nIf do so, we should provide a public GetSmcHandle() method in SmcService class, but this design is not what I expected.",
+      "parentUuid": "f396e39d_85ae822c",
       "range": {
         "startLine": 46,
         "startChar": 4,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "24be58ce_6f0459d1",
+        "filename": "bin/gzos/smc_service/smc_service_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-27T09:20:09Z",
+      "side": 1,
+      "message": "If use uint8_t as variable type, we still need to static cast to uint64_t and then can do shift operation.",
+      "parentUuid": "8ca9dbf0_52522932",
+      "range": {
+        "startLine": 118,
+        "startChar": 19,
+        "endLine": 118,
+        "endChar": 27
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8707fa1a_5a137e5f",
         "filename": "bin/gzos/smc_service/smc_service_test.cc",
         "patchSetId": 6
@@ -140,6 +260,53 @@
     },
     {
       "key": {
+        "uuid": "f38cc959_848414dd",
+        "filename": "bin/gzos/smc_service/smc_service_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-27T09:20:09Z",
+      "side": 1,
+      "message": "If use uint8_t as variable type, we still need to static cast to uint64_t and then can do shift operation.",
+      "parentUuid": "8707fa1a_5a137e5f",
+      "range": {
+        "startLine": 119,
+        "startChar": 19,
+        "endLine": 119,
+        "endChar": 27
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf85e133_14551200",
+        "filename": "bin/gzos/smc_service/smc_service_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-27T09:20:09Z",
+      "side": 1,
+      "message": "If use uint8_t as variable type for mair and shareable, the return statement will be:\n\nreturn ns_buf_pa_ | (static_case\u003cuint64_t\u003e(mair) \u003c\u003c 48) | (static_case\u003cuint64_t\u003e(shareable) \u003c\u003c 8) | (ap \u003c\u003c 6);",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 68
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "596a7274_decf63a5",
         "filename": "bin/gzos/smc_service/smc_service_test.cc",
         "patchSetId": 6
@@ -151,6 +318,30 @@
       "writtenOn": "2018-05-25T08:43:12Z",
       "side": 1,
       "message": "should add a comment here",
+      "range": {
+        "startLine": 202,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 27
+      },
+      "revId": "c89de6f3f3f5e5a5d88b900562957d09cf0813d6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cfaabd8_54e6a74b",
+        "filename": "bin/gzos/smc_service/smc_service_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-27T09:20:09Z",
+      "side": 1,
+      "message": "will add comment here in next patch",
+      "parentUuid": "596a7274_decf63a5",
       "range": {
         "startLine": 202,
         "startChar": 2,
