@@ -46,6 +46,30 @@
       "revId": "4897002d1b8cad7112df2a46e8f577a86d061aaf",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbab40b2_cf512a57",
+        "filename": "bin/gzos/smc_service/smc_service.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-27T16:14:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f4bd85b_016f361f",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "4897002d1b8cad7112df2a46e8f577a86d061aaf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
