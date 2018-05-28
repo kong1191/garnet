@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "75f7e16d_2bdb36b0",
+        "filename": "bin/gzos/ree_agent/channel-unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-05-28T01:16:12Z",
+      "side": 1,
+      "message": "The default loop config (kAsyncLoopConfigMakeDefault) will use current thread as dispatcher thread. Why to create another new thread as the dispatcher thread?",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "0d9679d01469f80f71fc5d24ea17bb9bb9c99eb7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51b7bb12_a77ad422",
         "filename": "public/lib/ree_agent/cpp/channel.cc",
         "patchSetId": 6
