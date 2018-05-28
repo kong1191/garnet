@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ad09f309_c6c5d8c7",
+        "filename": "bin/gzos/ree_agent/channel-unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-05-28T03:02:05Z",
+      "side": 1,
+      "message": "As discussed, we must start new thread for message loop since we use synchronous fidl interface",
+      "parentUuid": "75f7e16d_2bdb36b0",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "0d9679d01469f80f71fc5d24ea17bb9bb9c99eb7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51b7bb12_a77ad422",
         "filename": "public/lib/ree_agent/cpp/channel.cc",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-26T16:33:38Z",
       "side": 1,
       "message": "How do you guarantee the msg_id of each vmo is the same as the msg_id in peer side?",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 56
+      },
+      "revId": "0d9679d01469f80f71fc5d24ea17bb9bb9c99eb7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1914691d_2593ad01",
+        "filename": "public/lib/ree_agent/cpp/channel.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-05-28T03:02:05Z",
+      "side": 1,
+      "message": "It is assumed to be the same, I will find a method to guarantee it.",
+      "parentUuid": "51b7bb12_a77ad422",
       "range": {
         "startLine": 55,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "304ff25d_fd0556d3",
+        "filename": "public/lib/ree_agent/fidl/channel.fidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-05-28T03:02:05Z",
+      "side": 1,
+      "message": "OK, will fix it",
+      "parentUuid": "96dd20fc_2ac6752a",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 40
+      },
+      "revId": "0d9679d01469f80f71fc5d24ea17bb9bb9c99eb7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3bcc9cb4_6c7fd0ea",
         "filename": "public/lib/ree_agent/fidl/channel.fidl",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2018-05-26T16:33:38Z",
       "side": 1,
       "message": "suggestion: rename to GetFreeMsgItem",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "0d9679d01469f80f71fc5d24ea17bb9bb9c99eb7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c28b472a_62d871c1",
+        "filename": "public/lib/ree_agent/fidl/channel.fidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-05-28T03:02:05Z",
+      "side": 1,
+      "message": "OK, will fix it",
+      "parentUuid": "3bcc9cb4_6c7fd0ea",
       "range": {
         "startLine": 16,
         "startChar": 5,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "5353894a_669df3c4",
+        "filename": "public/lib/ree_agent/fidl/channel.fidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-05-28T03:02:05Z",
+      "side": 1,
+      "message": "OK, will fix it",
+      "parentUuid": "5bb82b3c_1fafaa57",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 40
+      },
+      "revId": "0d9679d01469f80f71fc5d24ea17bb9bb9c99eb7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70fa1e04_a9ddf519",
         "filename": "public/lib/ree_agent/fidl/channel.fidl",
         "patchSetId": 6
@@ -128,6 +248,30 @@
       "writtenOn": "2018-05-26T16:33:38Z",
       "side": 1,
       "message": "suggestion: NotifyMsgItemIsFilled(uint32 msg_id, uint64 msg_size)",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 57
+      },
+      "revId": "0d9679d01469f80f71fc5d24ea17bb9bb9c99eb7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c694d708_565c609e",
+        "filename": "public/lib/ree_agent/fidl/channel.fidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-05-28T03:02:05Z",
+      "side": 1,
+      "message": "OK, will fix it",
+      "parentUuid": "70fa1e04_a9ddf519",
       "range": {
         "startLine": 19,
         "startChar": 5,
