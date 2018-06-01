@@ -1,0 +1,5 @@
+{
+    "packages": {
+        "gzos_config": "//garnet/bin/gzos/sysmgr:gzos_config"
+    }
+}
