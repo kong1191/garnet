@@ -32,6 +32,7 @@ executable("ree_agent_unittests") {
   sources = [
     "run_all_unittests.cc",
     "channel-unittest.cc",
+    "object-unittest.cc",
     "port_manager-unittest.cc"
   ]
 
