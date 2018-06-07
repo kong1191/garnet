@@ -2,10 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+#include <lib/async-loop/cpp/loop.h>
 #include <ree_agent/cpp/fidl.h>
-#include <zircon/compiler.h>
 
-#include "garnet/bin/gzos/ree_agent/ree_agent.h"
 #include "gtest/gtest.h"
 #include "lib/fxl/strings/string_printf.h"
 #include "lib/ree_agent/cpp/channel.h"
@@ -101,4 +100,4 @@ TEST_F(TipcChannelTest, ExchangeMessage) {
   TestSendAndReceive(remote_channel_.get(), local_channel_.get());
 }
 
-}
+}  // namespace ree_agent
