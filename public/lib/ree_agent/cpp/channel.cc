@@ -125,11 +125,17 @@ void TipcChannelImpl::NotifyMessageItemIsFilled(
 }
 
 Status TipcChannelImpl::SendMessage(void* msg, size_t msg_size) {
-  FXL_DCHECK(msg != nullptr);
+  FXL_DCHECK(msg);
   fbl::AutoLock lock(&msg_list_lock_);
 
   uint32_t msg_id;
   Status status;
+
+  // TODO(sy): should consider the case that peer closed the channel
+  // and return Status::CHANNEL_CLOSED
+  if (!is_bound()) {
+    return Status::NOT_READY;
+  }
 
   peer_->GetFreeMessageItem(&status, &msg_id);
   if (status != Status::OK) {
@@ -149,8 +155,8 @@ Status TipcChannelImpl::SendMessage(void* msg, size_t msg_size) {
 }
 
 Status TipcChannelImpl::GetMessage(uint32_t* msg_id, size_t* len) {
-  FXL_DCHECK(msg_id != nullptr);
-  FXL_DCHECK(len != nullptr);
+  FXL_DCHECK(msg_id);
+  FXL_DCHECK(len);
   fbl::AutoLock lock(&msg_list_lock_);
 
   if (filled_list_.is_empty()) {
@@ -170,8 +176,8 @@ Status TipcChannelImpl::ReadMessage(uint32_t msg_id,
                                     uint32_t offset,
                                     void* buf,
                                     size_t* buf_size) {
-  FXL_DCHECK(buf != nullptr);
-  FXL_DCHECK(buf_size != nullptr);
+  FXL_DCHECK(buf);
+  FXL_DCHECK(buf_size);
   fbl::AutoLock lock(&msg_list_lock_);
 
   auto it = read_list_.find_if(

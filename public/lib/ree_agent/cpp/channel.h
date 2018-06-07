@@ -12,14 +12,14 @@
 #include "lib/fidl/cpp/binding.h"
 #include "lib/fxl/logging.h"
 #include "lib/fxl/synchronization/thread_annotations.h"
+#include "lib/ree_agent/cpp/object.h"
 #include "lib/ree_agent/cpp/msg_item.h"
 
 namespace ree_agent {
 
-class TipcChannelImpl : public TipcChannel {
+class TipcChannelImpl : public TipcChannel, public TipcObject {
  public:
-  static zx_status_t Create(uint32_t num_items,
-                            size_t item_size,
+  static zx_status_t Create(uint32_t num_items, size_t item_size,
                             fbl::unique_ptr<TipcChannelImpl>* out);
 
   auto GetInterfaceHandle() {
@@ -33,9 +33,7 @@ class TipcChannelImpl : public TipcChannel {
 
   Status SendMessage(void* msg, size_t msg_size);
   Status GetMessage(uint32_t* msg_id, size_t* len);
-  Status ReadMessage(uint32_t msg_id,
-                     uint32_t offset,
-                     void* buf,
+  Status ReadMessage(uint32_t msg_id, uint32_t offset, void* buf,
                      size_t* buf_size);
   Status PutMessage(uint32_t msg_id);
 
@@ -44,14 +42,15 @@ class TipcChannelImpl : public TipcChannel {
            (peer_shared_items_.size() == num_items_);
   }
 
+  ObjectType get_type() override { return ObjectType::CHANNEL; }
+
  protected:
   void Close() override;
   void RequestSharedMessageItems(
       RequestSharedMessageItemsCallback callback) override;
   void GetFreeMessageItem(GetFreeMessageItemCallback callback) override;
   void NotifyMessageItemIsFilled(
-      uint32_t msg_id,
-      uint64_t msg_size,
+      uint32_t msg_id, uint64_t msg_size,
       NotifyMessageItemIsFilledCallback callback) override;
 
  private:
@@ -69,8 +68,6 @@ class TipcChannelImpl : public TipcChannel {
   TipcChannelSyncPtr peer_;
   std::vector<fbl::unique_ptr<MessageItem>> peer_shared_items_;
   size_t num_items_;
-
-  FXL_DISALLOW_COPY_AND_ASSIGN(TipcChannelImpl);
 };
 
 }  // namespace ree_agent
