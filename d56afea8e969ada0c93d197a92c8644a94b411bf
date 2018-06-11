@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ebdcb4d_fe3e8929",
+        "filename": "public/lib/ree_agent/cpp/channel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-11T15:09:42Z",
+      "side": 1,
+      "message": "Why the member function become a public function? The base class of get_type() function is protected.",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 64
+      },
+      "revId": "d56afea8e969ada0c93d197a92c8644a94b411bf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd431f3d_49fc1ffa",
+        "filename": "public/lib/ree_agent/cpp/handle.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-11T15:09:42Z",
+      "side": 1,
+      "message": "Should be deleted?",
+      "revId": "d56afea8e969ada0c93d197a92c8644a94b411bf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36c10bb8_78befe09",
+        "filename": "public/lib/ree_agent/cpp/handle.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-11T15:09:42Z",
+      "side": 1,
+      "message": "Should be deleted?",
+      "revId": "d56afea8e969ada0c93d197a92c8644a94b411bf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf3747fe_acbb7c47",
+        "filename": "public/lib/ree_agent/cpp/object_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-11T15:09:42Z",
+      "side": 1,
+      "message": "rename to TipcObjectSet ?",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "d56afea8e969ada0c93d197a92c8644a94b411bf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2731e03_67a8b008",
+        "filename": "public/lib/ree_agent/cpp/port.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-11T15:09:42Z",
+      "side": 1,
+      "message": "Why the member function become a public function? The base class of get_type() function is protected.",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 61
+      },
+      "revId": "d56afea8e969ada0c93d197a92c8644a94b411bf",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
