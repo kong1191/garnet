@@ -10,6 +10,5 @@ fidl("fidl") {
   sources = [
     "channel.fidl",
     "port.fidl",
-    "status.fidl",
   ]
 }
