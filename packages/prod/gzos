@@ -2,6 +2,7 @@
     "packages": {
         "appmgr": "//garnet/bin/appmgr",
         "sysmgr": "//garnet/bin/gzos/sysmgr",
-        "smc_service": "//garnet/bin/gzos/smc_service"
+        "smc_service": "//garnet/bin/gzos/smc_service",
+        "ree_agent": "//garnet/bin/gzos/ree_agent"
     }
 }
