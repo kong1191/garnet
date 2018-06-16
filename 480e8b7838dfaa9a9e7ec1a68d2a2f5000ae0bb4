@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c68af134_6175bc30",
+        "filename": "bin/gzos/ree_agent/ree_agent.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-16T07:17:57Z",
+      "side": 1,
+      "message": "could this happen? channel is READABLE but no message?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 3
+      },
+      "revId": "480e8b7838dfaa9a9e7ec1a68d2a2f5000ae0bb4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "746febe1_bbea1125",
+        "filename": "bin/gzos/ree_agent/ree_agent.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-16T07:17:57Z",
+      "side": 1,
+      "message": "why not define in ree_message_impl.h",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "480e8b7838dfaa9a9e7ec1a68d2a2f5000ae0bb4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "babe27d2_8d61dd9c",
+        "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-16T07:17:57Z",
+      "side": 1,
+      "message": "why + 16?",
+      "range": {
+        "startLine": 90,
+        "startChar": 17,
+        "endLine": 90,
+        "endChar": 22
+      },
+      "revId": "480e8b7838dfaa9a9e7ec1a68d2a2f5000ae0bb4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d279efcf_0f4e1c37",
+        "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-16T07:17:57Z",
+      "side": 1,
+      "message": "does this detect by channel_wait_.Begin(async_) in ReeAgent::Start()?\nDoes it better to use state to detect Start() twice?",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 43
+      },
+      "revId": "480e8b7838dfaa9a9e7ec1a68d2a2f5000ae0bb4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9021183d_c1ffcae5",
+        "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-16T07:17:57Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 140,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 1
+      },
+      "revId": "480e8b7838dfaa9a9e7ec1a68d2a2f5000ae0bb4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "779b20dc_a8a02609",
+        "filename": "public/lib/ree_agent/fidl/ree_message.fidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-16T07:17:57Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 2
+      },
+      "revId": "480e8b7838dfaa9a9e7ec1a68d2a2f5000ae0bb4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8812e97_c88b7dfa",
+        "filename": "public/lib/ree_agent/fidl/ree_message.fidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-16T07:17:57Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 2
+      },
+      "revId": "480e8b7838dfaa9a9e7ec1a68d2a2f5000ae0bb4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
