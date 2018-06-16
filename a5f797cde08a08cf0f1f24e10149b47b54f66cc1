@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edba6aab_7216e6d8",
+        "filename": "bin/gzos/smc_service/trusty_smc.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-16T11:44:45Z",
+      "side": 1,
+      "message": "why not return ZX_OK at vbus_-\u003eResetDevice() if the device state is RESET, and also return ZX_OK at ree_message_ is not started yet.",
+      "range": {
+        "startLine": 317,
+        "startChar": 7,
+        "endLine": 320,
+        "endChar": 7
+      },
+      "revId": "a5f797cde08a08cf0f1f24e10149b47b54f66cc1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e2b5429_08eebec5",
+        "filename": "lib/trusty/tipc_device-unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-16T11:44:45Z",
+      "side": 1,
+      "message": "should be SendWhileBusStop ?",
+      "range": {
+        "startLine": 469,
+        "startChar": 24,
+        "endLine": 469,
+        "endChar": 44
+      },
+      "revId": "a5f797cde08a08cf0f1f24e10149b47b54f66cc1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
