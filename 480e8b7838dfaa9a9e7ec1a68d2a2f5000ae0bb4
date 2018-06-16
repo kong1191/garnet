@@ -140,6 +140,29 @@
     },
     {
       "key": {
+        "uuid": "e95696a5_42cf28e5",
+        "filename": "public/lib/ree_agent/fidl/ree_message.fidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-16T10:54:52Z",
+      "side": 1,
+      "message": "The api is hard to know which ree_agent failed if error occurs, and it also hard to roll-back",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 48
+      },
+      "revId": "480e8b7838dfaa9a9e7ec1a68d2a2f5000ae0bb4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8812e97_c88b7dfa",
         "filename": "public/lib/ree_agent/fidl/ree_message.fidl",
         "patchSetId": 1
