@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "888aaea3_f07966f8",
+        "filename": "bin/gzos/ree_agent/ree_agent.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-18T08:36:56Z",
+      "side": 1,
+      "message": "If there are more than one threads trying to read the channel, it may happen. But the condition may not happen in our scenario. If it really happens, this error should be recoverable.",
+      "parentUuid": "c68af134_6175bc30",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 3
+      },
+      "revId": "480e8b7838dfaa9a9e7ec1a68d2a2f5000ae0bb4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "746febe1_bbea1125",
         "filename": "bin/gzos/ree_agent/ree_agent.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "06395b27_4f935c4a",
+        "filename": "bin/gzos/ree_agent/ree_agent.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-18T08:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "746febe1_bbea1125",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "480e8b7838dfaa9a9e7ec1a68d2a2f5000ae0bb4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "babe27d2_8d61dd9c",
         "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-06-16T07:17:57Z",
       "side": 1,
       "message": "why + 16?",
+      "range": {
+        "startLine": 90,
+        "startChar": 17,
+        "endLine": 90,
+        "endChar": 22
+      },
+      "revId": "480e8b7838dfaa9a9e7ec1a68d2a2f5000ae0bb4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd2be096_7f35a8c8",
+        "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-18T08:36:56Z",
+      "side": 1,
+      "message": "A buffer which size is bigger than expected receive data size can help us to test if the received buffer size is over the expected size. 16 is a random-selected value.",
+      "parentUuid": "babe27d2_8d61dd9c",
       "range": {
         "startLine": 90,
         "startChar": 17,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "33264dd0_876db4c5",
+        "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-18T08:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d279efcf_0f4e1c37",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 43
+      },
+      "revId": "480e8b7838dfaa9a9e7ec1a68d2a2f5000ae0bb4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9021183d_c1ffcae5",
         "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "480e8b7838dfaa9a9e7ec1a68d2a2f5000ae0bb4",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ad60637_79470486",
+        "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-18T08:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9021183d_c1ffcae5",
+      "range": {
+        "startLine": 140,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 1
+      },
+      "revId": "480e8b7838dfaa9a9e7ec1a68d2a2f5000ae0bb4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "b6b7786a_447250b5",
+        "filename": "public/lib/ree_agent/fidl/ree_message.fidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-18T08:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "779b20dc_a8a02609",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 2
+      },
+      "revId": "480e8b7838dfaa9a9e7ec1a68d2a2f5000ae0bb4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e95696a5_42cf28e5",
         "filename": "public/lib/ree_agent/fidl/ree_message.fidl",
         "patchSetId": 1
@@ -151,6 +295,30 @@
       "writtenOn": "2018-06-16T10:54:52Z",
       "side": 1,
       "message": "The api is hard to know which ree_agent failed if error occurs, and it also hard to roll-back",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 48
+      },
+      "revId": "480e8b7838dfaa9a9e7ec1a68d2a2f5000ae0bb4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb80cd01_7461a368",
+        "filename": "public/lib/ree_agent/fidl/ree_message.fidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-18T08:36:56Z",
+      "side": 1,
+      "message": "The error recovery process is implemented in client side. The client should call the Stop() fidl function below to stop all agents in the list and agent can ignore the stop action if it is already stopped.",
+      "parentUuid": "e95696a5_42cf28e5",
       "range": {
         "startLine": 24,
         "startChar": 2,
@@ -183,6 +351,30 @@
       "revId": "480e8b7838dfaa9a9e7ec1a68d2a2f5000ae0bb4",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a94f8d8_b12eebb3",
+        "filename": "public/lib/ree_agent/fidl/ree_message.fidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-18T08:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8812e97_c88b7dfa",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 2
+      },
+      "revId": "480e8b7838dfaa9a9e7ec1a68d2a2f5000ae0bb4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
