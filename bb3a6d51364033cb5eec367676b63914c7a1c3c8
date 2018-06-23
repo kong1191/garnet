@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2b686829_b434178b",
+        "filename": "public/lib/ree_agent/cpp/object.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-23T12:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c163fe38_7b82e645",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 27
+      },
+      "revId": "bb3a6d51364033cb5eec367676b63914c7a1c3c8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55de6072_6b9713c9",
         "filename": "public/lib/ree_agent/cpp/object.h",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "bb3a6d51364033cb5eec367676b63914c7a1c3c8",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b71502c_7bb8db92",
+        "filename": "public/lib/ree_agent/cpp/object.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-23T12:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55de6072_6b9713c9",
+      "range": {
+        "startLine": 68,
+        "startChar": 24,
+        "endLine": 68,
+        "endChar": 39
+      },
+      "revId": "bb3a6d51364033cb5eec367676b63914c7a1c3c8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b6ed0258_aabe1f44",
+        "filename": "public/lib/ree_agent/cpp/object.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-23T12:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cceb420_e16e5d1f",
+      "range": {
+        "startLine": 69,
+        "startChar": 20,
+        "endLine": 69,
+        "endChar": 35
+      },
+      "revId": "bb3a6d51364033cb5eec367676b63914c7a1c3c8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f7caa01_c402146e",
         "filename": "public/lib/ree_agent/cpp/object.h",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "6b6e6d18_760db3ea",
+        "filename": "public/lib/ree_agent/cpp/object.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-23T12:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f7caa01_c402146e",
+      "range": {
+        "startLine": 111,
+        "startChar": 11,
+        "endLine": 111,
+        "endChar": 23
+      },
+      "revId": "bb3a6d51364033cb5eec367676b63914c7a1c3c8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ac1255b_53289ad7",
         "filename": "public/lib/ree_agent/cpp/object_manager.cc",
         "patchSetId": 3
@@ -105,6 +201,24 @@
       "writtenOn": "2018-06-23T09:54:54Z",
       "side": 1,
       "message": "free object by obj.reset(nullptr) ?",
+      "revId": "bb3a6d51364033cb5eec367676b63914c7a1c3c8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc44ac43_51f9e4f3",
+        "filename": "public/lib/ree_agent/cpp/object_manager.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-23T12:56:45Z",
+      "side": 1,
+      "message": "Don\u0027t need, it will be automatically released when out of scope.",
+      "parentUuid": "8ac1255b_53289ad7",
       "revId": "bb3a6d51364033cb5eec367676b63914c7a1c3c8",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
@@ -125,6 +239,24 @@
       "revId": "bb3a6d51364033cb5eec367676b63914c7a1c3c8",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "510ab895_2d3250e7",
+        "filename": "public/lib/ree_agent/cpp/object_set.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-23T12:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "954db147_10409e85",
+      "revId": "bb3a6d51364033cb5eec367676b63914c7a1c3c8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
