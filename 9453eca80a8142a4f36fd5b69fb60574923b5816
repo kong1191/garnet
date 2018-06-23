@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbd147b5_39572089",
+        "filename": "bin/gzos/ree_agent/port-unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-23T17:20:51Z",
+      "side": 1,
+      "message": "Is it possible to notify client channel via TipcEvent::READY instead of sending back a message from server channel?",
+      "range": {
+        "startLine": 64,
+        "startChar": 26,
+        "endLine": 64,
+        "endChar": 40
+      },
+      "revId": "9453eca80a8142a4f36fd5b69fb60574923b5816",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec0f1078_2533962f",
+        "filename": "public/lib/ree_agent/cpp/port.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-23T17:20:51Z",
+      "side": 1,
+      "message": "Is it possible to trigger an event to client instead of sending a specific message?",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "9453eca80a8142a4f36fd5b69fb60574923b5816",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b72ca959_45f12038",
+        "filename": "public/lib/ree_agent/cpp/port.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-23T17:20:51Z",
+      "side": 1,
+      "message": "If failed to install tipc object, should the tipc channel be shutdowned?",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 74
+      },
+      "revId": "9453eca80a8142a4f36fd5b69fb60574923b5816",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
