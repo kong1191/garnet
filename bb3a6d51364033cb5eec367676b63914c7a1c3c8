@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c163fe38_7b82e645",
+        "filename": "public/lib/ree_agent/cpp/object.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-23T09:54:54Z",
+      "side": 1,
+      "message": "if the object is an object_set, the event_state can only be TipcEvent::READY or 0",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 27
+      },
+      "revId": "bb3a6d51364033cb5eec367676b63914c7a1c3c8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55de6072_6b9713c9",
+        "filename": "public/lib/ree_agent/cpp/object.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-23T09:54:54Z",
+      "side": 1,
+      "message": "Should we force the obj type by using TipcObjectSet* as the parameter type?",
+      "range": {
+        "startLine": 68,
+        "startChar": 24,
+        "endLine": 68,
+        "endChar": 39
+      },
+      "revId": "bb3a6d51364033cb5eec367676b63914c7a1c3c8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cceb420_e16e5d1f",
+        "filename": "public/lib/ree_agent/cpp/object.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-23T09:54:54Z",
+      "side": 1,
+      "message": "same above",
+      "range": {
+        "startLine": 69,
+        "startChar": 20,
+        "endLine": 69,
+        "endChar": 35
+      },
+      "revId": "bb3a6d51364033cb5eec367676b63914c7a1c3c8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f7caa01_c402146e",
+        "filename": "public/lib/ree_agent/cpp/object.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-23T09:54:54Z",
+      "side": 1,
+      "message": "rename to tipc_event_state_ ?",
+      "range": {
+        "startLine": 111,
+        "startChar": 11,
+        "endLine": 111,
+        "endChar": 23
+      },
+      "revId": "bb3a6d51364033cb5eec367676b63914c7a1c3c8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ac1255b_53289ad7",
+        "filename": "public/lib/ree_agent/cpp/object_manager.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-23T09:54:54Z",
+      "side": 1,
+      "message": "free object by obj.reset(nullptr) ?",
+      "revId": "bb3a6d51364033cb5eec367676b63914c7a1c3c8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "954db147_10409e85",
+        "filename": "public/lib/ree_agent/cpp/object_set.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-23T09:54:54Z",
+      "side": 1,
+      "message": "if object_set is empty, we should return ZX_ERR_NOT_FOUND",
+      "revId": "bb3a6d51364033cb5eec367676b63914c7a1c3c8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
