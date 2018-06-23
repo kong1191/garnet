@@ -22,6 +22,30 @@
       "revId": "11bb97be1594f992cd04077e26b15cd24ad0ad17",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d68d673a_047f3ae4",
+        "filename": "bin/gzos/smc_service/trusty_smc.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-23T13:38:37Z",
+      "side": 1,
+      "message": "will fix it in https://review.gerrithub.io/c/OpenTrustGroup/garnet/+/415110",
+      "parentUuid": "eced1224_fb470f1d",
+      "range": {
+        "startLine": 281,
+        "startChar": 10,
+        "endLine": 281,
+        "endChar": 48
+      },
+      "revId": "11bb97be1594f992cd04077e26b15cd24ad0ad17",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }
