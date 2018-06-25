@@ -22,6 +22,30 @@
       "revId": "3bbd8b4ef0f5c7197a92ee2f9940c1c5acb58923",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48d1d2af_916d5fba",
+        "filename": "public/lib/ree_agent/cpp/channel.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-25T07:20:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f232c616_3118a60c",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 1
+      },
+      "revId": "3bbd8b4ef0f5c7197a92ee2f9940c1c5acb58923",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
