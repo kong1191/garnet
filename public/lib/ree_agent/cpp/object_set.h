@@ -22,23 +22,33 @@ class TipcObjectSet : public TipcObject {
   zx_status_t AddObject(fbl::RefPtr<TipcObject> obj);
   void RemoveObject(fbl::RefPtr<TipcObject> obj);
 
-  zx_status_t AppendToPendingList(TipcObject* obj);
-  void RemoveFromPendingList(TipcObject* obj);
-
   virtual zx_status_t Wait(WaitResult* result, zx::time deadline) override;
 
-  virtual zx_status_t SignalEvent(uint32_t set_mask,
-                                  TipcObject* notifier) override;
-
  private:
+  friend class TipcObject;
+
   bool PollPendingEvents(WaitResult* result);
+
+  void AppendToPendingList(TipcObjectRef& ref);
+  void RemoveFromPendingList(TipcObjectRef& ref);
+
+  void OnChildAttached(TipcObjectRef& ref);
+  void OnChildDetached(TipcObjectRef& ref);
+  void OnEvent(TipcObjectRef& ref);
 
   ObjectType get_type() override { return ObjectType::OBJECT_SET; }
 
   uint32_t children_count();
 
+  struct PendingListTraits {
+    static TipcObjectRef::NodeState& node_state(TipcObjectRef& ref) {
+      return ref.pending_list_node;
+    }
+  };
+  using PendingList = fbl::DoublyLinkedList<TipcObjectRef*, PendingListTraits>;
+
+  PendingList pending_list_ FXL_GUARDED_BY(mutex_);
   uint32_t children_count_ FXL_GUARDED_BY(mutex_);
-  TipcObjectRefList pending_list_ FXL_GUARDED_BY(mutex_);
   fbl::Mutex mutex_;
 };
 
