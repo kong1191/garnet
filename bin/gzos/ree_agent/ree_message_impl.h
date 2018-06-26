@@ -18,6 +18,8 @@
 #include "lib/fidl/cpp/binding.h"
 #include "lib/fxl/logging.h"
 #include "lib/fxl/synchronization/thread_annotations.h"
+#include "lib/ree_agent/cpp/channel.h"
+#include "lib/ree_agent/cpp/port.h"
 
 namespace ree_agent {
 
@@ -29,8 +31,8 @@ class ReeMessageImpl : public ReeMessage {
  public:
   ReeMessageImpl() : binding_(this) {}
 
-  void Bind(zx::channel from_tipc_device) {
-    binding_.Bind(std::move(from_tipc_device));
+  void Bind(zx::channel from_trusty_virtio) {
+    binding_.Bind(std::move(from_trusty_virtio));
   }
 
   void AddMessageChannel(fidl::VectorPtr<MessageChannelInfo> msg_chan_infos,
