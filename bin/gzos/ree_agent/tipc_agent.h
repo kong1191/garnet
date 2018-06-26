@@ -7,18 +7,23 @@
 #include <fbl/auto_lock.h>
 #include <fbl/unique_ptr.h>
 #include <lib/async/cpp/wait.h>
-
-#include <fs/managed-vfs.h>
-#include <fs/pseudo-dir.h>
-#include <fs/service.h>
-#include <fs/vfs.h>
 #include <lib/async-loop/cpp/loop.h>
 
 #include <ree_agent/cpp/fidl.h>
 
 #include "garnet/bin/gzos/ree_agent/ree_agent.h"
+#include "garnet/bin/gzos/ree_agent/tipc_msg.h"
+
+#include "lib/ree_agent/cpp/channel.h"
+#include "lib/ree_agent/cpp/id_alloc.h"
+#include "lib/ree_agent/cpp/object.h"
 
 namespace ree_agent {
+
+struct TipcEndpoint {
+  uint32_t src_addr;
+  fbl::RefPtr<TipcChannelImpl> channel;
+};
 
 class TipcAgent : public ReeAgent {
  public:
@@ -30,8 +35,20 @@ class TipcAgent : public ReeAgent {
   zx_status_t HandleMessage(void* buf, size_t size) override;
 
  private:
+  zx_status_t AllocateEndpointSlot(uint32_t src_addr,
+                                   fbl::RefPtr<TipcChannelImpl> channel,
+                                   uint32_t* dst_addr);
   zx_status_t SendMessage(uint32_t local, uint32_t remote, void* data,
                           size_t data_len);
+
+  zx_status_t HandleCtrlMessage(tipc_hdr* hdr);
+  zx_status_t HandleConnectRequest(uint32_t src, void* req);
+  zx_status_t HandleDisconnectRequest(uint32_t src, void* req);
+
+  zx_status_t HandleTipcMessage(tipc_hdr* hdr);
+
+  fbl::Mutex ep_table_lock_;
+  TipcEndpoint ep_table_[kTipcAddrMaxNum] FXL_GUARDED_BY(ep_table_lock_);
 };
 
 }  // namespace ree_agent
