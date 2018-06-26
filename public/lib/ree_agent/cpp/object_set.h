@@ -14,31 +14,40 @@
 #include "lib/fxl/logging.h"
 #include "lib/fxl/synchronization/thread_annotations.h"
 #include "lib/ree_agent/cpp/object.h"
+
 namespace ree_agent {
 
-class TipcObjectSet : public TipcObject {
+class TipcObjectSet : public TipcObject, public TipcObjectObserver {
  public:
   TipcObjectSet() = default;
   zx_status_t AddObject(fbl::RefPtr<TipcObject> obj);
   void RemoveObject(fbl::RefPtr<TipcObject> obj);
 
-  zx_status_t AppendToPendingList(TipcObject* obj);
-  void RemoveFromPendingList(TipcObject* obj);
-
   virtual zx_status_t Wait(WaitResult* result, zx::time deadline) override;
 
-  virtual zx_status_t SignalEvent(uint32_t set_mask,
-                                  TipcObject* notifier) override;
+ protected:
+  ObjectType get_type() override { return ObjectType::OBJECT_SET; }
 
  private:
+  void OnChildRemoved(fbl::RefPtr<TipcObjectRef> ref) override;
+  void OnEvent(fbl::RefPtr<TipcObjectRef> ref) override;
+
   bool PollPendingEvents(WaitResult* result);
 
-  ObjectType get_type() override { return ObjectType::OBJECT_SET; }
+  void AppendToPendingList(fbl::RefPtr<TipcObjectRef> ref);
+  void RemoveFromPendingList(fbl::RefPtr<TipcObjectRef> ref);
 
   uint32_t children_count();
 
+  struct PendingListTraits {
+    static TipcObjectRef::NodeState& node_state(TipcObjectRef& ref) {
+      return ref.pending_list_node;
+    }
+  };
+  using PendingList = fbl::DoublyLinkedList<fbl::RefPtr<TipcObjectRef>, PendingListTraits>;
+
+  PendingList pending_list_ FXL_GUARDED_BY(mutex_);
   uint32_t children_count_ FXL_GUARDED_BY(mutex_);
-  TipcObjectRefList pending_list_ FXL_GUARDED_BY(mutex_);
   fbl::Mutex mutex_;
 };
 
