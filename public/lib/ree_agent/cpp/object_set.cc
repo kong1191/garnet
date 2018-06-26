@@ -9,11 +9,16 @@ namespace ree_agent {
 
 zx_status_t TipcObjectSet::AddObject(fbl::RefPtr<TipcObject> obj) {
   FXL_DCHECK(obj);
+  fbl::RefPtr<TipcObjectRef> ref;
 
-  zx_status_t err = obj->AddParent(this);
+  zx_status_t err = obj->AddParent(this, ref);
   if (err != ZX_OK) {
-    FXL_LOG(ERROR) << "Failed to add parent object " << err;
+    FXL_LOG(ERROR) << "Failed to add parent: " << err;
     return err;
+  }
+
+  if (ref->obj->tipc_event_state()) {
+    AppendToPendingList(ref);
   }
 
   fbl::AutoLock lock(&mutex_);
@@ -24,69 +29,62 @@ zx_status_t TipcObjectSet::AddObject(fbl::RefPtr<TipcObject> obj) {
 
 void TipcObjectSet::RemoveObject(fbl::RefPtr<TipcObject> obj) {
   FXL_DCHECK(obj);
-  obj->RemoveParent(this);
+  fbl::RefPtr<TipcObjectRef> ref;
+
+  obj->RemoveParent(this, ref);
+
+  RemoveFromPendingList(ref);
 
   fbl::AutoLock lock(&mutex_);
   children_count_--;
 }
 
-zx_status_t TipcObjectSet::AppendToPendingList(TipcObject* obj) {
-  FXL_DCHECK(obj);
+void TipcObjectSet::OnChildRemoved(fbl::RefPtr<TipcObjectRef> ref) {
+  RemoveFromPendingList(ref);
+
+  fbl::AutoLock lock(&mutex_);
+  children_count_--;
+}
+
+void TipcObjectSet::OnEvent(fbl::RefPtr<TipcObjectRef> ref) {
+  AppendToPendingList(ref);
+  TipcObject::SignalEvent(TipcEvent::READY);
+}
+
+void TipcObjectSet::AppendToPendingList(fbl::RefPtr<TipcObjectRef> ref) {
   fbl::AutoLock lock(&mutex_);
 
   // ignore if already in the pending list
-  if (pending_list_.Contains(obj->handle_id())) {
-    return ZX_OK;
+  for (const auto& r : pending_list_) {
+    if (r.obj == ref->obj) {
+      return;
+    }
   }
 
-  // TODO(sy): try not alloc memory here, thus we don't need
-  // to return error code in this function
-  auto ref = fbl::make_unique<TipcObjectRef>(obj);
-  if (!ref) {
-    return ZX_ERR_NO_MEMORY;
-  }
-  pending_list_.push_back(fbl::move(ref));
-
-  return ZX_OK;
+  pending_list_.push_back(ref);
 }
 
-zx_status_t TipcObjectSet::SignalEvent(uint32_t set_mask,
-                                       TipcObject* notifier) {
-  if (set_mask != TipcEvent::READY) {
-    return ZX_ERR_INVALID_ARGS;
-  }
-
-  zx_status_t err = AppendToPendingList(notifier);
-  if (err != ZX_OK) {
-    FXL_LOG(ERROR) << "Failed to add to pending list: " << err;
-    return err;
-  }
-
-  return TipcObject::SignalEvent(set_mask);
-}
-
-void TipcObjectSet::RemoveFromPendingList(TipcObject* obj) {
-  FXL_DCHECK(obj);
+void TipcObjectSet::RemoveFromPendingList(fbl::RefPtr<TipcObjectRef> ref) {
   fbl::AutoLock lock(&mutex_);
 
-  auto it = pending_list_.Find(obj->handle_id());
-  if (it != pending_list_.end()) {
-    pending_list_.erase(it);
-  }
+  pending_list_.erase_if([&ref](const TipcObjectRef& r) {
+    return r.obj == ref->obj;
+  });
 }
 
 bool TipcObjectSet::PollPendingEvents(WaitResult* result) {
   fbl::AutoLock lock(&mutex_);
 
   while (auto ref = pending_list_.pop_front()) {
-    zx_signals_t event = (*ref)->tipc_event_state();
+    auto obj = ref->obj;
+    zx_signals_t event = obj->tipc_event_state();
 
     if (event) {
-      result->handle_id = (*ref)->handle_id();
+      result->handle_id = obj->handle_id();
       result->event = event;
-      result->cookie = (*ref)->cookie();
+      result->cookie = obj->cookie();
 
-      pending_list_.push_back(fbl::move(ref));
+      pending_list_.push_back(ref);
       return true;
     }
   }
