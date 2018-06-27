@@ -51,7 +51,6 @@ void TipcObjectSet::OnChildRemoved(fbl::RefPtr<TipcObjectRef> child_ref) {
 
 void TipcObjectSet::OnEvent(fbl::RefPtr<TipcObjectRef> child_ref) {
   AppendToPendingList(child_ref);
-  TipcObject::SignalEvent(TipcEvent::READY);
 }
 
 void TipcObjectSet::AppendToPendingList(fbl::RefPtr<TipcObjectRef> child_ref) {
@@ -65,6 +64,7 @@ void TipcObjectSet::AppendToPendingList(fbl::RefPtr<TipcObjectRef> child_ref) {
   }
 
   pending_list_.push_back(child_ref);
+  SignalEvent(TipcEvent::READY);
 }
 
 void TipcObjectSet::RemoveFromPendingList(

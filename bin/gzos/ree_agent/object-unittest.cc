@@ -193,6 +193,17 @@ TEST_F(TipcObjectSetTest, AssertBeforeAdd) {
   VerifyWaitObjectSet(object_set1_, object1_->handle_id(), TipcEvent::READY);
 }
 
+TEST_F(TipcObjectSetTest, AssertBeforeNestedAdd) {
+  object1_->SignalEvent(TipcEvent::READY);
+
+  ASSERT_EQ(object_set1_->AddObject(object1_), ZX_OK);
+  ASSERT_EQ(object_set2_->AddObject(object_set1_), ZX_OK);
+
+  VerifyWaitObjectSet(object_set2_, object_set1_->handle_id(),
+                      TipcEvent::READY);
+  VerifyWaitObjectSet(object_set1_, object1_->handle_id(), TipcEvent::READY);
+}
+
 TEST_F(TipcObjectSetTest, StackedObjectSet) {
   ASSERT_EQ(object_set1_->AddObject(object1_), ZX_OK);
   ASSERT_EQ(object_set1_->AddObject(object2_), ZX_OK);
