@@ -29,8 +29,6 @@ class TipcObjectSet : public TipcObject, public TipcObjectObserver {
   ObjectType get_type() override { return ObjectType::OBJECT_SET; }
 
  private:
-  void OnChildAttached(TipcObjectRef& ref) override;
-  void OnChildDetached(TipcObjectRef& ref) override;
   void OnEvent(TipcObjectRef& ref) override;
 
   bool PollPendingEvents(WaitResult* result);

@@ -57,7 +57,17 @@ void TipcObjectManager::RemoveObject(uint32_t handle_id) {
   fbl::AutoLock lock(&object_table_lock_);
   auto obj = fbl::move(object_table_[handle_id]);
   if (obj) {
-    obj->RemoveAllParents();
+    for (uint32_t i = 0; i < kMaxHandle; i++) {
+      if (i == handle_id) {
+        continue;
+      }
+      auto tmp_obj = object_table_[i].get();
+      if (tmp_obj && tmp_obj->is_object_set()) {
+        static_cast<TipcObjectSet*>(tmp_obj)->RemoveObject(obj);
+      }
+    }
+
+    root_obj_set_->RemoveObject(obj);
 
     zx_status_t err = id_allocator_.Free(handle_id);
     FXL_CHECK(err == ZX_OK);

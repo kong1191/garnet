@@ -13,54 +13,36 @@ TipcObject::TipcObject() : handle_id_(kInvalidHandle), tipc_event_state_(0) {
 
 TipcObject::~TipcObject() = default;
 
-bool TipcObject::IsParentExists(TipcObjectObserver* parent) {
+zx_status_t TipcObject::AddParent(fbl::unique_ptr<TipcObjectRef> ref) {
+  FXL_DCHECK(ref != nullptr);
+
   fbl::AutoLock lock(&mutex_);
-  for (const auto& ref : ref_list_) {
-    if (ref.parent == parent) {
-      return true;
+
+  for (const auto& r : ref_list_) {
+    if (r.parent == ref->parent) {
+      return ZX_ERR_ALREADY_EXISTS;
     }
   }
-  return false;
-}
 
-zx_status_t TipcObject::AddParent(TipcObjectObserver* parent) {
-  FXL_DCHECK(parent);
-
-  if (IsParentExists(parent)) {
-    return ZX_ERR_ALREADY_EXISTS;
-  }
-
-  auto ref = fbl::make_unique<TipcObjectRef>(this);
-  if (!ref) {
-    return ZX_ERR_NO_MEMORY;
-  }
-  ref->parent = parent;
-  parent->OnChildAttached(*ref);
-
-  fbl::AutoLock lock(&mutex_);
   ref_list_.push_back(fbl::move(ref));
-
   return ZX_OK;
 }
 
-void TipcObject::RemoveParent(TipcObjectObserver* parent) {
+zx_status_t TipcObject::RemoveParent(TipcObjectObserver* parent,
+                                     fbl::unique_ptr<TipcObjectRef> *out) {
   FXL_DCHECK(parent);
+  FXL_DCHECK(out);
   fbl::AutoLock lock(&mutex_);
 
   auto it = ref_list_.find_if(
       [&parent](const TipcObjectRef& ref) { return ref.parent == parent; });
 
   if (it != ref_list_.end()) {
-    ref_list_.erase(it);
-    it->parent->OnChildDetached(*it);
+    *out = ref_list_.erase(it);
+    return ZX_OK;
   }
-}
 
-void TipcObject::RemoveAllParents() {
-  fbl::AutoLock lock(&mutex_);
-  while (auto ref = ref_list_.pop_front()) {
-    ref->parent->OnChildDetached(*ref);
-  }
+  return ZX_ERR_NOT_FOUND;
 }
 
 void TipcObject::SignalEvent(uint32_t set_mask) {

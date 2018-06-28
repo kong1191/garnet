@@ -52,10 +52,6 @@ struct TipcObjectRef
 
 class TipcObjectObserver {
  public:
-  virtual void OnChildAttached(TipcObjectRef& ref) = 0;
-
-  virtual void OnChildDetached(TipcObjectRef& ref) = 0;
-
   virtual void OnEvent(TipcObjectRef& ref) = 0;
 };
 
@@ -75,8 +71,9 @@ class TipcObject : public fbl::RefCounted<TipcObject> {
 
   void ClearEvent(uint32_t clear_mask);
 
-  zx_status_t AddParent(TipcObjectObserver* parent);
-  void RemoveParent(TipcObjectObserver* parent);
+  zx_status_t AddParent(fbl::unique_ptr<TipcObjectRef> ref);
+  zx_status_t RemoveParent(TipcObjectObserver* parent,
+                           fbl::unique_ptr<TipcObjectRef> *out);
 
   bool is_port() { return (get_type() == ObjectType::PORT); }
   bool is_channel() { return (get_type() == ObjectType::CHANNEL); }
@@ -91,9 +88,6 @@ class TipcObject : public fbl::RefCounted<TipcObject> {
 
  private:
   friend class TipcObjectManager;
-
-  void RemoveAllParents();
-  bool IsParentExists(TipcObjectObserver* parent);
 
   uint32_t handle_id_;
   void* cookie_;

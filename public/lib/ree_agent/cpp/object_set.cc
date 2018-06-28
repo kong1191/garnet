@@ -10,34 +10,40 @@ namespace ree_agent {
 zx_status_t TipcObjectSet::AddObject(fbl::RefPtr<TipcObject> obj) {
   FXL_DCHECK(obj);
 
-  zx_status_t err = obj->AddParent(this);
+  auto ref_ptr = fbl::make_unique<TipcObjectRef>(obj.get());
+  if (!ref_ptr) {
+    return ZX_ERR_NO_MEMORY;
+  }
+  ref_ptr->parent = this;
+
+  TipcObjectRef* ref = ref_ptr.get();
+
+  zx_status_t err = obj->AddParent(std::move(ref_ptr));
   if (err != ZX_OK) {
-    FXL_LOG(ERROR) << "Failed to create object reference: " << err;
+    FXL_LOG(ERROR) << "Failed to add object reference to child: " << err;
     return err;
   }
 
+  if (obj->tipc_event_state()) {
+    AppendToPendingList(*ref);
+  }
+
+  fbl::AutoLock lock(&mutex_);
+  children_count_++;
   return ZX_OK;
 }
 
 void TipcObjectSet::RemoveObject(fbl::RefPtr<TipcObject> obj) {
   FXL_DCHECK(obj);
-  obj->RemoveParent(this);
-}
 
-void TipcObjectSet::OnChildAttached(TipcObjectRef& ref) {
-  if (ref.obj->tipc_event_state()) {
-    AppendToPendingList(ref);
+  fbl::unique_ptr<TipcObjectRef> ref;
+  zx_status_t status = obj->RemoveParent(this, &ref);
+  if (status == ZX_OK) {
+    RemoveFromPendingList(*ref);
+
+    fbl::AutoLock lock(&mutex_);
+    children_count_--;
   }
-
-  fbl::AutoLock lock(&mutex_);
-  children_count_++;
-}
-
-void TipcObjectSet::OnChildDetached(TipcObjectRef& ref) {
-  RemoveFromPendingList(ref);
-
-  fbl::AutoLock lock(&mutex_);
-  children_count_--;
 }
 
 void TipcObjectSet::OnEvent(TipcObjectRef& ref) {
