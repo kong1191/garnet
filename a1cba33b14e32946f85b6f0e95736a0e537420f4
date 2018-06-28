@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55469508_97700e7b",
+        "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-28T16:28:55Z",
+      "side": 1,
+      "message": "should check return code",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 59
+      },
+      "revId": "a1cba33b14e32946f85b6f0e95736a0e537420f4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b34f771_bd3539c2",
+        "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-28T16:28:55Z",
+      "side": 1,
+      "message": "should check return code",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "a1cba33b14e32946f85b6f0e95736a0e537420f4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dc49b44_84916427",
+        "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-28T16:28:55Z",
+      "side": 1,
+      "message": "should check error code",
+      "range": {
+        "startLine": 183,
+        "startChar": 4,
+        "endLine": 183,
+        "endChar": 55
+      },
+      "revId": "a1cba33b14e32946f85b6f0e95736a0e537420f4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0cd60ee_4f1712e9",
+        "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-28T16:28:55Z",
+      "side": 1,
+      "message": "should check nullptr",
+      "range": {
+        "startLine": 186,
+        "startChar": 4,
+        "endLine": 186,
+        "endChar": 7
+      },
+      "revId": "a1cba33b14e32946f85b6f0e95736a0e537420f4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89490a3f_5d6c3e08",
+        "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-28T16:28:55Z",
+      "side": 1,
+      "message": "you already started a thread, do you need 2 message loop threads to complete the test?",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 260,
+        "endChar": 23
+      },
+      "revId": "a1cba33b14e32946f85b6f0e95736a0e537420f4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e633c34_281e84a2",
+        "filename": "bin/gzos/ree_agent/ree_message_impl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-28T16:28:55Z",
+      "side": 1,
+      "message": "if this is not used in header. it should be included in cc file",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "a1cba33b14e32946f85b6f0e95736a0e537420f4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
