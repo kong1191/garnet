@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "23681f06_40d80abc",
+        "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-28T18:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55469508_97700e7b",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 59
+      },
+      "revId": "a1cba33b14e32946f85b6f0e95736a0e537420f4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b34f771_bd3539c2",
         "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "a1cba33b14e32946f85b6f0e95736a0e537420f4",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfffb6ca_dd2c5dbc",
+        "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-28T18:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b34f771_bd3539c2",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "a1cba33b14e32946f85b6f0e95736a0e537420f4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7ec4a63b_ebded700",
+        "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-28T18:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dc49b44_84916427",
+      "range": {
+        "startLine": 183,
+        "startChar": 4,
+        "endLine": 183,
+        "endChar": 55
+      },
+      "revId": "a1cba33b14e32946f85b6f0e95736a0e537420f4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0cd60ee_4f1712e9",
         "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2018-06-28T16:28:55Z",
       "side": 1,
       "message": "should check nullptr",
+      "range": {
+        "startLine": 186,
+        "startChar": 4,
+        "endLine": 186,
+        "endChar": 7
+      },
+      "revId": "a1cba33b14e32946f85b6f0e95736a0e537420f4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97198607_aeecbf76",
+        "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-28T18:44:16Z",
+      "side": 1,
+      "message": "implementation changed, and will have no such issue.",
+      "parentUuid": "d0cd60ee_4f1712e9",
       "range": {
         "startLine": 186,
         "startChar": 4,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1f996179_579daa8a",
+        "filename": "bin/gzos/ree_agent/ree_message-unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-28T18:44:16Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "89490a3f_5d6c3e08",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 260,
+        "endChar": 23
+      },
+      "revId": "a1cba33b14e32946f85b6f0e95736a0e537420f4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e633c34_281e84a2",
         "filename": "bin/gzos/ree_agent/ree_message_impl.h",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "a1cba33b14e32946f85b6f0e95736a0e537420f4",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1475155f_64a2d786",
+        "filename": "bin/gzos/ree_agent/ree_message_impl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-28T18:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e633c34_281e84a2",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "a1cba33b14e32946f85b6f0e95736a0e537420f4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
