@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "feddf7ea_53cdd263",
+        "filename": "public/lib/ree_agent/cpp/object.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-28T09:54:53Z",
+      "side": 1,
+      "message": "This function should be protected by lock",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 15
+      },
+      "revId": "603a471bd202d93bd4f8df48bff917b8cff9f066",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
