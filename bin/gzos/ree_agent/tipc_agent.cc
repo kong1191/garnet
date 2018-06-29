@@ -14,7 +14,7 @@ struct conn_rsp_msg {
   struct tipc_conn_rsp_body body;
 };
 
-static IdAllocator<kTipcAddrMaxNum> id_allocator_;
+static trusty_ipc::IdAllocator<kTipcAddrMaxNum> id_allocator_;
 
 static inline uint32_t slot_to_addr(uint32_t slot) {
   return kTipcAddrBase + slot;
