@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90ffd26b_1cf36b30",
+        "filename": "bin/gzos/ree_agent/tipc_agent.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-29T13:07:49Z",
+      "side": 1,
+      "message": "you may create a class called TipcSerivceProvider that provides ConnectToService() method,\nand use this provider for connecting to port service.",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 72
+      },
+      "revId": "f01b8c6f7f2e4b7c554b13a42b50642d590ea556",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
