@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c9827ac3_cd1b583a",
+        "filename": "public/lib/ree_agent/cpp/object.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-29T06:53:11Z",
+      "side": 1,
+      "message": "As we discussed. To avoid A -\u003e B -\u003e A calling sequence.",
+      "parentUuid": "9af5ab86_e5c6898f",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "49ddceed95d563b1f16d4d25b1abfa022531e70f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1046c7b3_09d07fa4",
         "filename": "public/lib/ree_agent/cpp/object_set.cc",
         "patchSetId": 11
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8e7137d9_1680e44b",
+        "filename": "public/lib/ree_agent/cpp/object_set.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-29T06:53:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1046c7b3_09d07fa4",
+      "range": {
+        "startLine": 12,
+        "startChar": 29,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "49ddceed95d563b1f16d4d25b1abfa022531e70f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f76a827_cb04c747",
         "filename": "public/lib/ree_agent/cpp/object_set.cc",
         "patchSetId": 11
@@ -68,6 +116,30 @@
       "revId": "49ddceed95d563b1f16d4d25b1abfa022531e70f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3ca61b8_2a86232d",
+        "filename": "public/lib/ree_agent/cpp/object_set.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-06-29T06:53:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f76a827_cb04c747",
+      "range": {
+        "startLine": 32,
+        "startChar": 29,
+        "endLine": 32,
+        "endChar": 32
+      },
+      "revId": "49ddceed95d563b1f16d4d25b1abfa022531e70f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
