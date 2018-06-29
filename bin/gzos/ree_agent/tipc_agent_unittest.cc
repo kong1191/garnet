@@ -10,8 +10,15 @@
 #include "garnet/bin/gzos/ree_agent/ta_service.h"
 #include "garnet/bin/gzos/ree_agent/tipc_agent.h"
 
-#include "lib/ree_agent/cpp/channel.h"
-#include "lib/ree_agent/cpp/port.h"
+#include "lib/gzos/trusty_ipc/cpp/channel.h"
+#include "lib/gzos/trusty_ipc/cpp/port.h"
+
+using trusty_ipc::TipcPort;
+using trusty_ipc::TipcPortImpl;
+using trusty_ipc::TipcChannelImpl;
+using trusty_ipc::kTipcChanMaxBufSize;
+using trusty_ipc::WaitResult;
+using trusty_ipc::TipcEvent;
 
 namespace ree_agent {
 
@@ -25,7 +32,7 @@ class TaServiceFake : public TaServices {
 
   void ConnectToService(zx::channel ch, const std::string& service_name) {
     if (service_name.compare(port_name) == 0) {
-      fidl::InterfaceRequest<ree_agent::TipcPort> request(std::move(ch));
+      fidl::InterfaceRequest<TipcPort> request(std::move(ch));
       port_.Bind(std::move(request));
     }
   }
