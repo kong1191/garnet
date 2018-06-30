@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c9ad225_fba585da",
+        "filename": "bin/gzos/ree_agent/tipc_agent.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-30T17:47:54Z",
+      "side": 1,
+      "message": "using namespace trusty_ipc;",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "22334a4e8f7821138e95eb12f36b2ec3fa8ff235",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25d35cc4_c7a77d49",
+        "filename": "bin/gzos/ree_agent/tipc_agent_unittest.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-30T17:47:54Z",
+      "side": 1,
+      "message": "using namespace trusty_ipc;",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 28
+      },
+      "revId": "22334a4e8f7821138e95eb12f36b2ec3fa8ff235",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4726826_74c5313a",
+        "filename": "public/lib/gzos/trusty_ipc/fidl/port.fidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-06-30T17:47:54Z",
+      "side": 1,
+      "message": "why not having service name declaration for TipcPort?\n[ServiceName\u003d\"trusty_ipc::TipcPort\"]",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "22334a4e8f7821138e95eb12f36b2ec3fa8ff235",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
