@@ -33,3 +33,27 @@ package("garnet_lib_tests") {
     },
   ]
 }
+
+executable("gzos_unittests") {
+  testonly = true
+  output_name = "gzos_lib_unittests"
+
+  deps = [
+    "//garnet/public/lib/gzos/trusty_ipc/cpp:unittests",
+  ]
+}
+
+package("gzos_lib_tests") {
+  testonly = true
+  deprecated_system_image = true
+
+  deps = [
+    ":gzos_unittests",
+  ]
+
+  tests = [
+    {
+      name = "gzos_lib_unittests"
+    },
+  ]
+}

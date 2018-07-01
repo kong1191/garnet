@@ -2,7 +2,6 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-import("//build/package.gni")
 source_set("cpp") {
   sources = [
     "channel.cc",
@@ -26,8 +25,7 @@ source_set("cpp") {
   ]
 }
 
-executable("trusty_ipc_unittests") {
-  visibility = [ ":*" ]
+source_set("unittests") {
   testonly = true
 
   sources = [
@@ -41,20 +39,5 @@ executable("trusty_ipc_unittests") {
     ":cpp",
     "//third_party/googletest:gtest",
     "//zircon/public/lib/async-loop-cpp",
-  ]
-}
-
-package("trusty_ipc_tests") {
-  testonly = true
-  deprecated_system_image = true
-
-  deps = [
-    ":trusty_ipc_unittests",
-  ]
-
-  tests = [
-    {
-      name = "trusty_ipc_unittests"
-    },
   ]
 }
