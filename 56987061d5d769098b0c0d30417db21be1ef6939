@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f1d63932_b63d9d9c",
+        "filename": "public/lib/gzos/trusty_ipc/cpp/object_set.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-01T03:42:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "715a9915_877ca2a3",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 1
+      },
+      "revId": "56987061d5d769098b0c0d30417db21be1ef6939",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12f2d68d_5c4e73c8",
         "filename": "public/lib/gzos/trusty_ipc/cpp/object_set.cc",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "56987061d5d769098b0c0d30417db21be1ef6939",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb484a2f_03be078b",
+        "filename": "public/lib/gzos/trusty_ipc/cpp/object_set.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-01T03:42:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12f2d68d_5c4e73c8",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 1
+      },
+      "revId": "56987061d5d769098b0c0d30417db21be1ef6939",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }

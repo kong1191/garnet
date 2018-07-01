@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "118ebae9_3da84446",
+        "filename": "public/lib/gzos/trusty_ipc/cpp/object.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-01T03:42:28Z",
+      "side": 1,
+      "message": "They have the same base type TipcObjectObserver, thus they can compared",
+      "parentUuid": "41adb27f_20e02624",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "c21364f1e0291263529eca433fe9d058ac348486",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f91e6c8_9db00e14",
         "filename": "public/lib/gzos/trusty_ipc/cpp/object.cc",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-01T03:16:22Z",
       "side": 1,
       "message": "same above",
+      "range": {
+        "startLine": 46,
+        "startChar": 51,
+        "endLine": 46,
+        "endChar": 71
+      },
+      "revId": "c21364f1e0291263529eca433fe9d058ac348486",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c643e149_13f6b454",
+        "filename": "public/lib/gzos/trusty_ipc/cpp/object.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-01T03:42:28Z",
+      "side": 1,
+      "message": "They have the same base type TipcObjectObserver, thus they can compared",
+      "parentUuid": "9f91e6c8_9db00e14",
       "range": {
         "startLine": 46,
         "startChar": 51,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bca26834_5969e12c",
+        "filename": "public/lib/gzos/trusty_ipc/cpp/object.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-01T03:42:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bb252d0_cb5d4588",
+      "range": {
+        "startLine": 61,
+        "startChar": 21,
+        "endLine": 61,
+        "endChar": 27
+      },
+      "revId": "c21364f1e0291263529eca433fe9d058ac348486",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1dc68027_a846af34",
         "filename": "public/lib/gzos/trusty_ipc/cpp/object.cc",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "95ffce18_da39b684",
+        "filename": "public/lib/gzos/trusty_ipc/cpp/object.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-01T03:42:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dc68027_a846af34",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 5
+      },
+      "revId": "c21364f1e0291263529eca433fe9d058ac348486",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94654f28_e3d5d51e",
         "filename": "public/lib/gzos/trusty_ipc/cpp/object_set.cc",
         "patchSetId": 4
@@ -114,6 +210,30 @@
       "revId": "c21364f1e0291263529eca433fe9d058ac348486",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aa443fe_b3cdf969",
+        "filename": "public/lib/gzos/trusty_ipc/cpp/object_set.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-01T03:42:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94654f28_e3d5d51e",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 3
+      },
+      "revId": "c21364f1e0291263529eca433fe9d058ac348486",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
