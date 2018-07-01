@@ -11,6 +11,15 @@ zx_status_t TipcObjectSet::AddObject(fbl::RefPtr<TipcObject> obj) {
   FXL_DCHECK(obj);
   fbl::RefPtr<TipcObjectRef> child_ref;
 
+  // Circular reference is not allowed
+  if (obj->is_object_set()) {
+    auto obj_set = static_cast<TipcObjectSet*>(obj.get());
+
+    if (IsMyParent(obj_set)) {
+      return ZX_ERR_INVALID_ARGS;
+    }
+  }
+
   zx_status_t err = obj->AddParent(this, &child_ref);
   if (err != ZX_OK) {
     FXL_LOG(ERROR) << "Failed to add parent: " << err;
@@ -62,6 +71,10 @@ void TipcObjectSet::AppendToPendingList(fbl::RefPtr<TipcObjectRef> child_ref) {
 void TipcObjectSet::RemoveFromPendingList(
     fbl::RefPtr<TipcObjectRef> child_ref) {
   fbl::AutoLock lock(&mutex_);
+
+  if (!child_ref->pending_list_node.InContainer()) {
+    return;
+  }
 
   pending_list_.erase_if([&child_ref](const TipcObjectRef& ref) {
     return ref.obj == child_ref->obj;
