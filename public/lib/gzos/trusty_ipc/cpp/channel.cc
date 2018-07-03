@@ -64,7 +64,13 @@ zx_status_t TipcChannelImpl::PopulatePeerSharedItemsLocked() {
   return ZX_OK;
 }
 
-void TipcChannelImpl::Close() {}
+void TipcChannelImpl::Close() {
+  // Notify user that peer is going to shutdown channel
+  SignalEvent(TipcEvent::HUP);
+
+  // Unbind peer interface to prevent from notifying peer again
+  peer_.Unbind();
+}
 
 void TipcChannelImpl::RequestSharedMessageItems(
     RequestSharedMessageItemsCallback callback) {
@@ -116,6 +122,14 @@ void TipcChannelImpl::NotifyMessageItemIsFilled(
   SignalEvent(TipcEvent::MSG);
 
   callback(ZX_OK);
+}
+
+void TipcChannelImpl::Shutdown() {
+  // Notify peer that channel is going to be shutdown
+  if (is_bound()) {
+    peer_->Close();
+    peer_.Unbind();
+  }
 }
 
 zx_status_t TipcChannelImpl::SendMessage(void* msg, size_t msg_size) {
