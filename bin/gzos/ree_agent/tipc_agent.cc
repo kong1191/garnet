@@ -14,25 +14,19 @@ struct conn_rsp_msg {
   struct tipc_conn_rsp_body body;
 };
 
-static IdAllocator<kTipcAddrMaxNum> id_allocator_;
+struct disc_req_msg {
+  struct tipc_ctrl_msg_hdr  ctrl_msg;
+  struct tipc_disc_req_body body;
+};
 
-static inline uint32_t slot_to_addr(uint32_t slot) {
-  return kTipcAddrBase + slot;
-}
-
-TipcAgent::TipcAgent(uint32_t id, zx::channel ch, size_t max_msg_size,
-                     TaServices& service_provider)
-    : ReeAgent(id, std::move(ch), max_msg_size),
-      ta_service_provider_(service_provider) {}
-
-TipcAgent::~TipcAgent() {}
-
-zx_status_t TipcAgent::AllocateEndpointSlot(uint32_t src_addr,
-                                            fbl::RefPtr<TipcChannelImpl> ch,
+zx_status_t TipcEndpointTable::AllocateSlot(uint32_t src_addr,
+                                            fbl::RefPtr<TipcChannelImpl> chan,
                                             uint32_t* dst_addr) {
   FXL_DCHECK(dst_addr);
+  FXL_DCHECK(chan != nullptr);
+  FXL_DCHECK(chan->cookie() == nullptr);
 
-  fbl::AutoLock lock(&ep_table_lock_);
+  fbl::AutoLock lock(&lock_);
 
   uint32_t slot;
   zx_status_t err = id_allocator_.Alloc(&slot);
@@ -40,15 +34,75 @@ zx_status_t TipcAgent::AllocateEndpointSlot(uint32_t src_addr,
     return err;
   }
 
-  ep_table_[slot].src_addr = src_addr;
-  ep_table_[slot].channel = ch;
+  table_[slot].src_addr = src_addr;
+  table_[slot].channel = chan;
 
-  void* cookie = ch->cookie();
-  cookie = &ep_table_[slot];
+  chan->set_cookie(&table_[slot]);
 
-  *dst_addr = slot_to_addr(slot);
+  *dst_addr = to_addr(slot);
   return ZX_OK;
 }
+
+TipcEndpoint* TipcEndpointTable::LookupByAddr(uint32_t dst_addr) {
+  fbl::AutoLock lock(&lock_);
+
+  uint32_t slot_id = to_slot_id(dst_addr);
+  if (slot_id >= kTipcAddrMaxNum) {
+    FXL_LOG(WARNING) << "Invalid slot_id: " << slot_id;
+    return nullptr;
+  }
+
+  if (id_allocator_.InUse(slot_id)) {
+    return &table_[slot_id];
+  }
+  return nullptr;
+}
+
+TipcEndpoint* TipcEndpointTable::FindInUseSlot(uint32_t& start_slot) {
+  fbl::AutoLock lock(&lock_);
+
+  uint32_t i;
+  for (i = start_slot; i < kTipcAddrMaxNum; i++) {
+    if (id_allocator_.InUse(i)) {
+      start_slot = i;
+      return &table_[i];
+    }
+  }
+  return nullptr;
+}
+
+void TipcEndpointTable::FreeSlotByAddr(uint32_t dst_addr) {
+  FreeSlotInternal(to_slot_id(dst_addr));
+}
+
+void TipcEndpointTable::FreeSlotById(uint32_t slot_id) {
+  FreeSlotInternal(slot_id);
+}
+
+void TipcEndpointTable::FreeSlotInternal(uint32_t slot_id) {
+  fbl::AutoLock lock(&lock_);
+
+  if (slot_id >= kTipcAddrMaxNum) {
+    FXL_LOG(WARNING) << "Invalid slot_id: " << slot_id;
+    return;
+  }
+
+  if (id_allocator_.InUse(slot_id)) {
+    table_[slot_id].src_addr = 0;
+    table_[slot_id].channel->set_cookie(nullptr);
+    table_[slot_id].channel.reset();
+
+    id_allocator_.Free(slot_id);
+  }
+}
+
+TipcAgent::TipcAgent(uint32_t id, zx::channel ch, size_t max_msg_size,
+                     TaServices& service_provider, TipcEndpointTable* ep_table)
+    : ReeAgent(id, std::move(ch), max_msg_size),
+      ta_service_provider_(service_provider),
+      ep_table_(ep_table) {}
+
+TipcAgent::~TipcAgent() {}
 
 zx_status_t TipcAgent::SendMessage(uint32_t local, uint32_t remote, void* data,
                                    size_t data_len) {
@@ -90,9 +144,18 @@ zx_status_t TipcAgent::Stop() {
     return ZX_OK;
   }
 
-  // TODO(james): disconnect all Tipc channels
+  fbl::AutoLock lock(&lock_);
 
-  return status;
+  uint32_t slot_id = 0;
+  TipcEndpoint* ep;
+  while ((ep = ep_table_->FindInUseSlot(slot_id)) != nullptr) {
+    ep->channel->Shutdown();
+    ep_table_->FreeSlotById(slot_id);
+    // Find in-use slot again from next slot id
+    slot_id++;
+  }
+
+  return ZX_OK;
 }
 
 zx_status_t TipcAgent::HandleMessage(void* buf, size_t size) {
@@ -128,7 +191,7 @@ zx_status_t TipcAgent::HandleCtrlMessage(tipc_hdr* hdr) {
       return HandleConnectRequest(hdr->src, msg_body);
 
     case DISCONNECT_REQUEST:
-      if (ctrl_msg->body_len != sizeof(tipc_conn_rsp_body)) {
+      if (ctrl_msg->body_len != sizeof(tipc_disc_req_body)) {
         break;
       }
       return HandleDisconnectRequest(hdr->src, msg_body);
@@ -194,7 +257,9 @@ zx_status_t TipcAgent::HandleConnectRequest(uint32_t src_addr, void* req) {
     return status;
   }
 
-  status = AllocateEndpointSlot(src_addr, channel, &dst_addr);
+  fbl::AutoLock lock(&lock_);
+
+  status = ep_table_->AllocateSlot(src_addr, channel, &dst_addr);
   if (status != ZX_OK) {
     FXL_LOG(ERROR) << "failed to allocate endpoint slot, status=" << status;
     return status;
@@ -210,6 +275,19 @@ zx_status_t TipcAgent::HandleConnectRequest(uint32_t src_addr, void* req) {
     }
   });
 
+  channel->SetCloseCallback([&]() {
+    zx_status_t st;
+    disc_req_msg req{ {DISCONNECT_REQUEST, sizeof(tipc_disc_req_body)},
+                      {src_addr} };
+    st = SendMessage(dst_addr, kTipcCtrlAddress, &req, sizeof(req));
+    if (st != ZX_OK) {
+      FXL_LOG(ERROR) << "failed to send disconnect request, status=" << status;
+    }
+
+    fbl::AutoLock lock(&lock_);
+    ep_table_->FreeSlotByAddr(dst_addr);
+  });
+
   channel->BindPeerInterfaceHandle(std::move(peer_handle));
   send_err_conn_resp.cancel();
   return ZX_OK;
@@ -217,7 +295,22 @@ zx_status_t TipcAgent::HandleConnectRequest(uint32_t src_addr, void* req) {
 
 zx_status_t TipcAgent::HandleDisconnectRequest(uint32_t src_addr, void* req) {
   FXL_DCHECK(req);
-  return ZX_ERR_NOT_SUPPORTED;
+
+  fbl::AutoLock lock(&lock_);
+
+  auto disc_req = reinterpret_cast<tipc_disc_req_body*>(req);
+  uint32_t dst_addr = disc_req->target;
+
+  TipcEndpoint* ep = ep_table_->LookupByAddr(dst_addr);
+  if (!ep) {
+    FXL_LOG(ERROR) << "invalid target address, addr=%u" << dst_addr;
+    return ZX_ERR_INVALID_ARGS;
+  }
+
+  ep->channel->Shutdown();
+  ep_table_->FreeSlotByAddr(dst_addr);
+
+  return ZX_OK;
 }
 
 zx_status_t TipcAgent::HandleTipcMessage(tipc_hdr* hdr) {
