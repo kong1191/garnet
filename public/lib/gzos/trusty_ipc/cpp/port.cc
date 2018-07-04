@@ -3,6 +3,8 @@
 // found in the LICENSE file.
 
 #include <fbl/auto_lock.h>
+#include <lib/async/cpp/task.h>
+#include <lib/async/default.h>
 
 #include "lib/gzos/trusty_ipc/cpp/channel.h"
 #include "lib/gzos/trusty_ipc/cpp/object_manager.h"
@@ -12,7 +14,15 @@ namespace trusty_ipc {
 
 void TipcPortImpl::AddPendingRequest(fbl::RefPtr<TipcChannelImpl> channel) {
   fbl::AutoLock lock(&mutex_);
-  pending_requests_.push_back(channel);
+  pending_requests_.push_back(fbl::move(channel));
+}
+
+void TipcPortImpl::RemoveFromPendingRequest(fbl::RefPtr<TipcChannelImpl> ch) {
+  fbl::AutoLock lock(&mutex_);
+
+  pending_requests_.erase_if([ch](const TipcChannelImpl& ref) {
+    return ref.cookie() == ch->cookie();
+  });
 }
 
 fbl::RefPtr<TipcChannelImpl> TipcPortImpl::GetPendingRequest() {
@@ -34,12 +44,29 @@ void TipcPortImpl::Connect(fidl::InterfaceHandle<TipcChannel> peer_handle,
     callback(err, nullptr);
   }
 
+  // tipc channel object should be destroyed when client try to close channel
+  // and the channel is still not accepted by service program
+  void* cookie = reinterpret_cast<void*>(channel.get());
+  channel->set_cookie(cookie);
+
+  auto handle_hup = [this, channel] {
+    channel->Shutdown();
+    RemoveFromPendingRequest(channel);
+  };
+
+  channel->SetCloseCallback([handle_hup] {
+    async::PostTask(async_get_default(), [handle_hup] {
+      handle_hup();
+    });
+  });
+
   channel->BindPeerInterfaceHandle(std::move(peer_handle));
-  AddPendingRequest(channel);
+  auto local_handle = channel->GetInterfaceHandle();
+
+  AddPendingRequest(fbl::move(channel));
 
   SignalEvent(TipcEvent::READY);
 
-  auto local_handle = channel->GetInterfaceHandle();
   callback(ZX_OK, std::move(local_handle));
 }
 
@@ -54,6 +81,11 @@ zx_status_t TipcPortImpl::Accept(fbl::RefPtr<TipcChannelImpl>* channel_out) {
   }
   auto channel = GetPendingRequest();
 
+  // remove channel close callback and user should take care of
+  // channel HUP event by itself
+  channel->set_cookie(nullptr);
+  channel->SetCloseCallback(nullptr);
+
   zx_status_t err = TipcObjectManager::Instance()->InstallObject(channel);
   if (err != ZX_OK) {
     FXL_LOG(ERROR) << "Failed to install channel object: " << err;
@@ -62,6 +94,8 @@ zx_status_t TipcPortImpl::Accept(fbl::RefPtr<TipcChannelImpl>* channel_out) {
   channel->NotifyReady();
 
   *channel_out = fbl::move(channel);
+
+  ClearEvent(TipcEvent::READY);
   return ZX_OK;
 }
 

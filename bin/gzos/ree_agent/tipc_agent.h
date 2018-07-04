@@ -78,6 +78,7 @@ class TipcAgent : public ReeAgent {
 
   fbl::Mutex lock_;
   fbl::unique_ptr<TipcEndpointTable> ep_table_ FXL_GUARDED_BY(lock_);
+  fbl::unique_ptr<char> write_buffer_ FXL_GUARDED_BY(lock_);
 };
 
 }  // namespace ree_agent
