@@ -15,7 +15,7 @@ namespace smc_service {
 
 class TrustySmcEntity final : public SmcEntity {
  public:
-  TrustySmcEntity(async_t* async, zx::channel ch, fbl::RefPtr<SharedMem> shm);
+  TrustySmcEntity(async_t* async, zx::channel ch, SmcService* smc_service);
   ~TrustySmcEntity() {}
 
   zx_status_t Init() override;
@@ -26,7 +26,7 @@ class TrustySmcEntity final : public SmcEntity {
   zx_status_t InvokeNopFunction(smc32_args_t* args);
 
   async_t* async_;
-  fbl::RefPtr<SharedMem> shared_mem_;
+  SmcService* smc_service_;
   fbl::unique_ptr<trusty_virtio::VirtioBus> vbus_;
   ree_agent::ReeMessageSyncPtr ree_message_;
 };
