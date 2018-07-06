@@ -5,6 +5,7 @@
     ],
     "packages": [
         "//garnet/bin/gzos/rpc_agent",
-        "//garnet/bin/gzos/sysmgr"
+        "//garnet/bin/gzos/sysmgr",
+        "//garnet/bin/gzos/echo_server"
     ]
 }
