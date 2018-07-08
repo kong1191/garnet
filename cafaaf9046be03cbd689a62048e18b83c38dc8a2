@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d30eb75_303f6d06",
+        "filename": "bin/gzos/ree_agent/tipc_agent.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-08T14:55:46Z",
+      "side": 1,
+      "message": "it might be better to use set_error_handle(), thus we don\u0027t have to check return code\nof each fidl call, and can have a common error handler",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 3
+      },
+      "revId": "cafaaf9046be03cbd689a62048e18b83c38dc8a2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98722020_3dde3f2c",
+        "filename": "bin/gzos/ree_agent/tipc_agent.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-08T14:55:46Z",
+      "side": 1,
+      "message": "you already have a lock in TipcAgent that protects ep_table_, the lock is still required?",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "cafaaf9046be03cbd689a62048e18b83c38dc8a2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e163388_80c970bc",
+        "filename": "bin/gzos/ree_agent/tipc_agent_unittest.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-08T14:55:46Z",
+      "side": 1,
+      "message": "logic here is hard to understand",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 5
+      },
+      "revId": "cafaaf9046be03cbd689a62048e18b83c38dc8a2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49710620_2d48e51e",
+        "filename": "bin/gzos/ree_agent/tipc_agent_unittest.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-08T14:55:46Z",
+      "side": 1,
+      "message": "logic here is hard to understand",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 5
+      },
+      "revId": "cafaaf9046be03cbd689a62048e18b83c38dc8a2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c79ecfd9_b24bbd0d",
+        "filename": "bin/gzos/ree_agent/tipc_agent_unittest.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-08T14:55:46Z",
+      "side": 1,
+      "message": "logic here is hard to understand",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 3
+      },
+      "revId": "cafaaf9046be03cbd689a62048e18b83c38dc8a2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3490ec0_1a1fbca9",
+        "filename": "bin/gzos/ree_agent/tipc_agent_unittest.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-08T14:55:46Z",
+      "side": 1,
+      "message": "un-used variable",
+      "range": {
+        "startLine": 228,
+        "startChar": 43,
+        "endLine": 228,
+        "endChar": 61
+      },
+      "revId": "cafaaf9046be03cbd689a62048e18b83c38dc8a2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
