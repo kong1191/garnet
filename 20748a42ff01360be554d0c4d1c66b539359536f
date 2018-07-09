@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94c91893_f5fc3488",
+        "filename": "bin/gzos/ree_agent/tipc_agent.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-09T07:20:08Z",
+      "side": 1,
+      "message": "it might be better to use set_error_handle(), thus we don\u0027t have to check return code of each fidl call, and can have a common error handler. The error message may cause misleading since it occurs when you want to connect an un-existed port service",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 0
+      },
+      "revId": "20748a42ff01360be554d0c4d1c66b539359536f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47db5949_3c1aad4f",
+        "filename": "bin/gzos/ree_agent/tipc_agent.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-09T07:20:08Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 3
+      },
+      "revId": "20748a42ff01360be554d0c4d1c66b539359536f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44fa2d25_e6355d2d",
+        "filename": "public/lib/gzos/trusty_ipc/cpp/channel.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-09T07:20:08Z",
+      "side": 1,
+      "message": "it\u0027s better to use set_error_hander()",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 3
+      },
+      "revId": "20748a42ff01360be554d0c4d1c66b539359536f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcf15897_f3e94481",
+        "filename": "public/lib/gzos/trusty_ipc/cpp/channel.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-09T07:20:08Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 3
+      },
+      "revId": "20748a42ff01360be554d0c4d1c66b539359536f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a91edb9_3ed5928f",
+        "filename": "public/lib/gzos/trusty_ipc/cpp/channel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-09T07:20:08Z",
+      "side": 1,
+      "message": "should be peer_ready_, and it might be better just named it ready_",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 21
+      },
+      "revId": "20748a42ff01360be554d0c4d1c66b539359536f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b9c0037_e2632077",
+        "filename": "public/lib/gzos/trusty_ipc/cpp/port.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-09T07:20:08Z",
+      "side": 1,
+      "message": "should check if pending list is empty of not",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 31
+      },
+      "revId": "20748a42ff01360be554d0c4d1c66b539359536f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
