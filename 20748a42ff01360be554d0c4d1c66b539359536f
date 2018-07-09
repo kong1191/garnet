@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "36f34bb1_97838994",
+        "filename": "bin/gzos/ree_agent/tipc_agent.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-09T19:13:39Z",
+      "side": 1,
+      "message": "no such method because peer_ is synchronous ptr",
+      "parentUuid": "94c91893_f5fc3488",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 0
+      },
+      "revId": "20748a42ff01360be554d0c4d1c66b539359536f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47db5949_3c1aad4f",
         "filename": "bin/gzos/ree_agent/tipc_agent.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-09T07:20:08Z",
       "side": 1,
       "message": "same as above",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 3
+      },
+      "revId": "20748a42ff01360be554d0c4d1c66b539359536f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58443b79_c30afb8a",
+        "filename": "bin/gzos/ree_agent/tipc_agent.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-09T19:13:39Z",
+      "side": 1,
+      "message": "no such method because peer_ is synchronous ptr",
+      "parentUuid": "47db5949_3c1aad4f",
       "range": {
         "startLine": 269,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "36a388ee_270a60e8",
+        "filename": "public/lib/gzos/trusty_ipc/cpp/channel.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-09T19:13:39Z",
+      "side": 1,
+      "message": "no such method because peer_ is synchronous ptr",
+      "parentUuid": "44fa2d25_e6355d2d",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 3
+      },
+      "revId": "20748a42ff01360be554d0c4d1c66b539359536f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fcf15897_f3e94481",
         "filename": "public/lib/gzos/trusty_ipc/cpp/channel.cc",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2018-07-09T07:20:08Z",
       "side": 1,
       "message": "same as above",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 3
+      },
+      "revId": "20748a42ff01360be554d0c4d1c66b539359536f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e12b0253_85562341",
+        "filename": "public/lib/gzos/trusty_ipc/cpp/channel.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-09T19:13:39Z",
+      "side": 1,
+      "message": "no such method because peer_ is synchronous ptr",
+      "parentUuid": "fcf15897_f3e94481",
       "range": {
         "startLine": 217,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1628d54c_add1d7e3",
+        "filename": "public/lib/gzos/trusty_ipc/cpp/channel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-09T19:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a91edb9_3ed5928f",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 21
+      },
+      "revId": "20748a42ff01360be554d0c4d1c66b539359536f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b9c0037_e2632077",
         "filename": "public/lib/gzos/trusty_ipc/cpp/port.cc",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "20748a42ff01360be554d0c4d1c66b539359536f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3b0510a_4ce8bb81",
+        "filename": "public/lib/gzos/trusty_ipc/cpp/port.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-09T19:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b9c0037_e2632077",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 31
+      },
+      "revId": "20748a42ff01360be554d0c4d1c66b539359536f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
