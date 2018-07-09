@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1c24153e_c1f57522",
+        "filename": "bin/gzos/ree_agent/tipc_agent.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-09T18:21:26Z",
+      "side": 1,
+      "message": "port_client is SynchronousInterfacePtr and do not have \"set_error_handler()\" function. Only InterfacePtr provide \"set_error_handler()\" for user to detect the zircon channel error status.",
+      "parentUuid": "8d30eb75_303f6d06",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 3
+      },
+      "revId": "cafaaf9046be03cbd689a62048e18b83c38dc8a2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "98722020_3dde3f2c",
         "filename": "bin/gzos/ree_agent/tipc_agent.h",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-08T14:55:46Z",
       "side": 1,
       "message": "you already have a lock in TipcAgent that protects ep_table_, the lock is still required?",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "cafaaf9046be03cbd689a62048e18b83c38dc8a2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b37f731_4714d947",
+        "filename": "bin/gzos/ree_agent/tipc_agent.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-09T18:21:26Z",
+      "side": 1,
+      "message": "the lock can be removed in current tipc_agent implementation",
+      "parentUuid": "98722020_3dde3f2c",
       "range": {
         "startLine": 48,
         "startChar": 2,
