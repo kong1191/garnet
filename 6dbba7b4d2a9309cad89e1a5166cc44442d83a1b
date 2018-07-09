@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "9adcf5ec_3e88e3f2",
+        "filename": "bin/gzos/smc_service/smc_service.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-09T19:03:20Z",
+      "side": 1,
+      "message": "already assign cpu affinity for each nop thread when calling this syscall",
+      "parentUuid": "5deed4ba_122f54dd",
+      "range": {
+        "startLine": 123,
+        "startChar": 12,
+        "endLine": 123,
+        "endChar": 66
+      },
+      "revId": "6dbba7b4d2a9309cad89e1a5166cc44442d83a1b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dabb455a_4877f3ba",
         "filename": "bin/gzos/smc_service/smc_service.h",
         "patchSetId": 1
@@ -151,6 +175,30 @@
       "writtenOn": "2018-07-09T15:31:13Z",
       "side": 1,
       "message": "un-used code",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 62
+      },
+      "revId": "6dbba7b4d2a9309cad89e1a5166cc44442d83a1b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70fa077a_06f7d79d",
+        "filename": "bin/gzos/smc_service/smc_service_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-09T19:03:20Z",
+      "side": 1,
+      "message": "shm variable is needed for ns_buf_",
+      "parentUuid": "4be5098b_dff1a1aa",
       "range": {
         "startLine": 158,
         "startChar": 4,
