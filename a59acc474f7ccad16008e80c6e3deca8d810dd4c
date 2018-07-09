@@ -22,6 +22,30 @@
       "revId": "a59acc474f7ccad16008e80c6e3deca8d810dd4c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "865ceae2_325ccc84",
+        "filename": "lib/gzos/trusty_virtio/trusty_virtio_device-unittest.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-09T17:09:11Z",
+      "side": 1,
+      "message": "In trusty_virtio_device.cc:\n------------------------------\nzx_status_t TrustyVirtioDevice::Kick(uint32_t vq_id) {\n  if (vq_id \u003e\u003d kNumQueues)\n    return ZX_ERR_NOT_FOUND;\n\n  if (state() !\u003d State::ACTIVE) {\n    return ZX_ERR_BAD_STATE;\n  }\n\n  return queues_[vq_id].Signal();\n}\n------------------------------\n\nKick function will return ZX_ERR_NOT_FOUND if vqueue id \u003e\u003d kNumQueues.\nThis function assumes vqueue id is numbered starting from 0, but actually, the vqueue id is numbered from 1.\nIf we do not want to change the kick function implementation, we should change the vqueue id to meet the numbering rules (start from 0).",
+      "parentUuid": "7d014add_312bb6a4",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 1
+      },
+      "revId": "a59acc474f7ccad16008e80c6e3deca8d810dd4c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }
