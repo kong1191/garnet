@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "25d0d642_45b344fc",
+        "filename": "bin/gzos/smc_service/main.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-09T19:16:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd06dcd2_8960a3b5",
+      "range": {
+        "startLine": 41,
+        "startChar": 64,
+        "endLine": 41,
+        "endChar": 67
+      },
+      "revId": "6dbba7b4d2a9309cad89e1a5166cc44442d83a1b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bf79d8c_f633a5a1",
         "filename": "bin/gzos/smc_service/smc_service.cc",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "6dbba7b4d2a9309cad89e1a5166cc44442d83a1b",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38135450_39cbb992",
+        "filename": "bin/gzos/smc_service/smc_service.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-09T19:16:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bf79d8c_f633a5a1",
+      "range": {
+        "startLine": 114,
+        "startChar": 22,
+        "endLine": 114,
+        "endChar": 36
+      },
+      "revId": "6dbba7b4d2a9309cad89e1a5166cc44442d83a1b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "bc436337_3f3479c2",
+        "filename": "bin/gzos/smc_service/smc_service.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-09T19:16:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dabb455a_4877f3ba",
+      "range": {
+        "startLine": 62,
+        "startChar": 7,
+        "endLine": 62,
+        "endChar": 15
+      },
+      "revId": "6dbba7b4d2a9309cad89e1a5166cc44442d83a1b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac6c94bb_546667ed",
         "filename": "bin/gzos/smc_service/smc_service.h",
         "patchSetId": 1
@@ -141,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "dcc40119_1e599817",
+        "filename": "bin/gzos/smc_service/smc_service.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-09T19:16:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac6c94bb_546667ed",
+      "range": {
+        "startLine": 82,
+        "startChar": 13,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "6dbba7b4d2a9309cad89e1a5166cc44442d83a1b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25836843_75b90201",
         "filename": "bin/gzos/smc_service/smc_service.h",
         "patchSetId": 1
@@ -161,6 +257,30 @@
       "revId": "6dbba7b4d2a9309cad89e1a5166cc44442d83a1b",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbf7aae4_b9211bbb",
+        "filename": "bin/gzos/smc_service/smc_service.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-09T19:16:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25836843_75b90201",
+      "range": {
+        "startLine": 83,
+        "startChar": 9,
+        "endLine": 83,
+        "endChar": 20
+      },
+      "revId": "6dbba7b4d2a9309cad89e1a5166cc44442d83a1b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {
