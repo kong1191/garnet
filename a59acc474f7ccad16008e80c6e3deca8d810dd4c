@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d014add_312bb6a4",
+        "filename": "lib/gzos/trusty_virtio/trusty_virtio_device-unittest.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-09T07:32:29Z",
+      "side": 1,
+      "message": "duplicated test-case, and why this test-case not fail before your modification. (2 should be valid vqueue id before your modification)",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 1
+      },
+      "revId": "a59acc474f7ccad16008e80c6e3deca8d810dd4c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
