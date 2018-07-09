@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd06dcd2_8960a3b5",
+        "filename": "bin/gzos/smc_service/main.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-09T15:31:13Z",
+      "side": 1,
+      "message": "Don\u0027t need to pass s, you can use SmcService::GetInstance() to get SmcService",
+      "range": {
+        "startLine": 41,
+        "startChar": 64,
+        "endLine": 41,
+        "endChar": 67
+      },
+      "revId": "6dbba7b4d2a9309cad89e1a5166cc44442d83a1b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bf79d8c_f633a5a1",
+        "filename": "bin/gzos/smc_service/smc_service.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-09T15:31:13Z",
+      "side": 1,
+      "message": "kMaxCpuNumber could be more appropriate",
+      "range": {
+        "startLine": 114,
+        "startChar": 22,
+        "endLine": 114,
+        "endChar": 36
+      },
+      "revId": "6dbba7b4d2a9309cad89e1a5166cc44442d83a1b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5deed4ba_122f54dd",
+        "filename": "bin/gzos/smc_service/smc_service.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-09T15:31:13Z",
+      "side": 1,
+      "message": "don\u0027t know if we need to add additional syscall to set cpu affinity of each nop thread to prevent it from being scheduled on wrong cpu. Leave a TODO here if further study is needed.",
+      "range": {
+        "startLine": 123,
+        "startChar": 12,
+        "endLine": 123,
+        "endChar": 66
+      },
+      "revId": "6dbba7b4d2a9309cad89e1a5166cc44442d83a1b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dabb455a_4877f3ba",
+        "filename": "bin/gzos/smc_service/smc_service.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-09T15:31:13Z",
+      "side": 1,
+      "message": "nop_thread_stop()?",
+      "range": {
+        "startLine": 62,
+        "startChar": 7,
+        "endLine": 62,
+        "endChar": 15
+      },
+      "revId": "6dbba7b4d2a9309cad89e1a5166cc44442d83a1b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac6c94bb_546667ed",
+        "filename": "bin/gzos/smc_service/smc_service.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-09T15:31:13Z",
+      "side": 1,
+      "message": "nop_threads_lock_",
+      "range": {
+        "startLine": 82,
+        "startChar": 13,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "6dbba7b4d2a9309cad89e1a5166cc44442d83a1b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25836843_75b90201",
+        "filename": "bin/gzos/smc_service/smc_service.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-09T15:31:13Z",
+      "side": 1,
+      "message": "nop_threads_",
+      "range": {
+        "startLine": 83,
+        "startChar": 9,
+        "endLine": 83,
+        "endChar": 20
+      },
+      "revId": "6dbba7b4d2a9309cad89e1a5166cc44442d83a1b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4be5098b_dff1a1aa",
+        "filename": "bin/gzos/smc_service/smc_service_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-07-09T15:31:13Z",
+      "side": 1,
+      "message": "un-used code",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 62
+      },
+      "revId": "6dbba7b4d2a9309cad89e1a5166cc44442d83a1b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
