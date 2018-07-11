@@ -376,6 +376,30 @@
       "revId": "6dbba7b4d2a9309cad89e1a5166cc44442d83a1b",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b139fee_7dd0a060",
+        "filename": "bin/gzos/smc_service/smc_service_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-11T16:09:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81e9bda1_a3338048",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 62
+      },
+      "revId": "6dbba7b4d2a9309cad89e1a5166cc44442d83a1b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
