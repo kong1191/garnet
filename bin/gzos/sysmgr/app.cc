@@ -4,6 +4,7 @@
 
 #include "garnet/bin/sysmgr/app.h"
 
+#include <fcntl.h>
 #include <zircon/process.h>
 #include <zircon/processargs.h>
 
@@ -12,8 +13,12 @@
 #include <lib/fdio/util.h>
 #include "lib/app/cpp/connect.h"
 #include "lib/fidl/cpp/clone.h"
+#include "lib/fsl/io/fd.h"
+#include "lib/fxl/files/unique_fd.h"
 #include "lib/fxl/functional/make_copyable.h"
 #include "lib/fxl/logging.h"
+#include "lib/fxl/strings/concatenate.h"
+#include "lib/fxl/strings/string_view.h"
 
 namespace sysmgr {
 
@@ -127,6 +132,27 @@ void App::RegisterAppLoaders(Config::ServiceMap app_loaders) {
 
 void App::LaunchApplication(fuchsia::sys::LaunchInfo launch_info) {
   FXL_VLOG(1) << "Launching application " << launch_info.url;
+
+  // Mount TA's "/pkg/data" to our "/system/data/<app_name>/", thus
+  // TA can read and parse manifest file by itself.
+  //
+  // TODO(sy): We should define the layout of manifest.json.
+  // Some parameters are common (e.g. min_stack_size) and should be
+  // handled by sysmgr. Some parameters are protocol-specific
+  // (e.g. trusty uuid) and should be handled by each TA.
+
+  std::string package_data_path = fxl::Concatenate(
+      {fxl::StringView("/system/data"), "/", launch_info.url.get()});
+  fxl::UniqueFD fd(open(package_data_path.c_str(), O_RDONLY));
+  if (fd.is_valid()) {
+    auto flat_namespace = fuchsia::sys::FlatNamespace::New();
+    flat_namespace->paths.push_back("/pkg/data");
+    flat_namespace->directories.push_back(
+        fsl::CloneChannelFromFileDescriptor(fd.get()));
+
+    launch_info.flat_namespace = std::move(flat_namespace);
+  }
+
   env_launcher_->CreateComponent(std::move(launch_info), nullptr);
 }
 
