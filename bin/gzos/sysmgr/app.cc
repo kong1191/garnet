@@ -4,6 +4,7 @@
 
 #include "garnet/bin/sysmgr/app.h"
 
+#include <fcntl.h>
 #include <zircon/process.h>
 #include <zircon/processargs.h>
 
@@ -12,8 +13,12 @@
 #include <lib/fdio/util.h>
 #include "lib/app/cpp/connect.h"
 #include "lib/fidl/cpp/clone.h"
+#include "lib/fsl/io/fd.h"
+#include "lib/fxl/files/unique_fd.h"
 #include "lib/fxl/functional/make_copyable.h"
 #include "lib/fxl/logging.h"
+#include "lib/fxl/strings/concatenate.h"
+#include "lib/fxl/strings/string_view.h"
 
 namespace sysmgr {
 
