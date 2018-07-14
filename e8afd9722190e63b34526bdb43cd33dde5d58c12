@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "004cdcd0_b0c0c6d6",
+        "filename": "bin/gzos/sysmgr/app.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-14T06:25:52Z",
+      "side": 1,
+      "message": "TA services (or port services) should be registered to svc_root_ so that ree_agent can connect to TA.",
+      "revId": "e8afd9722190e63b34526bdb43cd33dde5d58c12",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
