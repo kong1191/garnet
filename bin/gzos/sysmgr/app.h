@@ -40,6 +40,8 @@ class App {
   void RegisterAppLoaders(Config::ServiceMap app_loaders);
   void LaunchApplication(fuchsia::sys::LaunchInfo launch_info);
 
+  void ScanPublicServices();
+
   std::unique_ptr<fuchsia::sys::StartupContext> startup_context_;
 
   // Keep track of all services, indexed by url.
