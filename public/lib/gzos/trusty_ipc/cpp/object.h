@@ -72,6 +72,7 @@ class TipcObject : public fbl::RefCounted<TipcObject> {
   virtual ~TipcObject();
 
   virtual zx_status_t Wait(WaitResult* result, zx::time deadline);
+  virtual void Shutdown();
 
   void SignalEvent(uint32_t set_mask);
 

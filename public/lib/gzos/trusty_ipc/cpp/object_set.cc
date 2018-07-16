@@ -137,4 +137,8 @@ zx_status_t TipcObjectSet::Wait(WaitResult* result, zx::time deadline) {
   return ZX_OK;
 }
 
+void TipcObjectSet::Shutdown() {
+  // TODO(james): implementation
+}
+
 }  // namespace trusty_ipc

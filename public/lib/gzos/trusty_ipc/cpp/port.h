@@ -39,6 +39,8 @@ class TipcPortImpl : public TipcPort, public TipcObject {
     binding_.Bind(std::move(request));
   }
 
+  virtual void Shutdown() override;
+
   uint32_t flags() { return flags_; }
 
  protected:

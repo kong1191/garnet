@@ -140,20 +140,21 @@ void TipcChannelImpl::Shutdown() {
   ready_ = false;
 
   // Notify peer that channel is going to be shutdown
-  if (is_bound()) {
+  if (peer_.is_bound()) {
     peer_->Close();
     peer_.Unbind();
   }
 
-  // The reference count held by object manager should be released
-  if (handle_id() != TipcObject::kInvalidHandle) {
-    TipcObjectManager::Instance()->RemoveObject(handle_id());
+  if (binding_.is_bound()) {
+    binding_.Unbind();
   }
 
   // The reference count held by callbacks should be released
   SetReadyCallback(nullptr);
   SetCloseCallback(nullptr);
   SetMessageInCallback(nullptr);
+
+  TipcObject::Shutdown();
 }
 
 void TipcChannelImpl::NotifyReady() {
