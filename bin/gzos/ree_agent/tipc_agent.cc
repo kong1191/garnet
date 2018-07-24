@@ -336,10 +336,11 @@ zx_status_t TipcAgent::HandleConnectRequest(uint32_t src_addr, void* req) {
       [this](TipcPortSyncPtr& port_client, std::string path) {
         ta_service_provider_.ConnectToService(
             port_client.NewRequest().TakeChannel(), path);
+        return ZX_OK;
       });
 
   std::string path(conn_req->name);
-  status = facade.Connect(path);
+  status = facade.Connect(path, nullptr);
   if (status != ZX_OK) {
     return status;
   }
