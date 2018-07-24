@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 #include <lib/async-loop/cpp/loop.h>
+#include <sysmgr/cpp/fidl.h>
 
 #include <zircon/process.h>
 #include <zircon/processargs.h>
@@ -20,14 +21,29 @@ class TaServiceProvider : public TaServices {
  public:
   TaServiceProvider(zx::channel channel) {
     service_provider_.Bind(std::move(channel));
+    service_provider_.ConnectToService(trusty_service_.NewRequest(),
+                                       "trusty_service");
   }
 
   void ConnectToService(zx::channel request, const std::string& service_name) {
-    service_provider_.ConnectToService(std::move(request), service_name);
+    bool is_existed;
+    bool ret = trusty_service_->LookupService(service_name, &is_existed);
+    if (!ret) {
+      FXL_LOG(WARNING) << "Internal error on Calling LookupService";
+      return;
+    }
+
+    if (!is_existed) {
+      trusty_service_->RequestService(service_name);
+      trusty_service_->WaitOnService(service_name);
+    }
+    FXL_LOG(ERROR) << "service_name=" << service_name;
+    trusty_service_->ConnectToService(service_name, std::move(request));
   }
 
  private:
   fuchsia::sys::Services service_provider_;
+  sysmgr::ServiceProviderSyncPtr trusty_service_;
 };
 
 }  // namespace ree_agent
@@ -55,13 +71,12 @@ static zx_status_t get_startup_channels(zx::channel* ree_agent_cli,
   return ZX_OK;
 }
 
-
 int main(int argc, const char** argv) {
   zx::channel ree_agent_cli;
   zx::channel ree_agent_srv;
   zx::channel appmgr_svc;
-  zx_status_t status = get_startup_channels(&ree_agent_cli, &ree_agent_srv,
-                                            &appmgr_svc);
+  zx_status_t status =
+      get_startup_channels(&ree_agent_cli, &ree_agent_srv, &appmgr_svc);
   if (status != ZX_OK)
     return 1;
 

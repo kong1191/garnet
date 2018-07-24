@@ -40,6 +40,9 @@ class TipcPortImpl : public TipcPort, public TipcObject {
   void Bind(fidl::InterfaceRequest<TipcPort> request) {
     binding_.Bind(std::move(request));
   }
+  void Bind(zx::channel channel) {
+    binding_.Bind(std::move(channel));
+  }
 
   void Close() override;
 

@@ -4,6 +4,7 @@
 
 library sysmgr;
 
+[Discoverable]
 interface ServiceProvider {
   1: AddService(string service_name) -> (handle<channel> channel);
 
@@ -12,4 +13,6 @@ interface ServiceProvider {
   3: ConnectToService(string service_name, handle<channel> channel);
 
   4: WaitOnService(string service_name) -> ();
+
+  5: RequestService(string service_name);
 };

@@ -5,6 +5,7 @@
 #include <fbl/auto_lock.h>
 #include <lib/async/cpp/task.h>
 #include <lib/async/default.h>
+#include <lib/fdio/util.h>
 
 #include "lib/fxl/random/uuid.h"
 #include "lib/gzos/trusty_ipc/cpp/channel.h"
