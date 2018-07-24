@@ -75,7 +75,7 @@ class TipcPortImpl : public TipcPort, public TipcObject {
 class PortConnectFacade {
  public:
   using ServiceConnector =
-      std::function<void(TipcPortSyncPtr& port, std::string path)>;
+      std::function<zx_status_t(TipcPortSyncPtr& port, std::string path)>;
 
   void SetChannel(fbl::RefPtr<TipcChannelImpl> channel) {
     channel_ = std::move(channel);
@@ -84,7 +84,7 @@ class PortConnectFacade {
     port_service_connector_ = std::move(callback);
   }
 
-  zx_status_t Connect(std::string path);
+  zx_status_t Connect(std::string path, fidl::StringPtr uuid);
 
  private:
   ServiceConnector port_service_connector_ = nullptr;
