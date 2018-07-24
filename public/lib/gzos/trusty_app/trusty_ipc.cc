@@ -2,18 +2,20 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+#define FIDL_ENABLE_LEGACY_WAIT_FOR_RESPONSE
+
 #include <inttypes.h>
 
 #include <fbl/auto_call.h>
 #include <lib/async-loop/cpp/loop.h>
+#include <sysmgr/cpp/fidl.h>
 
-#include "garnet/public/lib/gzos/trusty_ipc/cpp/channel.h"
-#include "garnet/public/lib/gzos/trusty_ipc/cpp/object_manager.h"
-#include "garnet/public/lib/gzos/trusty_ipc/cpp/port.h"
-
-#include "garnet/public/lib/gzos/trusty_app/manifest.h"
-#include "garnet/public/lib/gzos/trusty_app/trusty_std.h"
-#include "garnet/public/lib/gzos/trusty_app/uapi/err.h"
+#include "lib/gzos/trusty_app/manifest.h"
+#include "lib/gzos/trusty_app/trusty_std.h"
+#include "lib/gzos/trusty_app/uapi/err.h"
+#include "lib/gzos/trusty_ipc/cpp/channel.h"
+#include "lib/gzos/trusty_ipc/cpp/object_manager.h"
+#include "lib/gzos/trusty_ipc/cpp/port.h"
 
 #include "lib/app/cpp/environment_services.h"
 #include "lib/app/cpp/startup_context.h"
@@ -23,6 +25,7 @@ using namespace trusty_ipc;
 
 static fbl::Mutex context_lock;
 static std::unique_ptr<fuchsia::sys::StartupContext> startup_context;
+static sysmgr::ServiceRegistryPtr service_registry;
 
 static fbl::Mutex async_loop_lock;
 static bool async_loop_started = false;
@@ -146,6 +149,23 @@ long port_create(const char *path, uint32_t num_recv_bufs,
 
     fbl::AutoLock lock(&async_loop_lock);
     loop_ptr = &loop;
+
+    fuchsia::sys::ConnectToEnvironmentService<sysmgr::ServiceRegistry>(
+        service_registry.NewRequest());
+  }
+
+  std::string service_name(path);
+  bool is_existed;
+  service_registry->LookupService(
+      service_name, [&is_existed](bool found) { is_existed = found; });
+  bool ret = service_registry.WaitForResponse();
+  if (ret) {
+    FXL_LOG(ERROR) << "Internal error on calling LookupService";
+    return ERR_GENERIC;
+  }
+
+  if (is_existed) {
+    return ERR_ALREADY_EXISTS;
   }
 
   auto port =
@@ -161,7 +181,6 @@ long port_create(const char *path, uint32_t num_recv_bufs,
     return zx_status_to_lk_err(status);
   }
 
-  std::string service_name(path);
   status = startup_context->outgoing().AddPublicService<TipcPort>(
       [port](fidl::InterfaceRequest<TipcPort> request) {
         port->Bind(std::move(request));
@@ -173,6 +192,8 @@ long port_create(const char *path, uint32_t num_recv_bufs,
     obj_mgr->RemoveObject(port->handle_id());
     return zx_status_to_lk_err(status);
   }
+
+  service_registry->AddService(service_name);
 
   port->set_name(path);
   return (long)port->handle_id();
@@ -466,7 +487,7 @@ long read_msg(uint32_t handle_id, uint32_t msg_id, uint32_t offset,
 
   auto channel = fbl::RefPtr<TipcChannelImpl>::Downcast(fbl::move(obj));
   auto buf = msg->iov->base;
-  auto& buf_size = msg->iov->len;
+  auto &buf_size = msg->iov->len;
   status = channel->ReadMessage(msg_id, offset, buf, &buf_size);
   if (status != ZX_OK) {
     FXL_DLOG(ERROR) << "Failed to read message, handle_id: " << handle_id

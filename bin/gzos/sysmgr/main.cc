@@ -6,7 +6,8 @@
 #include <lib/async-loop/cpp/loop.h>
 #include <sys/types.h>
 
-#include "garnet/bin/sysmgr/app.h"
+#include "garnet/bin/gzos/sysmgr/app.h"
+#include "garnet/bin/gzos/sysmgr/trusty_app.h"
 #include "lib/fxl/command_line.h"
 #include "lib/fxl/log_settings_command_line.h"
 
@@ -51,7 +52,8 @@ int main(int argc, const char** argv) {
   }
 
   async::Loop loop(&kAsyncLoopConfigMakeDefault);
-  sysmgr::App app(std::move(config));
+  //sysmgr::App app(std::move(config));
+  sysmgr::TrustyApp trusty_app;
 
   loop.Run();
   return 0;
