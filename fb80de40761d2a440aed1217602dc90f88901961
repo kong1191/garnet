@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0167139f_5483598d",
+        "filename": "public/lib/gzos/trusty_ipc/cpp/channel.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-26T04:45:48Z",
+      "side": 1,
+      "message": "We can provide an atomic_read_and_clear() function for tipc event operation in TipcObject",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 1
+      },
+      "revId": "fb80de40761d2a440aed1217602dc90f88901961",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
