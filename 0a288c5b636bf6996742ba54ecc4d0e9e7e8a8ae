@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99fb8888_6a60290e",
+        "filename": "bin/gzos/ree_agent/tipc_agent.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-26T04:55:54Z",
+      "side": 1,
+      "message": "remove debug message",
+      "revId": "0a288c5b636bf6996742ba54ecc4d0e9e7e8a8ae",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dfd14f9_3da0428f",
+        "filename": "public/lib/gzos/trusty_app/trusty_ipc.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-07-26T04:55:54Z",
+      "side": 1,
+      "message": "Channel and service connector are must-have parameters. Why not force parameter assignment by constructor?",
+      "range": {
+        "startLine": 192,
+        "startChar": 2,
+        "endLine": 198,
+        "endChar": 5
+      },
+      "revId": "0a288c5b636bf6996742ba54ecc4d0e9e7e8a8ae",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
