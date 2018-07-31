@@ -179,7 +179,6 @@ long port_create(const char *path, uint32_t num_recv_bufs,
 
   if (status != ZX_OK) {
     FXL_DLOG(ERROR) << "Failed to publish port service: " << status;
-    obj_mgr->RemoveObject(port->handle_id());
     return zx_status_to_lk_err(status);
   }
 
@@ -323,17 +322,18 @@ long trusty_close(uint32_t handle_id) {
     return zx_status_to_lk_err(status);
   }
 
-  obj->Close();
-
   if (obj->is_port()) {
     fbl::AutoLock lock(&context_lock);
 
-    auto port = fbl::RefPtr<TipcPortImpl>::Downcast(fbl::move(obj));
+    auto port = fbl::RefPtr<TipcPortImpl>::Downcast(obj);
 
     service_registry->RemoveService(port->name());
     status =
         startup_context->outgoing().RemovePublicService<TipcPort>(port->name());
   }
+
+  obj->Close();
+
   return zx_status_to_lk_err(status);
 }
 
