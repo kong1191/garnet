@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee01d487_da31bee7",
+        "filename": "public/lib/gzos/trusty_ipc/fidl/channel.fidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-08-02T04:19:09Z",
+      "side": 1,
+      "message": "return status to caller",
+      "range": {
+        "startLine": 15,
+        "startChar": 14,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "22299617c9c69d4ce8090e597cde338234a7b45e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
