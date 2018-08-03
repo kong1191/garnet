@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "862fc4b7_27d958bc",
+        "filename": "bin/gzos/sysmgr/dynamic_service_app.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-08-03T16:07:00Z",
+      "side": 1,
+      "message": "Will fix it",
+      "parentUuid": "eeba8fd2_60b5c5a2",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 178,
+        "endChar": 44
+      },
+      "revId": "9f313c9a479faf208a6fb59a0d3db638297f4a22",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a133c9d6_114723d1",
         "filename": "bin/gzos/sysmgr/dynamic_service_app.cc",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4c49b88c_dd7da4f9",
+        "filename": "bin/gzos/sysmgr/dynamic_service_app.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-08-03T16:07:00Z",
+      "side": 1,
+      "message": "Ok, will fix it",
+      "parentUuid": "a133c9d6_114723d1",
+      "range": {
+        "startLine": 269,
+        "startChar": 4,
+        "endLine": 269,
+        "endChar": 32
+      },
+      "revId": "9f313c9a479faf208a6fb59a0d3db638297f4a22",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e385d517_721be16c",
         "filename": "bin/gzos/sysmgr/dynamic_service_app.h",
         "patchSetId": 10
@@ -59,6 +107,30 @@
       "writtenOn": "2018-08-03T11:53:18Z",
       "side": 1,
       "message": "The variable seems not useful and is unnecessary.",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 48
+      },
+      "revId": "9f313c9a479faf208a6fb59a0d3db638297f4a22",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dd33c3d_04b09411",
+        "filename": "bin/gzos/sysmgr/dynamic_service_app.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-08-03T16:07:00Z",
+      "side": 1,
+      "message": "This is required since it records all services the launched app published. It the app crashes, we need remove all of them.",
+      "parentUuid": "e385d517_721be16c",
       "range": {
         "startLine": 69,
         "startChar": 2,
