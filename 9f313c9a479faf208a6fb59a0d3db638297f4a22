@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eeba8fd2_60b5c5a2",
+        "filename": "bin/gzos/sysmgr/dynamic_service_app.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-08-03T11:53:18Z",
+      "side": 1,
+      "message": "Should check if service_name is existed",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 178,
+        "endChar": 44
+      },
+      "revId": "9f313c9a479faf208a6fb59a0d3db638297f4a22",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a133c9d6_114723d1",
+        "filename": "bin/gzos/sysmgr/dynamic_service_app.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-08-03T11:53:18Z",
+      "side": 1,
+      "message": "why not app_-\u003eRemoveService(service_name) ?\nWe should also avoid LaunchedApp from accessing root_ directly.",
+      "range": {
+        "startLine": 269,
+        "startChar": 4,
+        "endLine": 269,
+        "endChar": 32
+      },
+      "revId": "9f313c9a479faf208a6fb59a0d3db638297f4a22",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e385d517_721be16c",
+        "filename": "bin/gzos/sysmgr/dynamic_service_app.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-08-03T11:53:18Z",
+      "side": 1,
+      "message": "The variable seems not useful and is unnecessary.",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 48
+      },
+      "revId": "9f313c9a479faf208a6fb59a0d3db638297f4a22",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
