@@ -1,0 +1,6 @@
+library ree_agent_test;
+
+[Discoverable]
+interface EchoService {
+   1: EchoString(string? value) -> (string? response);
+};
