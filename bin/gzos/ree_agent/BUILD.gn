@@ -5,6 +5,12 @@
 import("//build/package.gni")
 source_set("lib") {
   sources = [
+    "message_reader.h",
+    "gzipc_agent.cc",
+    "gzipc_agent.h",
+    "gzipc_msg.h",
+    "gzipc_endpoint.cc",
+    "gzipc_endpoint.h",
     "ree_agent.cc",
     "ree_agent.h",
     "ree_message_impl.cc",
@@ -17,6 +23,7 @@ source_set("lib") {
 
   public_deps = [
     "//garnet/public/lib/gzos/trusty_ipc/cpp",
+    "//garnet/public/lib/gzos/ree_agent/cpp",
     "//garnet/public/lib/gzos/ree_agent/fidl",
     "//garnet/public/lib/svc/cpp",
     "//zircon/public/lib/fbl",
@@ -57,6 +64,7 @@ source_set("test") {
   sources = [
     "ree_message-unittest.cc",
     "tipc_agent_unittest.cc",
+    "gzipc_agent-unittest.cc",
   ]
 
   deps = [
