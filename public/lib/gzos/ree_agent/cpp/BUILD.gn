@@ -1,0 +1,14 @@
+# Copyright 2018 Open Trust Group
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+source_set("cpp") {
+  sources = [
+    "rpc_channel.cc",
+    "rpc_channel.h",
+  ]
+
+  public_deps = [
+    "//third_party/protobuf:protobuf_full",
+  ]
+}

@@ -13,10 +13,16 @@ source_set("lib") {
     "tipc_agent.cc",
     "tipc_agent.h",
     "tipc_msg.h",
+    "zircon_agent.cc",
+    "zircon_agent.h",
+    "zircon_msg.h",
+    "zircon_endpoint.cc",
+    "zircon_endpoint.h",
   ]
 
   public_deps = [
     "//garnet/public/lib/gzos/trusty_ipc/cpp",
+    "//garnet/public/lib/gzos/ree_agent/cpp",
     "//garnet/public/lib/gzos/ree_agent/fidl",
     "//garnet/public/lib/svc/cpp",
     "//zircon/public/lib/fbl",
@@ -57,6 +63,7 @@ source_set("test") {
   sources = [
     "ree_message-unittest.cc",
     "tipc_agent_unittest.cc",
+    "zircon_agent-unittest.cc",
   ]
 
   deps = [
