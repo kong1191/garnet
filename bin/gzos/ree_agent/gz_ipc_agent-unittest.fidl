@@ -1,0 +1,6 @@
+library gz_ipc_agent_test;
+
+[Discoverable]
+interface EchoService {
+   1: EchoString(string? value) -> (string? response);
+};
