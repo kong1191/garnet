@@ -13,6 +13,11 @@ source_set("lib") {
     "tipc_agent.cc",
     "tipc_agent.h",
     "tipc_msg.h",
+    "zircon_agent.cc",
+    "zircon_agent.h",
+    "zircon_msg.h",
+    "zircon_endpoint.cc",
+    "zircon_endpoint.h",
   ]
 
   public_deps = [
