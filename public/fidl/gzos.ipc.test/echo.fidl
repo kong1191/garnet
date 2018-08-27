@@ -1,0 +1,6 @@
+library gzos.ipc.test;
+
+[Discoverable]
+interface EchoService {
+   1: EchoString(string? value) -> (string? response);
+};
