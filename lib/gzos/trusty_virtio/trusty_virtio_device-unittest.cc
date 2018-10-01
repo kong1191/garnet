@@ -11,7 +11,7 @@
 #include <zircon/syscalls.h>
 #include <zircon/syscalls/smc_service.h>
 #include <zx/channel.h>
-#include <zx/vmo.h>
+#include <zx/resource.h>
 
 #include "garnet/lib/gzos/trusty_virtio/remote_system_fake.h"
 #include "garnet/lib/gzos/trusty_virtio/trusty_virtio_device.h"
@@ -25,18 +25,20 @@ const trusty_vdev_descr kVdevDescriptors[] = {
     DECLARE_TRUSTY_VIRTIO_DEVICE_DESCR(kTipcDeviceId, "dev2", 28, 32),
 };
 
-static zx_status_t alloc_shm_vmo(zx::vmo* out, zx_info_ns_shm_t* vmo_info) {
-  zx_handle_t smc;
-  zx_handle_t shm_vmo;
+static zx_status_t get_shm_rsc(zx::resource* out, zx_info_ns_shm_t* vmo_info) {
+  zx_handle_t smc_handle;
+  zx_handle_t shm_rsc_handle;
   zx_info_smc_t smc_info;
-  zx_status_t status = zx_smc_create(0, &smc_info, &smc, &shm_vmo);
+  zx_status_t status =
+      zx_smc_create(0, &smc_info, &smc_handle, &shm_rsc_handle);
   if (status != ZX_OK) {
+    FXL_LOG(ERROR) << "Failed to create smc kernel object, status:" << status;
     return status;
   }
 
-  out->reset(shm_vmo);
+  out->reset(shm_rsc_handle);
   *vmo_info = smc_info.ns_shm;
-  zx_handle_close(smc);
+  zx_handle_close(smc_handle);
 
   return ZX_OK;
 }
@@ -48,10 +50,10 @@ class ResourceTableTest : public ::testing::Test {
  protected:
   virtual void SetUp() {
     // Create Shared Memory
-    zx::vmo shm_vmo;
+    zx::resource shm_rsc;
     zx_info_ns_shm_t vmo_info;
-    ASSERT_EQ(alloc_shm_vmo(&shm_vmo, &vmo_info), ZX_OK);
-    ASSERT_EQ(SharedMem::Create(fbl::move(shm_vmo), vmo_info, &shared_mem_),
+    ASSERT_EQ(get_shm_rsc(&shm_rsc, &vmo_info), ZX_OK);
+    ASSERT_EQ(SharedMem::Create(fbl::move(shm_rsc), vmo_info, &shared_mem_),
               ZX_OK);
 
     // Create VirtioBus
@@ -68,8 +70,8 @@ class ResourceTableTest : public ::testing::Test {
       zx::channel h0, h1;
       ASSERT_EQ(zx::channel::create(0, &h0, &h1), ZX_OK);
       fbl::RefPtr<TrustyVirtioDevice> dev =
-          fbl::AdoptRef(new TrustyVirtioDevice(kVdevDescriptors[i],
-                                               loop_.dispatcher(), fbl::move(h1)));
+          fbl::AdoptRef(new TrustyVirtioDevice(
+              kVdevDescriptors[i], loop_.dispatcher(), fbl::move(h1)));
       ASSERT_TRUE(dev != nullptr);
 
       ASSERT_EQ(bus_->AddDevice(dev), ZX_OK);
@@ -142,10 +144,10 @@ class VirtioBusStateTest : public ::testing::Test {
  protected:
   virtual void SetUp() {
     // Create Shared Memory
-    zx::vmo shm_vmo;
+    zx::resource shm_rsc;
     zx_info_ns_shm_t vmo_info;
-    ASSERT_EQ(alloc_shm_vmo(&shm_vmo, &vmo_info), ZX_OK);
-    ASSERT_EQ(SharedMem::Create(fbl::move(shm_vmo), vmo_info, &shared_mem_),
+    ASSERT_EQ(get_shm_rsc(&shm_rsc, &vmo_info), ZX_OK);
+    ASSERT_EQ(SharedMem::Create(fbl::move(shm_rsc), vmo_info, &shared_mem_),
               ZX_OK);
 
     // Create VirtioBus
