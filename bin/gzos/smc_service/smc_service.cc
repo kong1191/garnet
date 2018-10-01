@@ -4,7 +4,7 @@
 
 #include <fbl/auto_call.h>
 #include <fbl/string_buffer.h>
-#include <zx/vmo.h>
+#include <zx/resource.h>
 
 #include "garnet/bin/gzos/smc_service/smc_service.h"
 #include "garnet/bin/gzos/smc_service/trusty_smc.h"
@@ -71,21 +71,23 @@ zx_status_t SmcService::CreateSmcKernelObject() {
   fbl::AutoLock al(&lock_);
 
   zx_handle_t smc_handle = ZX_HANDLE_INVALID;
-  zx_handle_t vmo_handle = ZX_HANDLE_INVALID;
+  zx_handle_t shm_rsc_handle = ZX_HANDLE_INVALID;
   zx_info_smc_t smc_info = {};
 
-  zx_status_t status = zx_smc_create(0, &smc_info, &smc_handle, &vmo_handle);
+  zx_status_t status =
+      zx_smc_create(0, &smc_info, &smc_handle, &shm_rsc_handle);
   if (status != ZX_OK) {
     FXL_LOG(ERROR) << "Failed to create smc kernel object, status:" << status;
     return status;
   }
 
-  auto close_handle = fbl::MakeAutoCall([&]() { zx_handle_close(smc_handle); });
+  auto close_handle =
+      fbl::MakeAutoCall([&smc_handle]() { zx_handle_close(smc_handle); });
 
   fbl::RefPtr<SharedMem> shared_mem;
-  zx::vmo shm_vmo(vmo_handle);
   zx_info_ns_shm_t shm_info = smc_info.ns_shm;
-  status = SharedMem::Create(fbl::move(shm_vmo), shm_info, &shared_mem);
+  zx::resource shm_rsc(shm_rsc_handle);
+  status = SharedMem::Create(std::move(shm_rsc), shm_info, &shared_mem);
   if (status != ZX_OK) {
     FXL_LOG(ERROR) << "Failed to create shared memory object, status:"
                    << status;
