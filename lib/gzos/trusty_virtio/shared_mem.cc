@@ -19,17 +19,33 @@ static constexpr uint32_t kMapFlags =
 
 namespace trusty_virtio {
 
-zx_status_t SharedMem::Create(zx::vmo vmo, zx_info_ns_shm_t vmo_info, fbl::RefPtr<SharedMem>* out) {
+zx_status_t SharedMem::Create(fbl::RefPtr<SharedMem>* out) {
+  zx::resource shm_rsc;
+  zx_info_ns_shm_t shm_info;
+  zx_status_t status = zx::resource::create_ns_mem(0, &shm_info, &shm_rsc);
+  if (status != ZX_OK) {
+    FXL_LOG(ERROR) << "Failed to create shm resource, status:" << status;
+    return status;
+  }
+
+  zx::vmo vmo;
+  status = zx::vmo::create_ns_mem(shm_rsc, shm_info.base_phys,
+                                  shm_info.size, &vmo);
+  if (status != ZX_OK) {
+    FXL_LOG(ERROR) << "Failed to create physical vmo object, status:" << status;
+    return status;
+  }
+
   uintptr_t vaddr;
-  zx_status_t status =
-      zx::vmar::root_self()->map(0, vmo, 0, vmo_info.size, kMapFlags, &vaddr);
+  status =
+      zx::vmar::root_self()->map(0, vmo, 0, shm_info.size, kMapFlags, &vaddr);
   if (status != ZX_OK) {
     FXL_LOG(ERROR) << "Failed to map vmo: " << status;
     return status;
   }
 
   fbl::AllocChecker ac;
-  *out = fbl::AdoptRef(new (&ac) SharedMem(fbl::move(vmo), vmo_info, vaddr));
+  *out = fbl::AdoptRef(new (&ac) SharedMem(fbl::move(vmo), shm_info, vaddr));
   if (!ac.check()) {
     return ZX_ERR_NO_MEMORY;
   }
