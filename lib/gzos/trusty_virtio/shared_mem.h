@@ -9,15 +9,14 @@
 #include <fbl/ref_ptr.h>
 #include <zircon/syscalls/smc_service.h>
 #include <zx/vmo.h>
+#include <zx/resource.h>
 #include <type_traits>
 
 #include "garnet/public/lib/fxl/logging.h"
 
 namespace trusty_virtio {
 
-static bool validate_range(uintptr_t addr,
-                           size_t size,
-                           uintptr_t mem_addr,
+static bool validate_range(uintptr_t addr, size_t size, uintptr_t mem_addr,
                            size_t mem_size) {
   uintptr_t range_end = addr + size;
   uintptr_t mem_end = mem_addr + mem_size;
@@ -27,8 +26,7 @@ static bool validate_range(uintptr_t addr,
 
 class SharedMem : public fbl::RefCounted<SharedMem> {
  public:
-
-  static zx_status_t Create(zx::vmo vmo, zx_info_ns_shm_t vmo_info, fbl::RefPtr<SharedMem>* out);
+  static zx_status_t Create(fbl::RefPtr<SharedMem>* out);
   ~SharedMem();
 
   uintptr_t VirtToPhys(void* addr, size_t size) {
