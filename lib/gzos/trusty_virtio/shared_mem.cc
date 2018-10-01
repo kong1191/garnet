@@ -19,17 +19,35 @@ static constexpr uint32_t kMapFlags =
 
 namespace trusty_virtio {
 
-zx_status_t SharedMem::Create(zx::vmo vmo, zx_info_ns_shm_t vmo_info, fbl::RefPtr<SharedMem>* out) {
+zx_status_t SharedMem::Create(zx::resource shm_rsc, zx_info_ns_shm_t shm_info,
+                              fbl::RefPtr<SharedMem>* out) {
+  zx_handle_t vmo_handle;
+  zx_status_t status = zx_vmo_create_physical(shm_rsc.get(), shm_info.base_phys,
+                                              shm_info.size, &vmo_handle);
+  if (status != ZX_OK) {
+    FXL_LOG(ERROR) << "Failed to create physical vmo object, status:" << status;
+    return status;
+  }
+
+  if (shm_info.use_cache) {
+    status = zx_vmo_set_cache_policy(vmo_handle, ZX_CACHE_POLICY_CACHED);
+    if (status != ZX_OK) {
+      FXL_LOG(ERROR) << "Failed to set vmo cache policy, status:" << status;
+      return status;
+    }
+  }
+
   uintptr_t vaddr;
-  zx_status_t status =
-      zx::vmar::root_self()->map(0, vmo, 0, vmo_info.size, kMapFlags, &vaddr);
+  zx::vmo vmo(vmo_handle);
+  status =
+      zx::vmar::root_self()->map(0, vmo, 0, shm_info.size, kMapFlags, &vaddr);
   if (status != ZX_OK) {
     FXL_LOG(ERROR) << "Failed to map vmo: " << status;
     return status;
   }
 
   fbl::AllocChecker ac;
-  *out = fbl::AdoptRef(new (&ac) SharedMem(fbl::move(vmo), vmo_info, vaddr));
+  *out = fbl::AdoptRef(new (&ac) SharedMem(fbl::move(vmo), shm_info, vaddr));
   if (!ac.check()) {
     return ZX_ERR_NO_MEMORY;
   }
