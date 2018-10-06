@@ -28,6 +28,7 @@ source_set("lib") {
   ]
 
   public_deps = [
+    "//garnet/lib/magma/src/magma_util:system",
     "//garnet/public/lib/gzos/trusty_ipc/cpp",
     "//garnet/public/fidl/gzos.reeagent",
     "//garnet/public/lib/svc/cpp",

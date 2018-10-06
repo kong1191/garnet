@@ -15,7 +15,7 @@
 
 namespace ree_agent {
 
-static constexpr uint32_t kDefaultReservedSize = 128;
+static constexpr uint32_t kDefaultReservedSize = 256;
 static constexpr uint32_t kDefaultHandleCapacity = 4;
 
 class Message {

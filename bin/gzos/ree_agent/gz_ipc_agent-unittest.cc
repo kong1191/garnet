@@ -53,6 +53,18 @@ class EchoServiceImpl : public EchoService, public ServiceBase<EchoService> {
   }
 };
 
+class VmoReceiverImpl : public VmoReceiver, public ServiceBase<VmoReceiver> {
+ public:
+  VmoReceiverImpl() : ServiceBase(this) {}
+
+  zx::vmo& vmo() { return vmo_; }
+
+ private:
+  void SendVmo(zx::vmo vmo) override { vmo_ = std::move(vmo); }
+
+  zx::vmo vmo_;
+};
+
 class GzIpcAgentTest : public ::testing::Test,
                        public TaServices,
                        public EchoServiceFinder {
@@ -110,6 +122,12 @@ class GzIpcAgentTest : public ::testing::Test,
       binding_.Bind(std::move(channel));
       return ZX_OK;
     });
+
+    // Register Vmo receiver
+    AddService<VmoReceiver>([this](zx::channel channel) {
+      vmo_receiver_impl_.Bind(std::move(channel));
+      return ZX_OK;
+    });
   }
 
  protected:
@@ -124,6 +142,8 @@ class GzIpcAgentTest : public ::testing::Test,
   fbl::unique_ptr<GzIpcAgent> server_;
 
   EchoServiceImpl echo_service_impl_;
+  VmoReceiverImpl vmo_receiver_impl_;
+  async::Loop loop_;
 
  private:
   // |EchoServiceFinder| implementation
@@ -136,7 +156,6 @@ class GzIpcAgentTest : public ::testing::Test,
   }
 
   zx::channel root_handle_;
-  async::Loop loop_;
   zx::event event_;
 
   fs::SynchronousVfs vfs_;
@@ -173,7 +192,7 @@ TEST_F(GzIpcAgentTest, AsyncBadService) {
                              echo.NewRequest().TakeChannel()),
             ZX_OK);
 
-  EXPECT_EQ(WaitEvent(), ZX_ERR_TIMED_OUT);
+  loop_.RunUntilIdle();
   EXPECT_TRUE(error_handler_triggered);
 }
 
@@ -211,7 +230,7 @@ TEST_F(GzIpcAgentTest, ClientUnbind) {
       ZX_OK);
   echo.Unbind();
 
-  EXPECT_EQ(WaitEvent(), ZX_ERR_TIMED_OUT);
+  loop_.RunUntilIdle();
   EXPECT_TRUE(error_handler_triggered);
 }
 
@@ -227,7 +246,7 @@ TEST_F(GzIpcAgentTest, AsyncServerUnbind) {
       ZX_OK);
   echo_service_impl_.Unbind();
 
-  EXPECT_EQ(WaitEvent(), ZX_ERR_TIMED_OUT);
+  loop_.RunUntilIdle();
   EXPECT_TRUE(error_handler_triggered);
 }
 
@@ -275,6 +294,56 @@ TEST_F(GzIpcAgentTest, ReceiveChannel) {
   fidl::StringPtr response;
   EXPECT_EQ(echo->EchoString(test_string, &response), ZX_OK);
   EXPECT_EQ(test_string, response);
+}
+
+static constexpr uint32_t kMapFlags =
+    ZX_VM_FLAG_PERM_READ | ZX_VM_FLAG_PERM_WRITE | ZX_VM_FLAG_MAP_RANGE;
+
+TEST_F(GzIpcAgentTest, SendBadVmo) {
+  VmoReceiverPtr vmo_receiver;
+
+  bool error_handler_triggered = false;
+  vmo_receiver.set_error_handler(
+      [&error_handler_triggered] { error_handler_triggered = true; });
+
+  ASSERT_EQ(client_->Connect(VmoReceiver::Name_,
+                             vmo_receiver.NewRequest().TakeChannel()),
+            ZX_OK);
+
+  zx::vmo vmo;
+  ASSERT_EQ(zx::vmo::create(PAGE_SIZE, 0, &vmo), ZX_OK);
+
+  vmo_receiver->SendVmo(std::move(vmo));
+
+  loop_.RunUntilIdle();
+  EXPECT_TRUE(error_handler_triggered);
+}
+
+TEST_F(GzIpcAgentTest, SendVmo) {
+  VmoReceiverSyncPtr vmo_receiver;
+  ASSERT_EQ(client_->Connect(VmoReceiver::Name_,
+                             vmo_receiver.NewRequest().TakeChannel()),
+            ZX_OK);
+
+  zx::vmo vmo;
+  ASSERT_EQ(client_->AllocSharedMemory(PAGE_SIZE, &vmo), ZX_OK);
+
+  uintptr_t expected_buf;
+  ASSERT_EQ(zx::vmar::root_self()->map(0, vmo, 0, PAGE_SIZE, kMapFlags,
+                                       &expected_buf),
+            ZX_OK);
+
+  ASSERT_EQ(vmo_receiver->SendVmo(std::move(vmo)), ZX_OK);
+
+  loop_.RunUntilIdle();
+
+  uintptr_t actual_buf;
+  ASSERT_EQ(zx::vmar::root_self()->map(0, vmo_receiver_impl_.vmo(), 0,
+                                       PAGE_SIZE, kMapFlags, &actual_buf),
+            ZX_OK);
+
+  EXPECT_TRUE(std::memcmp((void*)actual_buf, (void*)expected_buf, PAGE_SIZE) ==
+              0);
 }
 
 class ShmVmoTest : public ::testing::Test {
@@ -338,9 +407,9 @@ TEST_F(ShmVmoTest, VmarUnmap) {
   ASSERT_EQ(wait_.Begin(loop.dispatcher()), ZX_OK);
 
   uintptr_t vaddr;
-  ASSERT_EQ(zx::vmar::root_self()->map(0, vmo_, 0, PAGE_SIZE,
-                                       ZX_VM_FLAG_PERM_READ, &vaddr),
-            ZX_OK);
+  ASSERT_EQ(
+      zx::vmar::root_self()->map(0, vmo_, 0, PAGE_SIZE, kMapFlags, &vaddr),
+      ZX_OK);
 
   // Release vmo, wait handler should not be triggered (VmMapping still holds
   // VmObject reference)

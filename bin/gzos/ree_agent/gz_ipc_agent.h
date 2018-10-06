@@ -5,6 +5,11 @@
 #pragma once
 
 #include <fbl/unique_ptr.h>
+#include <lib/async/cpp/wait.h>
+#include <zircon/syscalls/smc_service.h>
+#include <zx/eventpair.h>
+#include <zx/resource.h>
+#include <zx/vmo.h>
 #include <map>
 
 #include "garnet/bin/gzos/ree_agent/gz_ipc_endpoint.h"
@@ -15,16 +20,56 @@
 
 namespace ree_agent {
 
+class GzIpcAgent;
+class SharedMemoryRecord {
+ public:
+  SharedMemoryRecord() = delete;
+
+  SharedMemoryRecord(uintptr_t base, size_t size, zx::eventpair event,
+                     zx::vmo vmo = zx::vmo());
+  ~SharedMemoryRecord();
+
+  uintptr_t base_phys() { return base_; }
+  uintptr_t size() { return size_; }
+
+  void set_vmo(zx::vmo vmo) { vmo_ = std::move(vmo); }
+  void reset_vmo() { vmo_.reset(); }
+
+  void set_release_handler(fit::closure handler) {
+    handler_ = std::move(handler);
+  }
+
+ private:
+  void OnVmoDestroyed(async_dispatcher_t* async, async::WaitBase* wait,
+                      zx_status_t status, const zx_packet_signal_t* signal) {
+    if (handler_) {
+      handler_();
+    }
+  }
+
+  uintptr_t base_;
+  size_t size_;
+  zx::vmo vmo_;
+  zx::eventpair event_;
+
+  fit::closure handler_;
+
+  async::WaitMethod<SharedMemoryRecord, &SharedMemoryRecord::OnVmoDestroyed>
+      wait_{this};
+};
+
 class GzIpcAgent : public Agent, public MessageHandler {
  public:
-  GzIpcAgent(zx::channel message_channel, size_t max_message_size)
-      : Agent(this, fbl::move(message_channel), max_message_size) {}
+  GzIpcAgent() = delete;
+  GzIpcAgent(zx::channel message_channel, size_t max_message_size);
 
   zx_status_t SendMessageToPeer(uint32_t local, uint32_t remote, void* data,
                                 size_t data_len);
 
   zx_status_t AllocEndpoint(zx::channel connector, uint32_t remote_addr,
                             uint32_t* local_addr_out = nullptr);
+
+  SharedMemoryRecord* LookupSharedMemoryRecord(zx_koid_t id);
 
   // Overriden from |Agent|
   zx_status_t Start() override;
@@ -33,10 +78,15 @@ class GzIpcAgent : public Agent, public MessageHandler {
  protected:
   zx_status_t HandleDisconnectRequest(gz_ipc_ctrl_msg_hdr* ctrl_hdr);
 
-  zx_status_t AllocEndpointLocked(zx::channel connector, uint32_t remote_addr,
-                                  uint32_t* local_addr_out = nullptr)
-      FXL_EXCLUSIVE_LOCKS_REQUIRED(lock_);
   void FreeEndpoint(uint32_t local_addr);
+
+  void InstallSharedMemoryRecord(zx_koid_t id,
+                                 fbl::unique_ptr<SharedMemoryRecord> rec);
+
+  void RemoveSharedMemoryRecord(zx_koid_t id);
+
+  zx_info_ns_shm_t shm_info_;
+  zx::resource shm_rsc_;
 
  private:
   zx_status_t HandleConnectResponseLocked(
@@ -47,6 +97,14 @@ class GzIpcAgent : public Agent, public MessageHandler {
       fbl::unique_ptr<GzIpcEndpoint>& endpoint, gz_ipc_msg_hdr* msg_hdr)
       FXL_EXCLUSIVE_LOCKS_REQUIRED(lock_);
 
+  zx_status_t AllocEndpointLocked(zx::channel connector, uint32_t remote_addr,
+                                  uint32_t* local_addr_out = nullptr)
+      FXL_EXCLUSIVE_LOCKS_REQUIRED(lock_);
+
+  void InstallSharedMemoryRecordLocked(zx_koid_t id,
+                                       fbl::unique_ptr<SharedMemoryRecord> rec)
+      FXL_EXCLUSIVE_LOCKS_REQUIRED(lock_);
+
   virtual zx_status_t HandleCtrlMessage(gz_ipc_msg_hdr* msg_hdr) = 0;
 
   zx_status_t HandleEndpointMessage(gz_ipc_msg_hdr* msg_hdr);
@@ -55,8 +113,12 @@ class GzIpcAgent : public Agent, public MessageHandler {
   zx_status_t OnMessage(Message msg) override;
 
   fbl::Mutex lock_;
-  trusty_ipc::IdAllocator<kMaxEndpointNumber> id_allocator_;
+  trusty_ipc::IdAllocator<kMaxEndpointNumber> id_allocator_
+      FXL_GUARDED_BY(lock_);
   std::map<uint32_t, fbl::unique_ptr<GzIpcEndpoint>> endpoint_table_
+      FXL_GUARDED_BY(lock_);
+
+  std::map<zx_koid_t, fbl::unique_ptr<SharedMemoryRecord>> shm_rec_table_
       FXL_GUARDED_BY(lock_);
 };
 

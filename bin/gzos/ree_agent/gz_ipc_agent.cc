@@ -2,11 +2,29 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include <fbl/auto_call.h>
-
 #include "garnet/bin/gzos/ree_agent/gz_ipc_agent.h"
 
+#include <fbl/auto_call.h>
+#include <lib/async/default.h>
+
+#include "lib/fsl/handles/object_info.h"
+
 namespace ree_agent {
+
+SharedMemoryRecord::SharedMemoryRecord(uintptr_t base, size_t size,
+                                       zx::eventpair event, zx::vmo vmo)
+    : base_(base), size_(size), vmo_(std::move(vmo)), event_(std::move(event)) {
+  wait_.set_trigger(ZX_EVENTPAIR_SIGNALED);
+  wait_.set_object(event_.get());
+  FXL_CHECK(wait_.Begin(async_get_default_dispatcher()) == ZX_OK);
+}
+
+SharedMemoryRecord::~SharedMemoryRecord() { wait_.Cancel(); }
+
+GzIpcAgent::GzIpcAgent(zx::channel message_channel, size_t max_message_size)
+    : Agent(this, fbl::move(message_channel), max_message_size) {
+  FXL_CHECK(zx::resource::create_ns_mem(0, &shm_info_, &shm_rsc_) == ZX_OK);
+}
 
 zx_status_t GzIpcAgent::SendMessageToPeer(uint32_t local, uint32_t remote,
                                           void* data, size_t data_len) {
@@ -58,8 +76,10 @@ zx_status_t GzIpcAgent::AllocEndpointLocked(zx::channel connector,
   if (status != ZX_OK) {
     return status;
   }
-  auto free_local_addr = fbl::MakeAutoCall(
-      [this, &local_addr]() { id_allocator_.Free(local_addr); });
+  auto free_local_addr =
+      fbl::MakeAutoCall([this, &local_addr]() FXL_NO_THREAD_SAFETY_ANALYSIS {
+        id_allocator_.Free(local_addr);
+      });
 
   auto endpoint = fbl::make_unique<GzIpcEndpoint>(this, local_addr, remote_addr,
                                                   std::move(connector));
@@ -178,8 +198,41 @@ zx_status_t GzIpcAgent::DispatchEndpointMessageLocked(
         handles[i] = ch1.release();
       } break;
 
-      case HandleType::VMO:
-        FXL_CHECK(false) << "Not implemented";
+      case HandleType::VMO: {
+        auto vmo_info = hdr->handles[i].vmo;
+
+        zx::vmo vmo;
+        zx::eventpair event;
+        zx_status_t status = zx::vmo::create_ns_mem(
+            shm_rsc_, vmo_info.paddr, vmo_info.size, &vmo, &event);
+        if (status != ZX_OK) {
+          return status;
+        }
+
+        auto rec = fbl::make_unique<SharedMemoryRecord>(
+            vmo_info.paddr, vmo_info.size, std::move(event));
+        if (!rec) {
+          return ZX_ERR_NO_MEMORY;
+        }
+
+        zx_koid_t koid = fsl::GetKoid(vmo.get());
+        rec->set_release_handler(
+            [this, local_koid = koid, remote_koid = vmo_info.koid] {
+              RemoveSharedMemoryRecord(local_koid);
+
+              free_vmo_msg free_vmo_msg{
+                  {CtrlMessageType::FREE_VMO, sizeof(gz_ipc_free_vmo_body)},
+                  {remote_koid}};
+
+              FXL_CHECK(SendMessageToPeer(kCtrlEndpointAddress,
+                                          kCtrlEndpointAddress, &free_vmo_msg,
+                                          sizeof(free_vmo_msg)) == ZX_OK);
+            });
+
+        InstallSharedMemoryRecordLocked(koid, std::move(rec));
+
+        handles[i] = vmo.release();
+      } break;
 
       default:
         FXL_CHECK(false) << "Bad handle";
@@ -225,6 +278,37 @@ zx_status_t GzIpcAgent::OnMessage(Message msg) {
   }
 
   return HandleEndpointMessage(msg_hdr);
+}
+
+void GzIpcAgent::InstallSharedMemoryRecord(
+    zx_koid_t id, fbl::unique_ptr<SharedMemoryRecord> rec) {
+  fbl::AutoLock lock(&lock_);
+  InstallSharedMemoryRecordLocked(id, std::move(rec));
+}
+
+void GzIpcAgent::InstallSharedMemoryRecordLocked(
+    zx_koid_t id, fbl::unique_ptr<SharedMemoryRecord> rec) {
+  auto it = shm_rec_table_.find(id);
+  FXL_CHECK(it == shm_rec_table_.end());
+
+  shm_rec_table_.emplace(id, std::move(rec));
+}
+
+SharedMemoryRecord* GzIpcAgent::LookupSharedMemoryRecord(zx_koid_t id) {
+  fbl::AutoLock lock(&lock_);
+  auto it = shm_rec_table_.find(id);
+
+  if (it != shm_rec_table_.end()) {
+    auto& rec = it->second;
+    return rec.get();
+  }
+
+  return nullptr;
+}
+
+void GzIpcAgent::RemoveSharedMemoryRecord(zx_koid_t id) {
+  fbl::AutoLock lock(&lock_);
+  shm_rec_table_.erase(id);
 }
 
 zx_status_t GzIpcAgent::Start() { return message_reader_.Start(); };

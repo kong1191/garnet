@@ -3,9 +3,9 @@
 // found in the LICENSE file.
 
 #include "garnet/bin/gzos/ree_agent/gz_ipc_endpoint.h"
+
 #include "garnet/bin/gzos/ree_agent/gz_ipc_agent.h"
 #include "garnet/bin/gzos/ree_agent/gz_ipc_msg.h"
-
 #include "lib/fsl/handles/object_info.h"
 
 namespace ree_agent {
@@ -38,6 +38,24 @@ zx_status_t GzIpcEndpoint::OnMessage(Message message) {
 
         endpoint_hdr->handles[i].type = HandleType::CHANNEL;
         endpoint_hdr->handles[i].channel.remote = local_addr;
+      } break;
+
+      case ZX_OBJ_TYPE_VMO: {
+        auto koid = fsl::GetKoid(handle);
+        zx::vmo vmo(handle);
+
+        SharedMemoryRecord* rec;
+        rec = agent_->LookupSharedMemoryRecord(koid);
+        if (!rec) {
+          return ZX_ERR_BAD_HANDLE;
+        }
+
+        rec->set_vmo(std::move(vmo));
+
+        endpoint_hdr->handles[i].type = HandleType::VMO;
+        endpoint_hdr->handles[i].vmo.koid = koid;
+        endpoint_hdr->handles[i].vmo.paddr = rec->base_phys();
+        endpoint_hdr->handles[i].vmo.size = rec->size();
       } break;
 
       default:
