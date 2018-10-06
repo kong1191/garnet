@@ -2,11 +2,32 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include <fbl/auto_call.h>
-
 #include "garnet/bin/gzos/ree_agent/gz_ipc_agent.h"
 
+#include <fbl/auto_call.h>
+#include <lib/async/default.h>
+
+#include "lib/fsl/handles/object_info.h"
+
 namespace ree_agent {
+
+SharedMemoryRecord::SharedMemoryRecord(uintptr_t base_phys, size_t size,
+                                       zx::eventpair event, zx::vmo vmo)
+    : base_phys_(base_phys),
+      size_(size),
+      vmo_(std::move(vmo)),
+      event_(std::move(event)) {
+  wait_.set_trigger(ZX_EVENTPAIR_SIGNALED);
+  wait_.set_object(event_.get());
+  FXL_CHECK(wait_.Begin(async_get_default_dispatcher()) == ZX_OK);
+}
+
+SharedMemoryRecord::~SharedMemoryRecord() { wait_.Cancel(); }
+
+GzIpcAgent::GzIpcAgent(zx::unowned_resource shm_rsc,
+                       zx::channel message_channel, size_t max_message_size)
+    : Agent(this, fbl::move(message_channel), max_message_size),
+      shm_rsc_(shm_rsc) {}
 
 zx_status_t GzIpcAgent::SendMessageToPeer(uint32_t local, uint32_t remote,
                                           void* data, size_t data_len) {
@@ -58,8 +79,10 @@ zx_status_t GzIpcAgent::AllocEndpointLocked(zx::channel connector,
   if (status != ZX_OK) {
     return status;
   }
-  auto free_local_addr = fbl::MakeAutoCall(
-      [this, &local_addr]() { id_allocator_.Free(local_addr); });
+  auto free_local_addr =
+      fbl::MakeAutoCall([this, &local_addr]() FXL_NO_THREAD_SAFETY_ANALYSIS {
+        id_allocator_.Free(local_addr);
+      });
 
   auto endpoint = fbl::make_unique<GzIpcEndpoint>(this, local_addr, remote_addr,
                                                   std::move(connector));
@@ -153,6 +176,14 @@ zx_status_t GzIpcAgent::HandleEndpointMessage(gz_ipc_msg_hdr* msg_hdr) {
   return ZX_OK;
 }
 
+void GzIpcAgent::SendFreeVmoMessage(uint64_t id) {
+  free_vmo_msg free_vmo_msg{
+      {CtrlMessageType::FREE_VMO, sizeof(gz_ipc_free_vmo_body)}, {id}};
+
+  FXL_CHECK(SendMessageToPeer(kCtrlEndpointAddress, kCtrlEndpointAddress,
+                              &free_vmo_msg, sizeof(free_vmo_msg)) == ZX_OK);
+}
+
 zx_status_t GzIpcAgent::DispatchEndpointMessageLocked(
     fbl::unique_ptr<GzIpcEndpoint>& endpoint, gz_ipc_msg_hdr* msg_hdr) {
   auto hdr = reinterpret_cast<gz_ipc_endpoint_msg_hdr*>(msg_hdr->data);
@@ -178,8 +209,38 @@ zx_status_t GzIpcAgent::DispatchEndpointMessageLocked(
         handles[i] = ch1.release();
       } break;
 
-      case HandleType::VMO:
-        FXL_CHECK(false) << "Not implemented";
+      case HandleType::VMO: {
+        auto vmo_info = hdr->handles[i].vmo;
+
+        zx::vmo vmo;
+        zx::eventpair event;
+        zx_status_t status = zx::vmo::create_ns_mem(
+            *shm_rsc_, vmo_info.paddr, vmo_info.size, &vmo, &event);
+        if (status != ZX_OK) {
+          return status;
+        }
+
+        auto rec = fbl::make_unique<SharedMemoryRecord>(
+            vmo_info.paddr, vmo_info.size, std::move(event));
+        if (!rec) {
+          return ZX_ERR_NO_MEMORY;
+        }
+
+        auto id = SharedMemoryRecord::GetShmId(vmo.get());
+        if (id == INVALID_SHM_ID) {
+          return ZX_ERR_BAD_HANDLE;
+        }
+
+        rec->set_release_handler(
+            [this, local_id = id, remote_id = vmo_info.id] {
+              RemoveSharedMemoryRecord(local_id);
+              SendFreeVmoMessage(remote_id);
+            });
+
+        InstallSharedMemoryRecordLocked(id, std::move(rec));
+
+        handles[i] = vmo.release();
+      } break;
 
       default:
         FXL_CHECK(false) << "Bad handle";
@@ -225,6 +286,37 @@ zx_status_t GzIpcAgent::OnMessage(Message msg) {
   }
 
   return HandleEndpointMessage(msg_hdr);
+}
+
+void GzIpcAgent::InstallSharedMemoryRecord(
+    uint64_t id, fbl::unique_ptr<SharedMemoryRecord> rec) {
+  fbl::AutoLock lock(&lock_);
+  InstallSharedMemoryRecordLocked(id, std::move(rec));
+}
+
+void GzIpcAgent::InstallSharedMemoryRecordLocked(
+    uint64_t id, fbl::unique_ptr<SharedMemoryRecord> rec) {
+  auto it = shm_rec_table_.find(id);
+  FXL_CHECK(it == shm_rec_table_.end());
+
+  shm_rec_table_.emplace(id, std::move(rec));
+}
+
+SharedMemoryRecord* GzIpcAgent::LookupSharedMemoryRecord(uint64_t id) {
+  fbl::AutoLock lock(&lock_);
+  auto it = shm_rec_table_.find(id);
+
+  if (it != shm_rec_table_.end()) {
+    auto& rec = it->second;
+    return rec.get();
+  }
+
+  return nullptr;
+}
+
+void GzIpcAgent::RemoveSharedMemoryRecord(uint64_t id) {
+  fbl::AutoLock lock(&lock_);
+  shm_rec_table_.erase(id);
 }
 
 zx_status_t GzIpcAgent::Start() { return message_reader_.Start(); };
