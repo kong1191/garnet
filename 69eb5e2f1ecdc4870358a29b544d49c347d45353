@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8986fab_ee37a908",
+        "filename": "bin/gzos/ree_agent/gz_ipc_agent.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-10-23T06:37:04Z",
+      "side": 1,
+      "message": "remote_addr can be passed by value (the value is not changed in this function)",
+      "range": {
+        "startLine": 44,
+        "startChar": 40,
+        "endLine": 44,
+        "endChar": 52
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f6467c2_cd27e585",
+        "filename": "bin/gzos/ree_agent/gz_ipc_agent.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-10-23T06:37:04Z",
+      "side": 1,
+      "message": "It\u0027s hard to understand the intention. I think this is for code sharing between the client agent and the server agent.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32bb1d96_3522cf84",
+        "filename": "bin/gzos/ree_agent/gz_ipc_agent.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-10-23T06:37:04Z",
+      "side": 1,
+      "message": "status not changed",
+      "range": {
+        "startLine": 67,
+        "startChar": 63,
+        "endLine": 67,
+        "endChar": 70
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d552899f_934026ee",
+        "filename": "bin/gzos/ree_agent/gz_ipc_client.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-10-23T06:37:04Z",
+      "side": 1,
+      "message": "It\u0027s safe to pass by value instead of by reference.",
+      "range": {
+        "startLine": 23,
+        "startChar": 31,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c755e8b3_938cdcba",
+        "filename": "bin/gzos/ree_agent/gz_ipc_endpoint.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-10-23T06:37:04Z",
+      "side": 1,
+      "message": "why two reader() getter functions?",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 65
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
