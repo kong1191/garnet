@@ -71,6 +71,75 @@
     },
     {
       "key": {
+        "uuid": "d174764f_ca63f785",
+        "filename": "bin/gzos/ree_agent/gz_ipc_agent.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-10-25T08:11:34Z",
+      "side": 1,
+      "message": "How do you know this is a connection response message?",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 146,
+        "endChar": 5
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "374083be_1c88dc52",
+        "filename": "bin/gzos/ree_agent/gz_ipc_agent.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-10-25T08:11:34Z",
+      "side": 1,
+      "message": "why not use FreeEndpoint(body-\u003etarget) ?",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 35
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53d4cadd_7b2cfb70",
+        "filename": "bin/gzos/ree_agent/gz_ipc_agent.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-10-25T08:11:34Z",
+      "side": 1,
+      "message": "move id_alloc to a common library",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 45
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d552899f_934026ee",
         "filename": "bin/gzos/ree_agent/gz_ipc_client.cc",
         "patchSetId": 20
@@ -94,6 +163,52 @@
     },
     {
       "key": {
+        "uuid": "c11488e5_445c6896",
+        "filename": "bin/gzos/ree_agent/gz_ipc_endpoint.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-10-25T08:11:34Z",
+      "side": 1,
+      "message": "do we need to check if the remote_addr_ is valid?",
+      "range": {
+        "startLine": 52,
+        "startChar": 17,
+        "endLine": 52,
+        "endChar": 29
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bc99ad8_e82e1025",
+        "filename": "bin/gzos/ree_agent/gz_ipc_endpoint.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-10-25T08:11:34Z",
+      "side": 1,
+      "message": "It needs to wait for remote endpoint is ready then can start message reader to serve CA requests.",
+      "range": {
+        "startLine": 27,
+        "startChar": 14,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c755e8b3_938cdcba",
         "filename": "bin/gzos/ree_agent/gz_ipc_endpoint.h",
         "patchSetId": 20
@@ -110,6 +225,52 @@
         "startChar": 2,
         "endLine": 34,
         "endChar": 65
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1cf5896_7364c9c6",
+        "filename": "bin/gzos/ree_agent/gz_ipc_server.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-10-25T08:11:34Z",
+      "side": 1,
+      "message": "conn req",
+      "range": {
+        "startLine": 14,
+        "startChar": 31,
+        "endLine": 14,
+        "endChar": 39
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "756e0bc3_c70347d5",
+        "filename": "bin/gzos/ree_agent/message_reader.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-10-25T08:11:34Z",
+      "side": 1,
+      "message": "rename to AllocHeader or AddHeader",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 10
       },
       "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
