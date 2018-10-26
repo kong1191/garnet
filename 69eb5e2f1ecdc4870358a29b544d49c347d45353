@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bb2d635b_ed2235c5",
+        "filename": "bin/gzos/ree_agent/gz_ipc_agent.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-10-26T05:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8986fab_ee37a908",
+      "range": {
+        "startLine": 44,
+        "startChar": 40,
+        "endLine": 44,
+        "endChar": 52
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f6467c2_cd27e585",
         "filename": "bin/gzos/ree_agent/gz_ipc_agent.cc",
         "patchSetId": 20
@@ -45,6 +69,30 @@
       "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb7ac849_79849c09",
+        "filename": "bin/gzos/ree_agent/gz_ipc_agent.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-10-26T05:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f6467c2_cd27e585",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f9d5e7c9_c9b78e96",
+        "filename": "bin/gzos/ree_agent/gz_ipc_agent.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-10-26T05:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32bb1d96_3522cf84",
+      "range": {
+        "startLine": 67,
+        "startChar": 63,
+        "endLine": 67,
+        "endChar": 70
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d174764f_ca63f785",
         "filename": "bin/gzos/ree_agent/gz_ipc_agent.cc",
         "patchSetId": 20
@@ -82,6 +154,30 @@
       "writtenOn": "2018-10-25T08:11:34Z",
       "side": 1,
       "message": "How do you know this is a connection response message?",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 146,
+        "endChar": 5
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a625d517_66db6b9a",
+        "filename": "bin/gzos/ree_agent/gz_ipc_agent.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-10-26T05:24:04Z",
+      "side": 1,
+      "message": "After issuing a connect request to a remote service, a local endpoint is created; the first packet received from peer should be connect response message which contains the peer endpoint address. Before interpreting the incoming message, length and type of the received packet is verified to make sure it is actually a connect response message. If the response message contains an error then the connect request is failed and the local endpoint will be released.",
+      "parentUuid": "d174764f_ca63f785",
       "range": {
         "startLine": 137,
         "startChar": 4,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "bab6f8b8_797894e8",
+        "filename": "bin/gzos/ree_agent/gz_ipc_agent.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-10-26T05:24:04Z",
+      "side": 1,
+      "message": "FreeEndpoint() will implicitly send a disconnect request message to the peer, which is not the behavior I want.",
+      "parentUuid": "374083be_1c88dc52",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 35
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53d4cadd_7b2cfb70",
         "filename": "bin/gzos/ree_agent/gz_ipc_agent.h",
         "patchSetId": 20
@@ -137,6 +257,30 @@
       "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eff1fdc0_f7dc326c",
+        "filename": "bin/gzos/ree_agent/gz_ipc_agent.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-10-26T05:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53d4cadd_7b2cfb70",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 45
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "0ea6a0c4_3a3b428b",
+        "filename": "bin/gzos/ree_agent/gz_ipc_client.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-10-26T05:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d552899f_934026ee",
+      "range": {
+        "startLine": 23,
+        "startChar": 31,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c11488e5_445c6896",
         "filename": "bin/gzos/ree_agent/gz_ipc_endpoint.cc",
         "patchSetId": 20
@@ -174,6 +342,30 @@
       "writtenOn": "2018-10-25T08:11:34Z",
       "side": 1,
       "message": "do we need to check if the remote_addr_ is valid?",
+      "range": {
+        "startLine": 52,
+        "startChar": 17,
+        "endLine": 52,
+        "endChar": 29
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2042d52_ee652d11",
+        "filename": "bin/gzos/ree_agent/gz_ipc_endpoint.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-10-26T05:24:04Z",
+      "side": 1,
+      "message": "Sure, we can add an assert to check it",
+      "parentUuid": "c11488e5_445c6896",
       "range": {
         "startLine": 52,
         "startChar": 17,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "99ba4405_30046b74",
+        "filename": "bin/gzos/ree_agent/gz_ipc_endpoint.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-10-26T05:24:04Z",
+      "side": 1,
+      "message": "OK, will start it after got/sent connect response message",
+      "parentUuid": "1bc99ad8_e82e1025",
+      "range": {
+        "startLine": 27,
+        "startChar": 14,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c755e8b3_938cdcba",
         "filename": "bin/gzos/ree_agent/gz_ipc_endpoint.h",
         "patchSetId": 20
@@ -220,6 +436,30 @@
       "writtenOn": "2018-10-23T06:37:04Z",
       "side": 1,
       "message": "why two reader() getter functions?",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 65
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5e4147c_9804e6cc",
+        "filename": "bin/gzos/ree_agent/gz_ipc_endpoint.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-10-26T05:24:04Z",
+      "side": 1,
+      "message": "Some const method requires this method to get const reference of the reader instance",
+      "parentUuid": "c755e8b3_938cdcba",
       "range": {
         "startLine": 34,
         "startChar": 2,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "1b4221fe_5476a15f",
+        "filename": "bin/gzos/ree_agent/gz_ipc_server.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-10-26T05:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1cf5896_7364c9c6",
+      "range": {
+        "startLine": 14,
+        "startChar": 31,
+        "endLine": 14,
+        "endChar": 39
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "756e0bc3_c70347d5",
         "filename": "bin/gzos/ree_agent/message_reader.h",
         "patchSetId": 20
@@ -275,6 +539,30 @@
       "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "574d40f5_70d5d3e0",
+        "filename": "bin/gzos/ree_agent/message_reader.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-10-26T05:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "756e0bc3_c70347d5",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 10
+      },
+      "revId": "69eb5e2f1ecdc4870358a29b544d49c347d45353",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
