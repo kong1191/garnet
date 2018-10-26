@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4f79d972_f5e88545",
+        "filename": "bin/gzos/ree_agent/gz_ipc_agent-unittest.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1013117
+      },
+      "writtenOn": "2018-10-26T06:50:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87b29748_7541fe6f",
+      "range": {
+        "startLine": 176,
+        "startChar": 18,
+        "endLine": 176,
+        "endChar": 28
+      },
+      "revId": "a4d60255dd903cc67b7c2bac25c754a59b12682a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "753e1471_9667423d",
         "filename": "bin/gzos/ree_agent/gz_ipc_agent-unittest.cc",
         "patchSetId": 9
