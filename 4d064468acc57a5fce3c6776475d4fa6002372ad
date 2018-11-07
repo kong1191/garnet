@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5590aa82_985bdd8d",
+        "filename": "bin/gzos/smc_service/trusty_smc.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-11-07T10:34:35Z",
+      "side": 1,
+      "message": "remove debug message",
+      "range": {
+        "startLine": 266,
+        "startChar": 6,
+        "endLine": 266,
+        "endChar": 33
+      },
+      "revId": "4d064468acc57a5fce3c6776475d4fa6002372ad",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
