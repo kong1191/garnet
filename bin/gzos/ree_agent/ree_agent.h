@@ -20,6 +20,7 @@ namespace ree_agent {
 class Agent {
  public:
   Agent() = delete;
+  virtual ~Agent() {}
 
   Agent(MessageHandler* handler, zx::channel message_channel,
         size_t max_message_size)
@@ -36,16 +37,18 @@ class Agent {
       return ZX_ERR_BUFFER_TOO_SMALL;
     }
 
-    return zx_channel_write(message_reader_.channel(), 0, buf, size, nullptr,
-                            0);
+    zx_status_t status =
+        zx_channel_write(message_reader_.channel(), 0, buf, size, nullptr, 0);
+    FXL_LOG(ERROR) << "write message, size=" << size << ", status=" << status;
+    return status;
   }
 
   size_t max_message_size() { return max_message_size_; }
 
- protected:
   virtual zx_status_t Start() = 0;
   virtual zx_status_t Stop() = 0;
 
+ protected:
   MessageReader message_reader_;
 
  private:

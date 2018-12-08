@@ -131,7 +131,7 @@ zx_status_t TrustySmcEntity::Init() {
     }
 
     gzos::reeagent::MessageChannelInfo ch_info{
-        gzos::reeagent::MessageType::Tipc, vdev->notify_id(),
+        gzos::reeagent::MessageType::GzIpc, vdev->notify_id(),
         desc->config.msg_buf_max_size, fbl::move(h1)};
     ch_infos.push_back(fbl::move(ch_info));
 
