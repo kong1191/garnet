@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5da7078e_d364b134",
+        "filename": "bin/gzos/ree_agent/ree_message_impl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-12-23T08:01:37Z",
+      "side": 1,
+      "message": "looks like an unused parameter",
+      "range": {
+        "startLine": 38,
+        "startChar": 30,
+        "endLine": 38,
+        "endChar": 37
+      },
+      "revId": "efb21e360852e799c6ecf7f86e65e7fbb6fa304f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56d8252b_ef3ac12a",
+        "filename": "bin/gzos/smc_service/trusty_smc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1012985
+      },
+      "writtenOn": "2018-12-23T08:01:37Z",
+      "side": 1,
+      "message": "We should support different type of IPC mechanism in the future",
+      "range": {
+        "startLine": 134,
+        "startChar": 8,
+        "endLine": 134,
+        "endChar": 42
+      },
+      "revId": "efb21e360852e799c6ecf7f86e65e7fbb6fa304f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
